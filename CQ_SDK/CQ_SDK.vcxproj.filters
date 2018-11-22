@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="AuthCode.h" />
+    <ClInclude Include="BaseAPI.h" />
+    <ClInclude Include="API.h" />
+    <ClInclude Include="GroupMemberInfo.h" />
+    <ClInclude Include="StrangerInfo.h" />
+    <ClInclude Include="tool.h" />
+    <ClInclude Include="Unpack.h" />
+    <ClInclude Include="LogStream.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="MsgSend.h" />
+    <ClInclude Include="BaseStream.h" />
+    <ClInclude Include="face.h" />
+    <ClInclude Include="code.h" />
+    <ClInclude Include="Base.h" />
+    <ClInclude Include="event.h" />
+    <ClInclude Include="BasicEvent.h" />
+    <ClInclude Include="DiscussMsgEvent.h" />
+    <ClInclude Include="FriendAddEvent.h" />
+    <ClInclude Include="AnonymousInfo.h" />
+    <ClInclude Include="GroupMsgEvent.h" />
+    <ClInclude Include="PrivateMsgEvent.h" />
+    <ClInclude Include="RequestAddFriendEvent.h" />
+    <ClInclude Include="RequestAddGroupEvent.h" />
+    <ClInclude Include="StatusEvent.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="regexMsg.h" />
+    <ClInclude Include="MsgEvent.h" />
+    <ClInclude Include="RequestBasicEvent.h" />
+    <ClInclude Include="CQSDK.h" />
+    <ClInclude Include="DEBUG.h" />
+    <ClInclude Include="标头.h" />
+    <ClInclude Include="SystemGroupAdminEvent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AuthCode.cpp" />
+    <ClCompile Include="GroupMemberInfo.cpp" />
+    <ClCompile Include="StrangerInfo.cpp" />
+    <ClCompile Include="tool.cpp" />
+    <ClCompile Include="Unpack.cpp" />
+    <ClCompile Include="API.cpp" />
+    <ClCompile Include="LogStream.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="MsgSend.cpp" />
+    <ClCompile Include="BaseStream.cpp" />
+    <ClCompile Include="code.cpp" />
+    <ClCompile Include="BasicEvent.cpp" />
+    <ClCompile Include="DiscussMsgEvent.cpp" />
+    <ClCompile Include="FriendAddEvent.cpp" />
+    <ClCompile Include="AnonymousInfo.cpp" />
+    <ClCompile Include="GroupMsgEvent.cpp" />
+    <ClCompile Include="PrivateMsgEvent.cpp" />
+    <ClCompile Include="RequestAddFriendEvent.cpp" />
+    <ClCompile Include="RequestAddGroupEvent.cpp" />
+    <ClCompile Include="StatusEvent.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="regexMsg.cpp" />
+    <ClCompile Include="MsgEvent.cpp" />
+    <ClCompile Include="RequestBasicEvent.cpp" />
+    <ClCompile Include="DEBUG.cpp" />
+    <ClCompile Include="SystemGroupAdminEvent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\CQ_LIB\CQP.lib" />
+  </ItemGroup>
+</Project>
