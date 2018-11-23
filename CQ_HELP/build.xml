@@ -10,6 +10,11 @@
 <project name="CQ_HELP" default="default" basedir=".">
     <description>Builds, tests, and runs the project CQ_HELP.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+        <target name="-pre-init">
+            <property file="project.properties"/>
+        </target>
+        
     <!--
 
     There exist several targets which are by default empty and which can be 
