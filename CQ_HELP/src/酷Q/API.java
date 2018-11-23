@@ -1,10 +1,27 @@
-package API;
+/*
+ * Copyright (C) 2018 admin
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package 酷Q;
 
-
-import java.util.Map;
-import 工具.GroupMemberInfo;
-import 工具.StrangerInfo;
+import 常用类.GroupMemberInfo;
+import 常用类.StrangerInfo;
 import 枚举.Log_;
+import 没用的包.vector;
+import 没用的包.map;
+import 没用的包.string;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,103 +36,112 @@ public interface API {
 
     /**
      * 增加运行日志
+     *
      * @param 优先级 整数型.具体查看枚举,可以直接使用枚举名称
      * @param 类型
-     * @param 内容 
+     * @param 内容
      * @return
      */
-    int addLog(Log_ 优先级, String 类型, String 内容);
+    int addLog(Log_ 优先级, string 类型, string 内容);
 
     /**
      * 置致命错误提示,暂时不知道干什么用的
+     *
      * @param 错误信息
-     * @return 
+     * @return
      */
-    int setFatal(String 错误信息);
+    int setFatal(string 错误信息);
 
     /**
-     * 发送好友消息 Auth=106,
-     * 失败返回负值,成功返回消息ID.
+     * 发送好友消息 Auth=106, 失败返回负值,成功返回消息ID.
+     *
      * @param QQ
      * @param msg
-     * @return 
+     * @return
      */
-    int sendPrivateMsg(long QQ, String msg);
+    int sendPrivateMsg(long QQ, string msg);
 
     /**
-     * 发送群消息
-     * Auth=101 失败返回负值,成功返回消息ID
+     * 发送群消息 Auth=101 失败返回负值,成功返回消息ID
+     *
      * @param 群号
      * @param msg
-     * @return 
+     * @return
      */
-    int sendGroupMsg(long 群号, String msg);
+    int sendGroupMsg(long 群号, string msg);
 
     /**
-     * 发送讨论组消息
-     * Auth=103 失败返回负值,成功返回消息ID
+     * 发送讨论组消息 Auth=103 失败返回负值,成功返回消息ID
+     *
      * @param 讨论组号
      * @param msg
-     * @return 
+     * @return
      */
-    int sendDiscussMsg(long 讨论组号, String msg);
+    int sendDiscussMsg(long 讨论组号, string msg);
 
     /**
      * 发送赞 Auth=110
+     *
      * @param QQID
      * @param times
-     * @return 
+     * @return
      */
     int sendLike(long QQID, int times);
 
     /**
      * 取Cookies,Auth=20 慎用,此接口需要严格授权
-     * @return 
+     *
+     * @return
      */
-    String getCookies();
+    string getCookies();
 
     /**
      * 接收语音
+     *
      * @param file 收到消息中的语音文件名 (file)
      * @param outformat 应用所需的格式 mp3,amr,wma,m4a,spx,ogg,wav,flac
-     * @return 
+     * @return
      */
-    String getRecord(
-            String file, // 收到消息中的语音文件名 (file)
-            String outformat // 应用所需的格式 mp3,amr,wma,m4a,spx,ogg,wav,flac
+    string getRecord(
+            string file, // 收到消息中的语音文件名 (file)
+            string outformat // 应用所需的格式 mp3,amr,wma,m4a,spx,ogg,wav,flac
     );
 
     /**
-     * 取CsrfToken (慎用，此接口需要严格授权)
-     * Auth=20 即QQ网页用到的bkn/g_tk等 慎用,此接口需要严格授权
-     * @return 
+     * 取CsrfToken (慎用，此接口需要严格授权) Auth=20 即QQ网页用到的bkn/g_tk等 慎用,此接口需要严格授权
+     *
+     * @return
      */
     int getCsrfToken();
 
     /**
      * 取应用目录,返回的路径末尾带"\"
-     * @return 
+     *
+     * @return
      */
-    String getAppDirectory();
+    string getAppDirectory();
 
     /**
      * 取登录QQ
-     * @return 
+     *
+     * @return
      */
     long getLoginQQ();
 
     /**
      * 取登录昵称
-     * @return 
+     *
+     * @return
      */
-    String getLoginNick();
+    string getLoginNick();
 
     /**
      * 置群员移除 Auth=120
+     *
      * @param 群号
      * @param QQID
      * @param 拒绝再加群 可以不填,默认为假,如果为真，则“不再接收此人加群申请”，请慎用
-     * @return 
+     * @return
      */
     int setGroupKick(
             long 群号, long QQID,
@@ -124,10 +150,11 @@ public interface API {
 
     /**
      * 置群员禁言 Auth=121
+     *
      * @param 群号
      * @param QQID
      * @param 禁言时间 可以不填,默认60秒,单位为秒。如果要解禁，这里填写0
-     * @return 
+     * @return
      */
     int setGroupBan(
             long 群号, long QQID,
@@ -136,10 +163,11 @@ public interface API {
 
     /**
      * 置群管理员 Auth=122
+     *
      * @param 群号
      * @param QQID
      * @param 成为管理员 默认为真,假为取消管理
-     * @return 
+     * @return
      */
     int setGroupAdmin(
             long 群号, long QQID,
@@ -148,23 +176,25 @@ public interface API {
 
     /**
      * 置群成员专属头衔 Auth=128 需群主权限
+     *
      * @param 群号
      * @param QQID
      * @param 头衔 如果要删除，这里填空
      * @param 有效期 默认为永久(-1),单位为秒。
-     * @return 
+     * @return
      */
     int setGroupSpecialTitle(
             long 群号, long QQID,
-            String 头衔, // 如果要删除，这里填空
+            string 头衔, // 如果要删除，这里填空
             long 有效期// = -1 // 专属头衔有效期，单位为秒。如果永久有效，这里填写-1
     );
 
     /**
      * 置全群禁言 Auth=123
+     *
      * @param 群号
      * @param 开启禁言 默认为真,假为解除禁言
-     * @return 
+     * @return
      */
     int setGroupWholeBan(
             long 群号,
@@ -173,40 +203,44 @@ public interface API {
 
     /**
      * 置匿名群员禁言 Auth=124
+     *
      * @param 群号
      * @param 匿名 群消息事件收到的“匿名”参数
      * @param 禁言时间 默认60秒,不支持解禁
-     * @return 
+     * @return
      */
     int setGroupAnonymousBan(
             long 群号,
-            String 匿名, // 群消息事件收到的“匿名”参数
+            string 匿名, // 群消息事件收到的“匿名”参数
             long 禁言时间 //= 60 // 禁言的时间，单位为秒。不支持解禁
     );
 
     /**
      * 置群匿名设置 Auth=125
+     *
      * @param 群号
      * @param 开启匿名
-     * @return 
+     * @return
      */
     int setGroupAnonymous(long 群号, boolean 开启匿名 //= true
     );
 
     /**
      * 置群成员名片 Auth=126
+     *
      * @param 群号
      * @param QQID
      * @param 新名片_昵称
-     * @return 
+     * @return
      */
-    int setGroupCard(long 群号, long QQID, String 新名片_昵称);
+    int setGroupCard(long 群号, long QQID, string 新名片_昵称);
 
     /**
      * 置群退出 Auth=127 慎用,此接口需要严格授权
+     *
      * @param 群号
      * @param 是否解散 默认为假,真/解散本群 (群主),假/退出本群 (管理、群成员)
-     * @return 
+     * @return
      */
     int setGroupLeave(
             long 群号,
@@ -215,8 +249,9 @@ public interface API {
 
     /**
      * 置讨论组退出 Auth=140
+     *
      * @param 讨论组号
-     * @return 
+     * @return
      */
     int setDiscussLeave(
             long 讨论组号
@@ -224,76 +259,82 @@ public interface API {
 
     /**
      * 置好友添加请求 Auth=150
+     *
      * @param 请求反馈标识 请求事件收到的“反馈标识”参数
      * @param 反馈类型 #请求_通过 或 #请求_拒绝
      * @param 备注 添加后的好友备注
-     * @return 
+     * @return
      */
     int setFriendAddRequest(
-            String 请求反馈标识, // 请求事件收到的“反馈标识”参数
+            string 请求反馈标识, // 请求事件收到的“反馈标识”参数
             int 反馈类型, // #请求_通过 或 #请求_拒绝
-            String 备注 // 添加后的好友备注
+            string 备注 // 添加后的好友备注
     );
 
     /**
      * 置群添加请求 Auth=151
+     *
      * @param 请求反馈标识 请求事件收到的“反馈标识”参数
      * @param 请求类型 根据请求事件的子类型区分 #请求_群添加 或 #请求_群邀请
      * @param 反馈类型 #请求_通过 或 #请求_拒绝
      * @param 理由 操作理由，仅 #请求_群添加 且 #请求_拒绝 时可用
-     * @return 
+     * @return
      */
     int setGroupAddRequest(
-            String 请求反馈标识, // 请求事件收到的“反馈标识”参数
+            string 请求反馈标识, // 请求事件收到的“反馈标识”参数
             int 请求类型, // 根据请求事件的子类型区分 #请求_群添加 或 #请求_群邀请
             int 反馈类型, // #请求_通过 或 #请求_拒绝
-            String 理由 // 操作理由，仅 #请求_群添加 且 #请求_拒绝 时可用
+            string 理由 // 操作理由，仅 #请求_群添加 且 #请求_拒绝 时可用
     );
 
     /**
      * 取群成员信息 (支持缓存) Auth=130
+     *
      * @param 群号
      * @param QQID
      * @param 不使用缓存 默认为假
-     * @return 
+     * @return
      */
     GroupMemberInfo getGroupMemberInfo(long 群号, long QQID, boolean 不使用缓存 //= false
     );
 
     /**
      * 取陌生人信息 (支持缓存) Auth=131
+     *
      * @param QQID
      * @param 不使用缓存 默认为假
-     * @return 
+     * @return
      */
     StrangerInfo getStrangerInfo(long QQID, boolean 不使用缓存 //= false
     );
 
     /**
      * 取群成员列表 Auth=160
+     *
      * @param 群号
-     * @return 
+     * @return
      */
     vector<GroupMemberInfo> getGroupMemberList(long 群号);
-    class vector <T>{}
-    
+
     /**
      * 取群列表 Auth=161
+     *
      * @return Map[群号,群名称]
      */
-    Map<Long, String> getGroupList();
+    map<Long, string> getGroupList();
 
     /**
      * 撤回消息 Auth=180
+     *
      * @param MsgId
-     * @return 
+     * @return
      */
     int deleteMsg(long MsgId);
 
     /**
-     * 如果API调用返回错误代码,
-     * 则可以使用本函数获取相关中文信息
+     * 如果API调用返回错误代码, 则可以使用本函数获取相关中文信息
+     *
      * @return
      */
-    String getlasterrmsg();
+    string getlasterrmsg();
 }
