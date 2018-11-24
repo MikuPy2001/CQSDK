@@ -14,12 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package 没用的包;
+package c;
 
 /**
- * 可能是 char* 也可能是 std::string 请根据实际情况判断
+ *std::vector
  * @author admin
+ * @param <T>
  */
-public interface string {
-    
+public interface vector<T> {
 }

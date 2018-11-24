@@ -19,9 +19,9 @@ package 酷Q;
 import 常用类.GroupMemberInfo;
 import 常用类.StrangerInfo;
 import 枚举.Log_;
-import 没用的包.vector;
-import 没用的包.map;
-import 没用的包.string;
+import c.vector;
+import c.map;
+import c.string;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

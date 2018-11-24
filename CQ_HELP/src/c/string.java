@@ -14,15 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package 没用的包;
+package c;
 
 /**
- * std::map
- *
+ * 可能是 char* 也可能是 std::string 请根据实际情况判断
  * @author admin
- * @param <T>
- * @param <E>
  */
-public interface map<T, E> {
-
+public interface string {
+    
 }

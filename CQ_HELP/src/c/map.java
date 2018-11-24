@@ -14,12 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package 没用的包;
+package c;
 
 /**
- *std::vector
+ * std::map
+ *
  * @author admin
  * @param <T>
+ * @param <E>
  */
-public interface vector<T> {
+public interface map<T, E> {
+
 }
