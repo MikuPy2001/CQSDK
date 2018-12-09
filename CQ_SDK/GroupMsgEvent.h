@@ -43,11 +43,11 @@ namespace CQ {
 		//置全群禁言
 		bool setGroupWholeBan(bool 开启禁言 = true);
 		//置群匿名设置
-		bool setGroupAnonymous(bool 开启匿名);
+		bool setGroupAnonymous(bool 开启匿名 = true);
 		//置群成员名片
 		bool setGroupCard(std::string 新名片_昵称);
 		//置群退出
-		bool setGroupLeave(bool 是否解散);
+		bool setGroupLeave(bool 是否解散 = false);
 		//取群成员信息 (支持缓存)
 		GroupMemberInfo getGroupMemberInfo(bool 不使用缓存 = false);
 		//取群成员列表

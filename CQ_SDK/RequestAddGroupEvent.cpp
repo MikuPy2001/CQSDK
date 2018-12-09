@@ -9,10 +9,12 @@ CQ::RequestAddGroupEvent::RequestAddGroupEvent(int subType, int sendTime, long l
 void CQ::RequestAddGroupEvent::pass(std::string msg)
 {
 	setGroupAddRequest(responseFlag, subType, 请求_通过, msg.c_str());
+	message_block();
 }
 
 void CQ::RequestAddGroupEvent::fail(std::string msg)
 {
 	setGroupAddRequest(responseFlag, subType, 请求_拒绝, msg.c_str());
+	message_block();
 }
 

@@ -10,8 +10,6 @@ namespace CQ {
 	//消息事件基类
 	struct MsgEvent :public BasicEvent
 	{
-		//子类型
-		int subType;
 		//消息ID
 		int msgId;
 		//来源QQ
@@ -19,9 +17,6 @@ namespace CQ {
 		//消息
 		std::string message;
 		char* messageRAW;
-		//字体
-		//Font font;
-		int font;
 
 		MsgEvent(int subType, int msgId, long long fromQQ, const char* message, int font);
 
@@ -33,5 +28,12 @@ namespace CQ {
 		virtual int sendMsg(const char*) const = 0;
 		virtual int sendMsg(std::string) const = 0;
 		virtual MsgSend sendMsg() const = 0;
+
+	protected:
+		//子类型
+		int subType;
+		//字体
+		//Font font;
+		int font;
 	};
 }

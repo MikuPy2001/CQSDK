@@ -60,10 +60,11 @@ namespace CQ {
 		文本型 msg// 消息内容
 		);
 	//发送赞 Auth=110
-	CQAPI(CQ_sendLike, 整数型)(
-		整数型 AuthCode,//
-		长整数型 QQID// 目标QQ
-		);
+	//CQAPI(CQ_sendLike, 整数型)(
+	//	整数型 AuthCode,//
+	//	长整数型 QQID// 目标QQ
+	//	);
+
 	//发送赞V2 Auth=110
 	CQAPI(CQ_sendLikeV2, 整数型)(
 		整数型 AuthCode,//
@@ -173,12 +174,13 @@ namespace CQ {
 		文本型 备注// 添加后的好友备注
 		);
 	//置群添加请求 Auth=151
-	CQAPI(CQ_setGroupAddRequest, 整数型)(
-		整数型 AuthCode,//
-		文本型 请求反馈标识,// 请求事件收到的“反馈标识”参数
-		整数型 请求类型,// 根据请求事件的子类型区分 #请求_群添加 或 #请求_群邀请
-		整数型 反馈类型// #请求_通过 或 #请求_拒绝
-		);
+	//CQAPI(CQ_setGroupAddRequest, 整数型)(
+	//	整数型 AuthCode,//
+	//	文本型 请求反馈标识,// 请求事件收到的“反馈标识”参数
+	//	整数型 请求类型,// 根据请求事件的子类型区分 #请求_群添加 或 #请求_群邀请
+	//	整数型 反馈类型// #请求_通过 或 #请求_拒绝
+	//	);
+
 	//置群添加请求 Auth=151
 	CQAPI(CQ_setGroupAddRequestV2, 整数型)(
 		整数型 AuthCode,//
@@ -193,11 +195,12 @@ namespace CQ {
 		文本型 错误信息//
 		);
 	//取群成员信息 (旧版,请用CQ_getGroupMemberInfoV2) Auth=130
-	CQAPI(CQ_getGroupMemberInfo, 文本型)(
-		整数型 AuthCode,//
-		长整数型 群号,// 目标QQ所在群
-		长整数型 QQID// 目标QQ
-		);
+	//CQAPI(CQ_getGroupMemberInfo, 文本型)(
+	//	整数型 AuthCode,//
+	//	长整数型 群号,// 目标QQ所在群
+	//	长整数型 QQID// 目标QQ
+	//	);
+
 	//取群成员信息 (支持缓存) Auth=130
 	CQAPI(CQ_getGroupMemberInfoV2, 文本型)(
 		整数型 AuthCode,//

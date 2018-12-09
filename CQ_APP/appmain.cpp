@@ -18,29 +18,42 @@
 //最重要的一句话
 MUST_AppInfo_RETURN(CQAPPID)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------应用正式开始--------
+
 //请加上static,表示这个logger只有本cpp有效
 static Logger logger("酷Q样例应用");
 
-EVE_Startup(Startup) 
+EVE_Startup_EX(Startup)
 {
 	logger.Info("Startup");
-	return 0;
 }
-EVE_Enable(Enable)
+EVE_Enable_EX(Enable)
 {
 	logger.Info("Enable");
-	return 0;
 }
 
-EVE_Disable(Disable)
+EVE_Disable_EX(Disable)
 {
 	logger.Info("Disable");
-	return 0;
 }
 
-EVE_Exit(Exit) 
+EVE_Exit_EX(Exit)
 {
 	logger.Info("Exit");
-	return 0;
 }
 

@@ -17,9 +17,20 @@
 package 事件;
 
 /**
- *
+ * 讨论组事件
  * @author admin
  */
-public interface DiscussMsgEvent {
-    
+public abstract class DiscussMsgEvent extends MsgEvent {
+
+    /**
+     * 讨论组号
+     */
+    public long fromDiscuss;//讨论组号
+
+    /**
+     * 退出讨论组
+     *
+     * @return
+     */
+    abstract public boolean leave();
 }

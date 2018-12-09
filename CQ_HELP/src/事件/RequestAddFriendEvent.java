@@ -17,9 +17,9 @@
 package 事件;
 
 /**
- *
+ * 请求-好友添加
  * @author admin
  */
-public interface RequestAddFriendEvent {
-    
+public abstract class RequestAddFriendEvent extends RequestBasicEvent {
+
 }

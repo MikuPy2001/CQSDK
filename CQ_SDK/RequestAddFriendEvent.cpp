@@ -9,8 +9,10 @@ CQ::RequestAddFriendEvent::RequestAddFriendEvent(int subType, int sendTime, long
 void CQ::RequestAddFriendEvent::pass(std::string msg)
 {
 	setFriendAddRequest(responseFlag, 请求_通过, msg.c_str());
+	message_block();
 }
 void CQ::RequestAddFriendEvent::fail(std::string msg)
 {
 	setFriendAddRequest(responseFlag, 请求_拒绝, msg.c_str());
+	message_block();
 }

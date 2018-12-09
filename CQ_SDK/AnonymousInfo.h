@@ -13,7 +13,7 @@ namespace CQ {
 		std::string ´úºÅ;
 		//std::vector<unsigned char> Token;
 
-		AnonymousInfo(const char* msg);
+		AnonymousInfo(const char* fromAnonymousToken);
 		AnonymousInfo() = default;
 	};
 }

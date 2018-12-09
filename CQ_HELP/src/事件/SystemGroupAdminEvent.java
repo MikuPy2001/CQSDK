@@ -17,9 +17,25 @@
 package 事件;
 
 /**
- *
+ * 群事件-管理员变动
  * @author admin
  */
-public interface SystemGroupAdminEvent {
-    
+public abstract class SystemGroupAdminEvent implements BasicEvent {
+
+    /**
+     * 子类型，1 / 被取消管理员 2 / 被设置管理员
+     */
+    public int subType;
+    /**
+     * 发送时间(时间戳)
+     */
+    public int sendTime;
+    /**
+     * 来源群号
+     */
+    public long fromGroup;
+    /**
+     * 被操作QQ
+     */
+    public long beingOperateQQ;
 }

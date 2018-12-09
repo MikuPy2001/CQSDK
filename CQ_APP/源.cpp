@@ -16,11 +16,11 @@ EVE_System_GroupAdmin_EX(System_GroupAdmin_EX) {
 
 
 EVE_GroupUpload(GroupUpload) {
-
+	return 0;
 }
 EVE_System_GroupMemberDecrease(System_GroupMemberDecrease) {
-
+	return 0;
 }
 EVE_System_GroupMemberIncrease(System_GroupMemberIncrease) {
-
+	return 0;
 }

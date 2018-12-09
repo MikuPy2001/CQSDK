@@ -17,9 +17,17 @@
 package 事件;
 
 /**
- *
+ * 好友事件-好友已添加
  * @author admin
  */
-public interface FriendAddEvent {
-    
+public abstract class FriendAddEvent implements BasicEvent{
+
+    /**
+     * 发送时间
+     */
+    public int sendTime;
+    /**
+     * 加你好友的QQ
+     */
+    public long fromQQ;
 }

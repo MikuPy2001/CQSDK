@@ -20,8 +20,8 @@ package c;
  * std::map
  *
  * @author admin
- * @param <T>
- * @param <E>
+ * @param <T> void
+ * @param <E> void
  */
 public interface map<T, E> {
 

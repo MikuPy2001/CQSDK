@@ -1,68 +1,190 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="AuthCode.h" />
-    <ClInclude Include="BaseAPI.h" />
-    <ClInclude Include="API.h" />
-    <ClInclude Include="GroupMemberInfo.h" />
-    <ClInclude Include="StrangerInfo.h" />
-    <ClInclude Include="tool.h" />
-    <ClInclude Include="Unpack.h" />
-    <ClInclude Include="LogStream.h" />
-    <ClInclude Include="Logger.h" />
-    <ClInclude Include="MsgSend.h" />
-    <ClInclude Include="BaseStream.h" />
-    <ClInclude Include="face.h" />
-    <ClInclude Include="code.h" />
-    <ClInclude Include="Base.h" />
-    <ClInclude Include="event.h" />
-    <ClInclude Include="BasicEvent.h" />
-    <ClInclude Include="DiscussMsgEvent.h" />
-    <ClInclude Include="FriendAddEvent.h" />
-    <ClInclude Include="AnonymousInfo.h" />
-    <ClInclude Include="GroupMsgEvent.h" />
-    <ClInclude Include="PrivateMsgEvent.h" />
-    <ClInclude Include="RequestAddFriendEvent.h" />
-    <ClInclude Include="RequestAddGroupEvent.h" />
-    <ClInclude Include="StatusEvent.h" />
-    <ClInclude Include="Font.h" />
-    <ClInclude Include="regexMsg.h" />
-    <ClInclude Include="MsgEvent.h" />
-    <ClInclude Include="RequestBasicEvent.h" />
     <ClInclude Include="CQSDK.h" />
-    <ClInclude Include="DEBUG.h" />
-    <ClInclude Include="标头.h" />
-    <ClInclude Include="SystemGroupAdminEvent.h" />
+    <ClInclude Include="AnonymousInfo.h">
+      <Filter>信息</Filter>
+    </ClInclude>
+    <ClInclude Include="DiscussMsgEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="FriendAddEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupMsgEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="MsgEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="PrivateMsgEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="RequestAddFriendEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="RequestAddGroupEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="RequestBasicEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemGroupAdminEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicEvent.h">
+      <Filter>事件</Filter>
+    </ClInclude>
+    <ClInclude Include="API.h">
+      <Filter>酷Q</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>酷Q</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>依赖</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseAPI.h">
+      <Filter>依赖</Filter>
+    </ClInclude>
+    <ClInclude Include="Unpack.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="StrangerInfo.h">
+      <Filter>信息</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupMemberInfo.h">
+      <Filter>信息</Filter>
+    </ClInclude>
+    <ClInclude Include="AuthCode.h">
+      <Filter>酷Q</Filter>
+    </ClInclude>
+    <ClInclude Include="MsgSend.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="LogStream.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseStream.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="code.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="regexMsg.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="tool.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="DEBUG.h">
+      <Filter>工具</Filter>
+    </ClInclude>
+    <ClInclude Include="face.h">
+      <Filter>依赖</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AuthCode.cpp" />
-    <ClCompile Include="GroupMemberInfo.cpp" />
-    <ClCompile Include="StrangerInfo.cpp" />
-    <ClCompile Include="tool.cpp" />
-    <ClCompile Include="Unpack.cpp" />
-    <ClCompile Include="API.cpp" />
-    <ClCompile Include="LogStream.cpp" />
-    <ClCompile Include="Logger.cpp" />
-    <ClCompile Include="MsgSend.cpp" />
-    <ClCompile Include="BaseStream.cpp" />
-    <ClCompile Include="code.cpp" />
-    <ClCompile Include="BasicEvent.cpp" />
-    <ClCompile Include="DiscussMsgEvent.cpp" />
-    <ClCompile Include="FriendAddEvent.cpp" />
-    <ClCompile Include="AnonymousInfo.cpp" />
-    <ClCompile Include="GroupMsgEvent.cpp" />
-    <ClCompile Include="PrivateMsgEvent.cpp" />
-    <ClCompile Include="RequestAddFriendEvent.cpp" />
-    <ClCompile Include="RequestAddGroupEvent.cpp" />
-    <ClCompile Include="StatusEvent.cpp" />
-    <ClCompile Include="Font.cpp" />
-    <ClCompile Include="regexMsg.cpp" />
-    <ClCompile Include="MsgEvent.cpp" />
-    <ClCompile Include="RequestBasicEvent.cpp" />
-    <ClCompile Include="DEBUG.cpp" />
-    <ClCompile Include="SystemGroupAdminEvent.cpp" />
+    <ClCompile Include="AnonymousInfo.cpp">
+      <Filter>信息</Filter>
+    </ClCompile>
+    <ClCompile Include="DiscussMsgEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="FriendAddEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupMsgEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="MsgEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="PrivateMsgEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="RequestAddFriendEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="RequestAddGroupEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="RequestBasicEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemGroupAdminEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicEvent.cpp">
+      <Filter>事件</Filter>
+    </ClCompile>
+    <ClCompile Include="API.cpp">
+      <Filter>酷Q</Filter>
+    </ClCompile>
+    <ClCompile Include="Unpack.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="StrangerInfo.cpp">
+      <Filter>信息</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupMemberInfo.cpp">
+      <Filter>信息</Filter>
+    </ClCompile>
+    <ClCompile Include="AuthCode.cpp">
+      <Filter>酷Q</Filter>
+    </ClCompile>
+    <ClCompile Include="MsgSend.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="LogStream.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseStream.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="code.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="regexMsg.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="tool.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="DEBUG.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\CQ_LIB\CQP.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="事件">
+      <UniqueIdentifier>{df575653-9d1d-4c41-993a-152b5bae8825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="信息">
+      <UniqueIdentifier>{3f3a7fc0-8a28-4fa5-bb4b-076c40008f0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="工具">
+      <UniqueIdentifier>{fd302863-05ed-4fc1-bf33-909eaa256b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="酷Q">
+      <UniqueIdentifier>{37e52fd3-ae83-4abf-8b22-7d8282e3f447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="依赖">
+      <UniqueIdentifier>{dc7dbce0-96cd-4f71-9134-63fb0d282af6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

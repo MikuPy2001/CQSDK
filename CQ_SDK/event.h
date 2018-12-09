@@ -46,24 +46,45 @@
 本子程序会在酷Q【主线程】中被调用。
 无论本应用是否被启用，本函数都会在酷Q启动后执行一次，请在这里执行插件初始化代码。
 请务必尽快返回本子程序，否则会卡住其他插件以及主程序的加载。
+
+名字如果使用下划线开头需要改成双下划线
 请固定返回 0
+*/
+#define EVE_Startup(Name) CQEVENT(int, Name, 0)()
+/*
+酷Q启动(Type=1001)
+
+本子程序会在酷Q【主线程】中被调用。
+无论本应用是否被启用，本函数都会在酷Q启动后执行一次，请在这里执行插件初始化代码。
+请务必尽快返回本子程序，否则会卡住其他插件以及主程序的加载。
 
 名字如果使用下划线开头需要改成双下划线
 */
-#define EVE_Startup(Name) CQEVENT(int, Name, 0)()
+#define EVE_Startup_EX(Name)\
+void Name##_EX();\
+EVE_Startup(Name){\
+	Name##_EX();\
+	return 0;\
+}\
+void Name##_EX()
 
 /*
 酷Q退出(Type=1002)
 
 本子程序会在酷Q【主线程】中被调用。
 无论本应用是否被启用，本函数都会在酷Q退出前执行一次，请在这里执行插件关闭代码。
-本函数调用完毕后，酷Q将很快关闭，请不要再通过线程等方式执行其他代码
 
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+请固定返回0，返回后酷Q将很快关闭，请不要再通过线程等方式执行其他代码。
 */
 #define EVE_Exit(Name) CQEVENT(int, Name, 0)()
-
+#define EVE_Exit_EX(Name)\
+void Name##_EX();\
+EVE_Exit(Name){\
+	Name##_EX();\
+	return 0;\
+}\
+void Name##_EX()
 /*
 应用已被启用(Type=1003)
 
@@ -72,9 +93,16 @@
 如非必要，不建议在这里加载窗口。（可以添加菜单，让用户手动打开窗口）
 
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+请固定返回0。
 */
 #define EVE_Enable(Name) CQEVENT(int, Name, 0)()
+#define EVE_Enable_EX(Name)\
+void Name##_EX();\
+EVE_Enable(Name){\
+	Name##_EX();\
+	return 0;\
+}\
+void Name##_EX()
 
 /*
 应用将被停用(Type=1004)
@@ -84,14 +112,20 @@
 无论本应用是否被启用，酷Q关闭前本函数都【不会】被调用。
 
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+请固定返回0。
 */
 #define EVE_Disable(Name) CQEVENT(int, Name, 0)()
-
+#define EVE_Disable_EX(Name)\
+void Name##_EX();\
+EVE_Disable(Name){\
+	Name##_EX();\
+	return 0;\
+}\
+void Name##_EX()
 /*
 私聊消息(Type=21)
+此事件拥有EX版本,建议使用EX版本
 
-此函数具有以下参数
 subType		子类型，11/来自好友 1/来自在线状态 2/来自群 3/来自讨论组
 msgId		消息ID
 fromQQ		来源QQ
@@ -100,13 +134,15 @@ font		字体
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_PrivateMsg(Name) CQEVENT(int, Name, 24)(int subType, int msgId, long long fromQQ, const char* msg, int font)
 /*
 私聊消息(Type=21)
 
-此函数具有以下参数
 subType		子类型，11/来自好友 1/来自在线状态 2/来自群 3/来自讨论组
 msgId	消息ID
 fromQQ		来源QQ
@@ -115,7 +151,10 @@ font		字体
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_PrivateMsg_EX(Name)																	\
 	void Name(CQ::PrivateMsgEvent & e);															\
@@ -142,7 +181,10 @@ font		字体
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_GroupMsg(Name) CQEVENT(int, Name, 36)(int subType, int msgId, long long fromGroup, long long fromQQ, const char* fromAnonymous, const char* msg, int font)
 /*
@@ -160,7 +202,10 @@ font 字体
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_GroupMsg_EX(Name) 																	\
 	void Name(CQ::GroupMsgEvent & e);															\
@@ -184,7 +229,10 @@ font		字体
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_DiscussMsg(Name) CQEVENT(int, Name, 32)(int subType, int msgId, long long fromDiscuss, long long fromQQ, const char* msg, int font)
 /*
@@ -199,7 +247,10 @@ font		字体
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_DiscussMsg_EX(Name)																	\
 	void Name(CQ::DiscussMsgEvent & e);															\
@@ -222,7 +273,10 @@ file 上传文件信息,使用 <其他_转换_文本到群文件> 将本参数转换为有效数据,待编辑
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_GroupUpload(Name) CQEVENT(int, Name, 28)(int subType, int sendTime, long long fromGroup,long long fromQQ, const char* file)
 
@@ -236,9 +290,13 @@ beingOperateQQ	被操作QQ
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupAdmin(Name) CQEVENT(int, Name, 24)(int subType, int sendTime, long long fromGroup, long long beingOperateQQ)/*
+/*
 群事件-管理员变动(Type=101)
 
 subtype			子类型，1/被取消管理员 2/被设置管理员
@@ -248,7 +306,10 @@ beingOperateQQ	被操作QQ
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupAdmin_EX(Name) \
 	void Name(CQ::SystemGroupAdminEvent & e);\
@@ -271,7 +332,10 @@ beingOperateQQ 被操作QQ
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupMemberDecrease(Name) CQEVENT(int, Name, 32)(int subType, int sendTime, long long fromGroup, long long fromQQ, long long beingOperateQQ)
 
@@ -286,7 +350,10 @@ beingOperateQQ 被操作QQ(即加群的QQ)
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupMemberIncrease(Name) CQEVENT(int, Name, 32)(int subType, int sendTime, long long fromGroup, long long fromQQ, long long beingOperateQQ)
 
@@ -299,7 +366,10 @@ fromQQ 来源QQ
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_Friend_Add(Name) CQEVENT(int, Name, 16)(int subType, int sendTime, long long fromQQ)
 /*
@@ -311,7 +381,10 @@ fromQQ 来源QQ
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_Friend_Add_EX(Name) \
 	void Name(CQ::FriendAddEvent & e);\
@@ -336,7 +409,10 @@ responseFlag 反馈标识(处理请求用)
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_Request_AddFriend(Name) CQEVENT(int, Name, 24)(int subType, int sendTime, long long fromQQ, const char* msg, const char* responseFlag)
 /*
@@ -352,7 +428,10 @@ responseFlag 反馈标识(处理请求用)
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_Request_AddFriend_EX(Name)															\
 	void Name(CQ::RequestAddFriendEvent & e);													\
@@ -381,7 +460,10 @@ responseFlag 反馈标识(处理请求用)
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_Request_AddGroup(Name) CQEVENT(int, Name, 32)(int subType, int sendTime, long long fromGroup, long long fromQQ, const char* msg, const char* responseFlag)
 /*
@@ -401,7 +483,10 @@ responseFlag 反馈标识(处理请求用)
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_Request_AddGroup_EX(Name) \
 	void Name(CQ::RequestAddGroupEvent & e);\
@@ -419,10 +504,29 @@ responseFlag 反馈标识(处理请求用)
 可在 .json 文件中设置菜单数目、函数名
 如果不使用菜单，请在 .json 及此处删除无用菜单
 名字如果使用下划线开头需要改成双下划线
-返回非零值,消息将被拦截,最高优先不可拦截
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_Menu(Name) CQEVENT(int, Name, 0)()
+/*
+菜单
 
+可在 .json 文件中设置菜单数目、函数名
+如果不使用菜单，请在 .json 及此处删除无用菜单
+名字如果使用下划线开头需要改成双下划线
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
+*/
+#define EVE_Menu_EX(Name)\
+void Name##_EX();\
+EVE_Menu(Name){\
+	Name##_EX();\
+}\
+Name##_EX()
 /*
 悬浮窗
 
@@ -433,14 +537,18 @@ emmm,因为一些原因,悬浮窗暂时不可用...
 名字如果使用下划线开头需要改成双下划线
 */
 #define EVE_Status(Name) CQEVENT(const char*, Name, 0)()
-/*
-悬浮窗
-
-请设置 eve.data eve.dataf eve.color 其他函数保持不动即可
-
-本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
-名字如果使用下划线开头需要改成双下划线
-*/
+/**
+ * 悬浮窗.
+ * <p>
+ * 请设置 e.data e.dataf e.color 其他函数保持不动即可
+ * <p>
+ * <p>
+ * 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize).
+ * <p>
+ * 名字如果使用下划线开头需要改成双下划线
+ *
+ * @param e
+ */
 #define EVE_Status_EX(Name)					\
 	void Name(CQ::StatusEvent & e);\
 	EVE_Status(Name)\

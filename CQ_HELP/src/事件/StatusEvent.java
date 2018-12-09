@@ -16,10 +16,53 @@
  */
 package 事件;
 
+import c.string;
+
 /**
- *
+ * 悬浮窗事件.
  * @author admin
  */
-public interface StatusEvent {
-    
+public abstract class StatusEvent {
+
+    //数据
+    public string data;
+    //数据单位
+    public string dataf;
+    // 1 : 绿
+    // 2 : 橙
+    // 3 : 红
+    // 4 : 深红
+    // 5 : 黑
+    // 6 : 灰
+    public int color;
+
+    /**
+     * 1 : 绿
+     */
+    public abstract void color_green();
+
+    /**
+     * 2 : 橙
+     */
+    public abstract void color_orange();
+
+    /**
+     * 3 : 红
+     */
+    public abstract void color_red();
+
+    /**
+     * 4 : 深红
+     */
+    public abstract void color_crimson();
+
+    /**
+     * 5 : 黑
+     */
+    public abstract void color_black();
+
+    /**
+     * 6 : 灰
+     */
+    public abstract void color_gray();
 }

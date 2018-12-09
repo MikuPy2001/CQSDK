@@ -14,7 +14,6 @@
 #include "BaseAPI.h"
 #include "BasicEvent.h"
 #include "code.h"
-#include "Font.h"
 #include "GroupMemberInfo.h"
 #include "LogStream.h"
 #include "MsgSend.h"

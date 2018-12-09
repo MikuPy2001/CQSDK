@@ -17,9 +17,37 @@
 package 事件;
 
 /**
- *
+ * 私聊事件. 好友/临时/陌生人 都算私聊
  * @author admin
  */
-public interface PrivateMsgEvent {
-    
+public abstract class PrivateMsgEvent extends MsgEvent {
+
+    /**
+     * 来自好友
+     *
+     * @return 来自好友
+     */
+    public abstract boolean fromPrivate();
+
+    /**
+     * 来自在线状态
+     *
+     * @return 来自在线状态
+     */
+    public abstract boolean fromOnlineStatus();
+
+    /**
+     * 来自群临时
+     *
+     * @return 来自群临时
+     */
+    public abstract boolean fromGroup();
+
+    /**
+     * 来自讨论组临时
+     *
+     * @return 来自讨论组临时
+     */
+    public abstract boolean fromDiscuss();
+
 }

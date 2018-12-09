@@ -18,8 +18,11 @@ package c;
 
 /**
  * 可能是 char* 也可能是 std::string 请根据实际情况判断
+ *
  * @author admin
  */
 public interface string {
-    
+
+    static final public string VOID = new string() {
+    };
 }

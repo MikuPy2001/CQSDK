@@ -17,9 +17,17 @@
 package 事件;
 
 /**
- *
+ * 请求-群添加
  * @author admin
  */
-public interface RequestAddGroupEvent {
-    
+public abstract class RequestAddGroupEvent extends RequestBasicEvent {
+
+    /**
+     * 子类型 1:他人申请入群 2:自己(即登录号)受邀入群
+     */
+    public int subType;
+    /**
+     * 来源群号
+     */
+    public long fromGroup;
 }
