@@ -85,26 +85,37 @@ public abstract class BaseStream {
      */
     public abstract BaseStream append(long l);
 
-    //发送并清除缓冲区
-    /**
-     * 给流
-     */
-    public static void send() {
-    }
-    //只发送,保留缓冲区,下次发送时将发送重复内容
+    public static interface 控制符 {
 
-    public static void flush() {
+        /**
+         * 发送并清除缓冲区. BaseStream &lt;&lt; send;
+         */
+        public static void send() {
+        }
+
+        /**
+         * 只发送,保留缓冲区,下次发送时将发送重复内容. BaseStream &lt;&lt; flush;
+         */
+        public static void flush() {
+        }
+
+        /**
+         * 换行. BaseStream &lt;&lt; endl;
+         */
+        public static void endl() {
+        }
+
+        /**
+         * 输出原始字符而不是酷Q码. BaseStream &lt;&lt; RAW;
+         */
+        public static void RAW() {
+        }
+
+        /**
+         * 输出酷Q码. BaseStream &lt;&lt; CODE;
+         */
+        public static void CODE() {
+        }
     }
 
-    //换行
-    public static void endl() {
-    }
-
-    //输出原始字符而不是酷Q码
-    public static void RAW() {
-    }
-    //输出酷Q码
-
-    public static void CODE() {
-    }
 }
