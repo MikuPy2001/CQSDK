@@ -49,8 +49,8 @@ namespace CQ {
 	//换行
 	inline void endl(BaseStream & log) { log << "\r\n"; };
 
-	//输出原始字符而不是酷Q码
+	//RAW模式输出字符串,忽略酷Q码的含义
 	inline void RAW(BaseStream & log) { log.raw = true; };
-	//输出酷Q码
+	//字符串中的酷Q码将生效
 	inline void CODE(BaseStream & log) { log.raw = false; };
 }

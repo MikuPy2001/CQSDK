@@ -78,6 +78,15 @@ void Name##_EX()
 请固定返回0，返回后酷Q将很快关闭，请不要再通过线程等方式执行其他代码。
 */
 #define EVE_Exit(Name) CQEVENT(int, Name, 0)()
+/*
+酷Q退出(Type=1002)
+
+本子程序会在酷Q【主线程】中被调用。
+无论本应用是否被启用，本函数都会在酷Q退出前执行一次，请在这里执行插件关闭代码。
+
+名字如果使用下划线开头需要改成双下划线
+请固定返回0，返回后酷Q将很快关闭，请不要再通过线程等方式执行其他代码。
+*/
 #define EVE_Exit_EX(Name)\
 void Name##_EX();\
 EVE_Exit(Name){\
@@ -96,6 +105,16 @@ void Name##_EX()
 请固定返回0。
 */
 #define EVE_Enable(Name) CQEVENT(int, Name, 0)()
+/*
+应用已被启用(Type=1003)
+
+当应用被启用后，将收到此事件。
+如果酷Q载入时应用已被启用，则在 EVE_Startup(Type=1001,酷Q启动) 被调用后，本函数也将被调用一次。
+如非必要，不建议在这里加载窗口。（可以添加菜单，让用户手动打开窗口）
+
+名字如果使用下划线开头需要改成双下划线
+请固定返回0。
+*/
 #define EVE_Enable_EX(Name)\
 void Name##_EX();\
 EVE_Enable(Name){\
@@ -115,6 +134,17 @@ void Name##_EX()
 请固定返回0。
 */
 #define EVE_Disable(Name) CQEVENT(int, Name, 0)()
+
+/*
+应用将被停用(Type=1004)
+
+当应用被停用前，将收到此事件。
+如果酷Q载入时应用已被停用，则本函数【不会】被调用。
+无论本应用是否被启用，酷Q关闭前本函数都【不会】被调用。
+
+名字如果使用下划线开头需要改成双下划线
+请固定返回0。
+*/
 #define EVE_Disable_EX(Name)\
 void Name##_EX();\
 EVE_Disable(Name){\

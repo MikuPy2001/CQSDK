@@ -4,7 +4,7 @@
 
 #include <string>
 
-#define DEBUGINFO "文件:" << __FILE__ << ",行数:" << __LINE__ << ",输出:"
+#define DEBUGINFO "[文件:" << __FILE__ << ",行数:" << __LINE__ << "]输出:"
 
 inline
 namespace CQ

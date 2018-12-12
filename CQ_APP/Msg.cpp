@@ -3,7 +3,7 @@
 using namespace std;
 
 //请加上static,表示这个logger只有本cpp有效
-static Logger logger("PrivateMsg_EX");
+static Logger logger("Msg_EX");
 
 
 //所有EX版事件默认拥有一个e参数,事件相关参数被包装到e参数中,通过ide快速补全
@@ -12,11 +12,13 @@ void Msg(MsgEvent*e);
 
 //群聊
 EVE_GroupMsg_EX(GroupMsg_EX) {
-	logger.Debug() << DEBUGINFO << e.message;
-	if (e.isAnonymous()) {
-		auto info = e.getFromAnonymousInfo();
-		logger.Debug() << "匿名者代号为:" << info.代号 << e.message;
+	auto debug = logger.Debug();
+	debug << DEBUGINFO << e.message;
+	if (e.isAnonymous()) {//判断是否为匿名信息
+		auto info = e.getFromAnonymousInfo();//获取匿名信息
+		debug << ", 匿名者代号为:" << info.代号 << e.message;//输出到日志
 	}
+	debug << send;//发送日志
 
 	//遍历群成员
 	//auto list = e.getGroupMemberList();
