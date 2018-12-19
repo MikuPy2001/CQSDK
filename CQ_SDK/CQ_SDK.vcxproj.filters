@@ -89,6 +89,9 @@
     <ClInclude Include="face.h">
       <Filter>依赖</Filter>
     </ClInclude>
+    <ClInclude Include="CQMsgCode.h">
+      <Filter>工具</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnonymousInfo.cpp">
@@ -164,6 +167,9 @@
       <Filter>工具</Filter>
     </ClCompile>
     <ClCompile Include="DEBUG.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="CQMsgCode.cpp">
       <Filter>工具</Filter>
     </ClCompile>
   </ItemGroup>

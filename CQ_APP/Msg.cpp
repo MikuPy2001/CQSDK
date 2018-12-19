@@ -1,3 +1,5 @@
+//讲述如何监听回复消息
+
 #include <CQSDK.h>
 #include <string>
 using namespace std;

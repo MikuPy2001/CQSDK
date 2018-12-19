@@ -6,7 +6,4 @@
     <ClCompile Include="Msg.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="APPINFO.h" />
-  </ItemGroup>
 </Project>

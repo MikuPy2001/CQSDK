@@ -24,9 +24,6 @@
     <ClCompile Include="Msg.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="APPINFO.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{66585B15-2064-4CA7-8836-CA73E7FCB7BE}</ProjectGuid>
@@ -102,7 +99,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CQ_APP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessToFile>true</PreprocessToFile>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

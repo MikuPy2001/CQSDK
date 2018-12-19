@@ -27,6 +27,7 @@
     <ClInclude Include="BaseStream.h" />
     <ClInclude Include="BasicEvent.h" />
     <ClInclude Include="code.h" />
+    <ClInclude Include="CQMsgCode.h" />
     <ClInclude Include="CQSDK.h" />
     <ClInclude Include="DEBUG.h" />
     <ClInclude Include="DiscussMsgEvent.h" />
@@ -57,6 +58,7 @@
     <ClCompile Include="BaseStream.cpp" />
     <ClCompile Include="BasicEvent.cpp" />
     <ClCompile Include="code.cpp" />
+    <ClCompile Include="CQMsgCode.cpp" />
     <ClCompile Include="DEBUG.cpp" />
     <ClCompile Include="DiscussMsgEvent.cpp" />
     <ClCompile Include="FriendAddEvent.cpp" />
