@@ -8,108 +8,109 @@ using namespace std;
 
 int lasterr;
 
-//Ôö¼ÓÔËĞĞÈÕÖ¾
-ÕûÊıĞÍ CQ::addLog(ÕûÊıĞÍ ÓÅÏÈ¼¶, ÎÄ±¾ĞÍ ÀàĞÍ, ÎÄ±¾ĞÍ ÄÚÈİ) { return lasterr = CQ_addLog(getAuthCode(), ÓÅÏÈ¼¶, ÀàĞÍ, ÄÚÈİ); }
+//å¢åŠ è¿è¡Œæ—¥å¿—
+æ•´æ•°å‹ CQ::addLog(æ•´æ•°å‹ ä¼˜å…ˆçº§, æ–‡æœ¬å‹ ç±»å‹, æ–‡æœ¬å‹ å†…å®¹) { return lasterr = CQ_addLog(getAuthCode(), ä¼˜å…ˆçº§, ç±»å‹, å†…å®¹); }
 
-//·¢ËÍºÃÓÑÏûÏ¢
-ÕûÊıĞÍ CQ::sendPrivateMsg(³¤ÕûÊıĞÍ QQ, ÎÄ±¾ĞÍ msg) { return  CQ_sendPrivateMsg(getAuthCode(), QQ, msg); }
+//å‘é€å¥½å‹æ¶ˆæ¯
+æ•´æ•°å‹ CQ::sendPrivateMsg(é•¿æ•´æ•°å‹ QQ, æ–‡æœ¬å‹ msg) { return  CQ_sendPrivateMsg(getAuthCode(), QQ, msg); }
 
-//·¢ËÍºÃÓÑÏûÏ¢
-ÕûÊıĞÍ CQ::sendPrivateMsg(³¤ÕûÊıĞÍ QQ, std::string & msg) { return sendPrivateMsg(QQ, msg.c_str()); }
+//å‘é€å¥½å‹æ¶ˆæ¯
+æ•´æ•°å‹ CQ::sendPrivateMsg(é•¿æ•´æ•°å‹ QQ, std::string & msg) { return sendPrivateMsg(QQ, msg.c_str()); }
 
-//·¢ËÍºÃÓÑÏûÏ¢
-//ÕûÊıĞÍ CQ::sendPrivateMsg(EVEPrivateMsg eve, std::string msg) { return sendPrivateMsg(eve.fromQQ, msg.c_str()); }
+//å‘é€å¥½å‹æ¶ˆæ¯
+//æ•´æ•°å‹ CQ::sendPrivateMsg(EVEPrivateMsg eve, std::string msg) { return sendPrivateMsg(eve.fromQQ, msg.c_str()); }
 
-//·¢ËÍÈºÏûÏ¢
-ÕûÊıĞÍ CQ::sendGroupMsg(³¤ÕûÊıĞÍ ÈººÅ, ÎÄ±¾ĞÍ msg) { return  CQ_sendGroupMsg(getAuthCode(), ÈººÅ, msg); }
+//å‘é€ç¾¤æ¶ˆæ¯
+æ•´æ•°å‹ CQ::sendGroupMsg(é•¿æ•´æ•°å‹ ç¾¤å·, æ–‡æœ¬å‹ msg) { return  CQ_sendGroupMsg(getAuthCode(), ç¾¤å·, msg); }
 
-//·¢ËÍÈºÏûÏ¢
-ÕûÊıĞÍ CQ::sendGroupMsg(³¤ÕûÊıĞÍ ÈººÅ, std::string & msg) { return sendGroupMsg(ÈººÅ, msg.c_str()); }
+//å‘é€ç¾¤æ¶ˆæ¯
+æ•´æ•°å‹ CQ::sendGroupMsg(é•¿æ•´æ•°å‹ ç¾¤å·, std::string & msg) { return sendGroupMsg(ç¾¤å·, msg.c_str()); }
 
-ÕûÊıĞÍ CQ::sendDiscussMsg(³¤ÕûÊıĞÍ ÌÖÂÛ×éºÅ, ÎÄ±¾ĞÍ msg) { return   CQ_sendDiscussMsg(getAuthCode(), ÌÖÂÛ×éºÅ, msg); }
+æ•´æ•°å‹ CQ::sendDiscussMsg(é•¿æ•´æ•°å‹ è®¨è®ºç»„å·, æ–‡æœ¬å‹ msg) { return   CQ_sendDiscussMsg(getAuthCode(), è®¨è®ºç»„å·, msg); }
 
-//·¢ËÍÌÖÂÛ×éÏûÏ¢
-ÕûÊıĞÍ CQ::sendDiscussMsg(³¤ÕûÊıĞÍ ÌÖÂÛ×éºÅ, std::string & msg) { return sendDiscussMsg(ÌÖÂÛ×éºÅ, msg.c_str()); }
+//å‘é€è®¨è®ºç»„æ¶ˆæ¯
+æ•´æ•°å‹ CQ::sendDiscussMsg(é•¿æ•´æ•°å‹ è®¨è®ºç»„å·, std::string & msg) { return sendDiscussMsg(è®¨è®ºç»„å·, msg.c_str()); }
 
-//·¢ËÍÔŞ
-ÕûÊıĞÍ CQ::sendLike(³¤ÕûÊıĞÍ QQID, ÕûÊıĞÍ times) { return lasterr = CQ_sendLikeV2(getAuthCode(), QQID, times); }
+//å‘é€èµ
+æ•´æ•°å‹ CQ::sendLike(é•¿æ•´æ•°å‹ QQID, æ•´æ•°å‹ times) { return lasterr = CQ_sendLikeV2(getAuthCode(), QQID, times); }
 
-//È¡Cookies (É÷ÓÃ£¬´Ë½Ó¿ÚĞèÒªÑÏ¸ñÊÚÈ¨)
-ÎÄ±¾ĞÍ CQ::getCookies() { return  CQ_getCookies(getAuthCode()); }
+//å–Cookies (æ…ç”¨ï¼Œæ­¤æ¥å£éœ€è¦ä¸¥æ ¼æˆæƒ)
+æ–‡æœ¬å‹ CQ::getCookies() { return  CQ_getCookies(getAuthCode()); }
 
-//½ÓÊÕÓïÒô
-ÎÄ±¾ĞÍ CQ::getRecord(ÎÄ±¾ĞÍ file, ÎÄ±¾ĞÍ outformat) { return CQ_getRecord(getAuthCode(), file, outformat); }
+//æ¥æ”¶è¯­éŸ³
+æ–‡æœ¬å‹ CQ::getRecord(æ–‡æœ¬å‹ file, æ–‡æœ¬å‹ outformat) { return CQ_getRecord(getAuthCode(), file, outformat); }
 
-//½ÓÊÕÓïÒô
+//æ¥æ”¶è¯­éŸ³
 std::string CQ::getRecord(std::string & file, std::string outformat) { return getRecord(file.c_str(), outformat.c_str()); }
 
-//È¡CsrfToken (É÷ÓÃ£¬´Ë½Ó¿ÚĞèÒªÑÏ¸ñÊÚÈ¨)
-ÕûÊıĞÍ CQ::getCsrfToken() { return  CQ_getCsrfToken(getAuthCode()); }
+//å–CsrfToken (æ…ç”¨ï¼Œæ­¤æ¥å£éœ€è¦ä¸¥æ ¼æˆæƒ)
+æ•´æ•°å‹ CQ::getCsrfToken() { return  CQ_getCsrfToken(getAuthCode()); }
 
-//È¡Ó¦ÓÃÄ¿Â¼
-ÎÄ±¾ĞÍ CQ::getAppDirectory() { return  CQ_getAppDirectory(getAuthCode()); }
+//å–åº”ç”¨ç›®å½•
+æ–‡æœ¬å‹ CQ::getAppDirectory() { return  CQ_getAppDirectory(getAuthCode()); }
 
-//È¡µÇÂ¼QQ
-³¤ÕûÊıĞÍ CQ::getLoginQQ() { return  CQ_getLoginQQ(getAuthCode()); }
+//å–ç™»å½•QQ
+é•¿æ•´æ•°å‹ CQ::getLoginQQ() { return  CQ_getLoginQQ(getAuthCode()); }
 
-//È¡µÇÂ¼êÇ³Æ
-ÎÄ±¾ĞÍ CQ::getLoginNick() { return  CQ_getLoginNick(getAuthCode()); }
+//å–ç™»å½•æ˜µç§°
+æ–‡æœ¬å‹ CQ::getLoginNick() { return  CQ_getLoginNick(getAuthCode()); }
 
-//ÖÃÈºÔ±ÒÆ³ı
-ÕûÊıĞÍ CQ::setGroupKick(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ¾Ü¾øÔÙ¼ÓÈº) { return lasterr = CQ_setGroupKick(getAuthCode(), ÈººÅ, QQID, ¾Ü¾øÔÙ¼ÓÈº); }
+//ç½®ç¾¤å‘˜ç§»é™¤
+æ•´æ•°å‹ CQ::setGroupKick(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, é€»è¾‘å‹ æ‹’ç»å†åŠ ç¾¤) { return lasterr = CQ_setGroupKick(getAuthCode(), ç¾¤å·, QQID, æ‹’ç»å†åŠ ç¾¤); }
 
-//ÖÃÈºÔ±½ûÑÔ
-ÕûÊıĞÍ CQ::setGroupBan(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, ³¤ÕûÊıĞÍ ½ûÑÔÊ±¼ä) { return lasterr = CQ_setGroupBan(getAuthCode(), ÈººÅ, QQID, ½ûÑÔÊ±¼ä); }
+//ç½®ç¾¤å‘˜ç¦è¨€
+æ•´æ•°å‹ CQ::setGroupBan(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, é•¿æ•´æ•°å‹ ç¦è¨€æ—¶é—´) { return lasterr = CQ_setGroupBan(getAuthCode(), ç¾¤å·, QQID, ç¦è¨€æ—¶é—´); }
 
-//ÖÃÈº¹ÜÀíÔ±
-ÕûÊıĞÍ CQ::setGroupAdmin(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ³ÉÎª¹ÜÀíÔ±) { return lasterr = CQ_setGroupAdmin(getAuthCode(), ÈººÅ, QQID, ³ÉÎª¹ÜÀíÔ±); }
+//ç½®ç¾¤ç®¡ç†å‘˜
+æ•´æ•°å‹ CQ::setGroupAdmin(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, é€»è¾‘å‹ æˆä¸ºç®¡ç†å‘˜) { return lasterr = CQ_setGroupAdmin(getAuthCode(), ç¾¤å·, QQID, æˆä¸ºç®¡ç†å‘˜); }
 
-//ÖÃÈº³ÉÔ±×¨ÊôÍ·ÏÎ
-ÕûÊıĞÍ CQ::setGroupSpecialTitle(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, ÎÄ±¾ĞÍ Í·ÏÎ, ³¤ÕûÊıĞÍ ¹ıÆÚÊ±¼ä) { return lasterr = CQ_setGroupSpecialTitle(getAuthCode(), ÈººÅ, QQID, Í·ÏÎ, ¹ıÆÚÊ±¼ä); }
+//ç½®ç¾¤æˆå‘˜ä¸“å±å¤´è¡”
+æ•´æ•°å‹ CQ::setGroupSpecialTitle(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, æ–‡æœ¬å‹ å¤´è¡”, é•¿æ•´æ•°å‹ è¿‡æœŸæ—¶é—´) { return lasterr = CQ_setGroupSpecialTitle(getAuthCode(), ç¾¤å·, QQID, å¤´è¡”, è¿‡æœŸæ—¶é—´); }
 
-//ÖÃÈº³ÉÔ±×¨ÊôÍ·ÏÎ
-ÕûÊıĞÍ CQ::setGroupSpecialTitle(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, std::string & Í·ÏÎ, ³¤ÕûÊıĞÍ ¹ıÆÚÊ±¼ä) { return setGroupSpecialTitle(ÈººÅ, QQID, Í·ÏÎ.c_str(), ¹ıÆÚÊ±¼ä); }
+//ç½®ç¾¤æˆå‘˜ä¸“å±å¤´è¡”
+æ•´æ•°å‹ CQ::setGroupSpecialTitle(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, std::string & å¤´è¡”, é•¿æ•´æ•°å‹ è¿‡æœŸæ—¶é—´) { return setGroupSpecialTitle(ç¾¤å·, QQID, å¤´è¡”.c_str(), è¿‡æœŸæ—¶é—´); }
 
-//ÖÃÈ«Èº½ûÑÔ
-ÕûÊıĞÍ CQ::setGroupWholeBan(³¤ÕûÊıĞÍ ÈººÅ, Âß¼­ĞÍ ¿ªÆô½ûÑÔ) { return lasterr = CQ_setGroupWholeBan(getAuthCode(), ÈººÅ, ¿ªÆô½ûÑÔ); }
+//ç½®å…¨ç¾¤ç¦è¨€
+æ•´æ•°å‹ CQ::setGroupWholeBan(é•¿æ•´æ•°å‹ ç¾¤å·, é€»è¾‘å‹ å¼€å¯ç¦è¨€) { return lasterr = CQ_setGroupWholeBan(getAuthCode(), ç¾¤å·, å¼€å¯ç¦è¨€); }
 
-//ÖÃÄäÃûÈºÔ±½ûÑÔ
-ÕûÊıĞÍ CQ::setGroupAnonymousBan(³¤ÕûÊıĞÍ ÈººÅ, ÎÄ±¾ĞÍ ÄäÃû, ³¤ÕûÊıĞÍ ½ûÑÔÊ±¼ä) { return lasterr = CQ_setGroupAnonymousBan(getAuthCode(), ÈººÅ, ÄäÃû, ½ûÑÔÊ±¼ä); }
+//ç½®åŒ¿åç¾¤å‘˜ç¦è¨€
+æ•´æ•°å‹ CQ::setGroupAnonymousBan(é•¿æ•´æ•°å‹ ç¾¤å·, æ–‡æœ¬å‹ åŒ¿å, é•¿æ•´æ•°å‹ ç¦è¨€æ—¶é—´) { return lasterr = CQ_setGroupAnonymousBan(getAuthCode(), ç¾¤å·, åŒ¿å, ç¦è¨€æ—¶é—´); }
 
-//ÖÃÈºÄäÃûÉèÖÃ
-ÕûÊıĞÍ CQ::setGroupAnonymous(³¤ÕûÊıĞÍ ÈººÅ, Âß¼­ĞÍ ¿ªÆôÄäÃû) { return lasterr = CQ_setGroupAnonymous(getAuthCode(), ÈººÅ, ¿ªÆôÄäÃû); }
+//ç½®ç¾¤åŒ¿åè®¾ç½®
+æ•´æ•°å‹ CQ::setGroupAnonymous(é•¿æ•´æ•°å‹ ç¾¤å·, é€»è¾‘å‹ å¼€å¯åŒ¿å) { return lasterr = CQ_setGroupAnonymous(getAuthCode(), ç¾¤å·, å¼€å¯åŒ¿å); }
 
-//ÖÃÈº³ÉÔ±ÃûÆ¬
-ÕûÊıĞÍ CQ::setGroupCard(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, ÎÄ±¾ĞÍ ĞÂÃûÆ¬_êÇ³Æ) { return lasterr = CQ_setGroupCard(getAuthCode(), ÈººÅ, QQID, ĞÂÃûÆ¬_êÇ³Æ); }
+//ç½®ç¾¤æˆå‘˜åç‰‡
+æ•´æ•°å‹ CQ::setGroupCard(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, æ–‡æœ¬å‹ æ–°åç‰‡_æ˜µç§°) { return lasterr = CQ_setGroupCard(getAuthCode(), ç¾¤å·, QQID, æ–°åç‰‡_æ˜µç§°); }
 
-//ÖÃÈº³ÉÔ±ÃûÆ¬
-ÕûÊıĞÍ CQ::setGroupCard(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, std::string ĞÂÃûÆ¬_êÇ³Æ) { return setGroupCard(ÈººÅ, QQID, ĞÂÃûÆ¬_êÇ³Æ.c_str()); }
+//ç½®ç¾¤æˆå‘˜åç‰‡
+æ•´æ•°å‹ CQ::setGroupCard(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, std::string æ–°åç‰‡_æ˜µç§°) { return setGroupCard(ç¾¤å·, QQID, æ–°åç‰‡_æ˜µç§°.c_str()); }
 
-//ÖÃÈºÍË³ö
-ÕûÊıĞÍ CQ::setGroupLeave(³¤ÕûÊıĞÍ ÈººÅ, Âß¼­ĞÍ ÊÇ·ñ½âÉ¢) { return lasterr = CQ_setGroupLeave(getAuthCode(), ÈººÅ, ÊÇ·ñ½âÉ¢); }
+//ç½®ç¾¤é€€å‡º
+æ•´æ•°å‹ CQ::setGroupLeave(é•¿æ•´æ•°å‹ ç¾¤å·, é€»è¾‘å‹ æ˜¯å¦è§£æ•£) { return lasterr = CQ_setGroupLeave(getAuthCode(), ç¾¤å·, æ˜¯å¦è§£æ•£); }
 
-//ÖÃÌÖÂÛ×éÍË³ö
-ÕûÊıĞÍ CQ::setDiscussLeave(³¤ÕûÊıĞÍ ÌÖÂÛ×éºÅ) { return lasterr = CQ_setDiscussLeave(getAuthCode(), ÌÖÂÛ×éºÅ); }
+//ç½®è®¨è®ºç»„é€€å‡º
+æ•´æ•°å‹ CQ::setDiscussLeave(é•¿æ•´æ•°å‹ è®¨è®ºç»„å·) { return lasterr = CQ_setDiscussLeave(getAuthCode(), è®¨è®ºç»„å·); }
 
-//ÖÃºÃÓÑÌí¼ÓÇëÇó
-ÕûÊıĞÍ CQ::setFriendAddRequest(ÎÄ±¾ĞÍ ÇëÇó·´À¡±êÊ¶, ÕûÊıĞÍ ·´À¡ÀàĞÍ, ÎÄ±¾ĞÍ ±¸×¢) { return lasterr = CQ_setFriendAddRequest(getAuthCode(), ÇëÇó·´À¡±êÊ¶, ·´À¡ÀàĞÍ, ±¸×¢); }
+//ç½®å¥½å‹æ·»åŠ è¯·æ±‚
+æ•´æ•°å‹ CQ::setFriendAddRequest(æ–‡æœ¬å‹ è¯·æ±‚åé¦ˆæ ‡è¯†, æ•´æ•°å‹ åé¦ˆç±»å‹, æ–‡æœ¬å‹ å¤‡æ³¨) { return lasterr = CQ_setFriendAddRequest(getAuthCode(), è¯·æ±‚åé¦ˆæ ‡è¯†, åé¦ˆç±»å‹, å¤‡æ³¨); }
 
-//ÖÃÈºÌí¼ÓÇëÇó
-ÕûÊıĞÍ CQ::setGroupAddRequest(ÎÄ±¾ĞÍ ÇëÇó·´À¡±êÊ¶, ÕûÊıĞÍ ÇëÇóÀàĞÍ, ÕûÊıĞÍ ·´À¡ÀàĞÍ, ÎÄ±¾ĞÍ ÀíÓÉ) { return lasterr = CQ_setGroupAddRequestV2(getAuthCode(), ÇëÇó·´À¡±êÊ¶, ÇëÇóÀàĞÍ, ·´À¡ÀàĞÍ, ÀíÓÉ); }
+//ç½®ç¾¤æ·»åŠ è¯·æ±‚
+æ•´æ•°å‹ CQ::setGroupAddRequest(æ–‡æœ¬å‹ è¯·æ±‚åé¦ˆæ ‡è¯†, æ•´æ•°å‹ è¯·æ±‚ç±»å‹, æ•´æ•°å‹ åé¦ˆç±»å‹, æ–‡æœ¬å‹ ç†ç”±) { return lasterr = CQ_setGroupAddRequestV2(getAuthCode(), è¯·æ±‚åé¦ˆæ ‡è¯†, è¯·æ±‚ç±»å‹, åé¦ˆç±»å‹, ç†ç”±); }
 
-//ÖÃÖÂÃü´íÎóÌáÊ¾
-ÕûÊıĞÍ CQ::setFatal(ÎÄ±¾ĞÍ ´íÎóĞÅÏ¢) { return lasterr = CQ_setFatal(getAuthCode(), ´íÎóĞÅÏ¢); }
+//ç½®è‡´å‘½é”™è¯¯æç¤º
+æ•´æ•°å‹ CQ::setFatal(æ–‡æœ¬å‹ é”™è¯¯ä¿¡æ¯) { return lasterr = CQ_setFatal(getAuthCode(), é”™è¯¯ä¿¡æ¯); }
 
-//È¡Èº³ÉÔ±ĞÅÏ¢ (Ö§³Ö»º´æ)
-GroupMemberInfo CQ::getGroupMemberInfo(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ²»Ê¹ÓÃ»º´æ) { return GroupMemberInfo(CQ_getGroupMemberInfoV2(getAuthCode(), ÈººÅ, QQID, ²»Ê¹ÓÃ»º´æ)); }
+//å–ç¾¤æˆå‘˜ä¿¡æ¯ (æ”¯æŒç¼“å­˜)
+GroupMemberInfo CQ::getGroupMemberInfo(é•¿æ•´æ•°å‹ ç¾¤å·, é•¿æ•´æ•°å‹ QQID, é€»è¾‘å‹ ä¸ä½¿ç”¨ç¼“å­˜) { return GroupMemberInfo(CQ_getGroupMemberInfoV2(getAuthCode(), ç¾¤å·, QQID, ä¸ä½¿ç”¨ç¼“å­˜)); }
 
-//È¡Ä°ÉúÈËĞÅÏ¢ (Ö§³Ö»º´æ)
-StrangerInfo CQ::getStrangerInfo(³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ²»Ê¹ÓÃ»º´æ) { return StrangerInfo(CQ_getStrangerInfo(getAuthCode(), QQID, ²»Ê¹ÓÃ»º´æ)); }
+//å–é™Œç”Ÿäººä¿¡æ¯ (æ”¯æŒç¼“å­˜)
+StrangerInfo CQ::getStrangerInfo(é•¿æ•´æ•°å‹ QQID, é€»è¾‘å‹ ä¸ä½¿ç”¨ç¼“å­˜) { return StrangerInfo(CQ_getStrangerInfo(getAuthCode(), QQID, ä¸ä½¿ç”¨ç¼“å­˜)); }
 
-//È¡Èº³ÉÔ±ÁĞ±í
-std::vector<GroupMemberInfo> CQ::getGroupMemberList(³¤ÕûÊıĞÍ ÈººÅ) {
-	ÎÄ±¾ĞÍ data = CQ_getGroupMemberList(getAuthCode(), ÈººÅ);
+//å–ç¾¤æˆå‘˜åˆ—è¡¨
+std::vector<GroupMemberInfo> CQ::getGroupMemberList(é•¿æ•´æ•°å‹ ç¾¤å·) {
+	æ–‡æœ¬å‹ data = CQ_getGroupMemberList(getAuthCode(), ç¾¤å·);
 	vector<GroupMemberInfo> infovector;
+	if (data==nullptr)  return infovector;
 	if (data[0] == '\0')return infovector;
 
 	Unpack u(base64_decode(data));
@@ -123,24 +124,24 @@ std::vector<GroupMemberInfo> CQ::getGroupMemberList(³¤ÕûÊıĞÍ ÈººÅ) {
 	return infovector;
 }
 
-//È¡ÈºÁĞ±í
+//å–ç¾¤åˆ—è¡¨
 std::map<long long, std::string> CQ::getGroupList() {
-	string source(CQ_getGroupList(getAuthCode()));// »ñÈ¡Ô­Ê¼Êı¾İ
-	string data(base64_decode(source)); // ½âÂë
-	Unpack pack(data);// ×ª»»ÎªUnpack
+	string source(CQ_getGroupList(getAuthCode()));// è·å–åŸå§‹æ•°æ®
+	string data(base64_decode(source)); // è§£ç 
+	Unpack pack(data);// è½¬æ¢ä¸ºUnpack
 
-	int len = pack.getInt();//»ñÈ¡×ÜÈºÊı
+	int len = pack.getInt();//è·å–æ€»ç¾¤æ•°
 	std::map<long long, std::string> ret;
-	while (pack.len() > 0) {//Èç¹û»¹ÓĞÊ£ÓàÊı¾İ,¾Í¼ÌĞø¶ÁÈ¡
-		auto tep = pack.getUnpack();//¶ÁÈ¡ÏÂÒ»¸öÈº
-		long long ID = tep.getLong();//¶ÁÈ¡ÈººÅ
-		string name = tep.getstring();//¶ÁÈ¡ÈºÃû³Æ
-		ret[ID] = name;//Ğ´Èëmap
+	while (pack.len() > 0) {//å¦‚æœè¿˜æœ‰å‰©ä½™æ•°æ®,å°±ç»§ç»­è¯»å–
+		auto tep = pack.getUnpack();//è¯»å–ä¸‹ä¸€ä¸ªç¾¤
+		long long ID = tep.getLong();//è¯»å–ç¾¤å·
+		string name = tep.getstring();//è¯»å–ç¾¤åç§°
+		ret[ID] = name;//å†™å…¥map
 	}
 	return ret;
 }
 
-ÕûÊıĞÍ CQ::deleteMsg(³¤ÕûÊıĞÍ MsgId)
+æ•´æ•°å‹ CQ::deleteMsg(é•¿æ•´æ•°å‹ MsgId)
 {
 	return lasterr = CQ_deleteMsg(getAuthCode(), MsgId);
 }
@@ -149,67 +150,67 @@ const char * CQ::getlasterrmsg()
 {
 	switch (lasterr)
 	{
-	case 0:    return "²Ù×÷³É¹¦";
-	case -1:   return "ÇëÇó·¢ËÍÊ§°Ü";
-	case -2:   return "Î´ÊÕµ½·şÎñÆ÷»Ø¸´£¬¿ÉÄÜÎ´·¢ËÍ³É¹¦";
-	case -3:   return "ÏûÏ¢¹ı³¤»òÎª¿Õ";
-	case -4:   return "ÏûÏ¢½âÎö¹ı³ÌÒì³£";
-	case -5:   return "ÈÕÖ¾¹¦ÄÜÎ´ÆôÓÃ";
-	case -6:   return "ÈÕÖ¾ÓÅÏÈ¼¶´íÎó";
-	case -7:   return "Êı¾İÈë¿âÊ§°Ü";
-	case -8:   return "²»Ö§³Ö¶ÔÏµÍ³ÕÊºÅ²Ù×÷";
-	case -9:   return "ÕÊºÅ²»ÔÚ¸ÃÈºÄÚ£¬ÏûÏ¢ÎŞ·¨·¢ËÍ";
-	case -10:  return "¸ÃÓÃ»§²»´æÔÚ/²»ÔÚÈºÄÚ";
-	case -11:  return "Êı¾İ´íÎó£¬ÎŞ·¨ÇëÇó·¢ËÍ";
-	case -12:  return "²»Ö§³Ö¶ÔÄäÃû³ÉÔ±½â³ı½ûÑÔ";
-	case -13:  return "ÎŞ·¨½âÎöÒª½ûÑÔµÄÄäÃû³ÉÔ±Êı¾İ";
-	case -14:  return "ÓÉÓÚÎ´ÖªÔ­Òò£¬²Ù×÷Ê§°Ü";
-	case -15:  return "ÈºÎ´¿ªÆôÄäÃû·¢ÑÔ¹¦ÄÜ£¬»òÄäÃûÕÊºÅ±»½ûÑÔ";
-	case -16:  return "ÕÊºÅ²»ÔÚÈºÄÚ»òÍøÂç´íÎó£¬ÎŞ·¨ÍË³ö/½âÉ¢¸ÃÈº";
-	case -17:  return "ÕÊºÅÎªÈºÖ÷£¬ÎŞ·¨ÍË³ö¸ÃÈº";
-	case -18:  return "ÕÊºÅ·ÇÈºÖ÷£¬ÎŞ·¨½âÉ¢¸ÃÈº";
-	case -19:  return "ÁÙÊ±ÏûÏ¢ÒÑÊ§Ğ§»òÎ´½¨Á¢";
-	case -20:  return "²ÎÊı´íÎó";
-	case -21:  return "ÁÙÊ±ÏûÏ¢ÒÑÊ§Ğ§»òÎ´½¨Á¢";
-	case -22:  return "»ñÈ¡QQĞÅÏ¢Ê§°Ü";
-	case -23:  return "ÕÒ²»µ½ÓëÄ¿±êQQµÄ¹ØÏµ£¬ÏûÏ¢ÎŞ·¨·¢ËÍ";
-	case -99:  return "Äúµ÷ÓÃµÄ¹¦ÄÜÎŞ·¨ÔÚ´Ë°æ±¾ÉÏÊµÏÖ";
-	case -101: return "Ó¦ÓÃ¹ı´ó";
-	case -102: return "²»ÊÇºÏ·¨µÄÓ¦ÓÃ";
-	case -103: return "²»ÊÇºÏ·¨µÄÓ¦ÓÃ";
-	case -104: return "Ó¦ÓÃ²»´æÔÚ¹«¿ªµÄInformationº¯Êı";
-	case -105: return "ÎŞ·¨ÔØÈëÓ¦ÓÃĞÅÏ¢";
-	case -106: return "ÎÄ¼şÃûÓëÓ¦ÓÃID²»Í¬";
-	case -107: return "·µ»ØĞÅÏ¢½âÎö´íÎó";
-	case -108: return "AppInfo·µ»ØµÄApi°æ±¾²»Ö§³ÖÖ±½Ó¼ÓÔØ£¬½öÖ§³ÖApi°æ±¾Îª9(¼°ÒÔÉÏ)µÄÓ¦ÓÃÖ±½Ó¼ÓÔØ";
-	case -109: return "AppInfo·µ»ØµÄAppID´íÎó";
-	case -110: return "È±Ê§AppInfo·µ»ØµÄAppID¶ÔÓ¦µÄ[Appid].jsonÎÄ¼ş";
-	case -111: return "[Appid].jsonÎÄ¼şÄÚµÄAppIDÓëÆäÎÄ¼şÃû²»Í¬";
-	case -120: return "ÎŞApiÊÚÈ¨½ÓÊÕº¯Êı(Initialize)";
-	case -121: return "ApiÊÚÈ¨½ÓÊÕº¯Êı(Initialize)·µ»ØÖµ·Ç0";
-	case -122: return "³¢ÊÔ¶ñÒâĞŞ¸Ä¿áQÅäÖÃÎÄ¼ş£¬½«È¡Ïû¼ÓÔØ²¢¹Ø±Õ¿áQ";
-	case -150: return "ÎŞ·¨ÔØÈëÓ¦ÓÃĞÅÏ¢";
-	case -151: return "Ó¦ÓÃĞÅÏ¢Json´®½âÎöÊ§°Ü£¬Çë¼ì²éJson´®ÊÇ·ñÕıÈ·";
-	case -152: return "Api°æ±¾¹ı¾É»ò¹ıĞÂ";
-	case -153: return "Ó¦ÓÃĞÅÏ¢´íÎó»ò´æÔÚÈ±Ê§";
-	case -154: return "Appid²»ºÏ·¨";
-	case -160: return "ÊÂ¼şÀàĞÍ(Type)´íÎó»òÈ±Ê§";
-	case -161: return "ÊÂ¼şº¯Êı(Function)´íÎó»òÈ±Ê§";
-	case -162: return "Ó¦ÓÃÓÅÏÈ¼¶²»Îª10000¡¢20000¡¢30000¡¢40000ÖĞµÄÒ»¸ö";
-	case -163: return "ÊÂ¼şÀàĞÍ(Api)²»Ö§³ÖÓ¦ÓÃApi°æ±¾";
-	case -164: return "Ó¦ÓÃApi°æ±¾´óÓÚ8£¬µ«Ê¹ÓÃÁËĞÂ°æ±¾ÒÑÍ£ÓÃµÄÊÂ¼şÀàĞÍ(Type)£º1(ºÃÓÑÏûÏ¢)¡¢3(ÁÙÊ±ÏûÏ¢)";
-	case -165: return "ÊÂ¼şÀàĞÍÎª2(ÈºÏûÏ¢)¡¢4(ÌÖÂÛ×éÏûÏ¢)¡¢21(Ë½ÁÄÏûÏ¢)£¬µ«È±ÉÙÕıÔò±í´ïÊ½(regex)µÄ±í´ïÊ½²¿·Ö(expression)";
-	case -166: return "´æÔÚÎª¿ÕµÄÕıÔò±í´ïÊ½(regex)µÄkey";
-	case -167: return "´æÔÚÎª¿ÕµÄÕıÔò±í´ïÊ½(regex)µÄ±í´ïÊ½²¿·Ö(expression)";
-	case -168: return "Ó¦ÓÃÊÂ¼ş(event)id²ÎÊı²»´æÔÚ»òÎª0";
-	case -169: return "Ó¦ÓÃÊÂ¼ş(event)id²ÎÊıÓĞÖØ¸´";
-	case -180: return "Ó¦ÓÃ×´Ì¬(status)id²ÎÊı²»´æÔÚ»òÎª0";
-	case -181: return "Ó¦ÓÃ×´Ì¬(status)period²ÎÊı²»´æÔÚ»òÉèÖÃ´íÎó";
-	case -182: return "Ó¦ÓÃ×´Ì¬(status)id²ÎÊıÓĞÖØ¸´";
-	case -201: return "ÎŞ·¨ÔØÈëÓ¦ÓÃ£¬¿ÉÄÜÊÇÓ¦ÓÃÎÄ¼şÒÑËğ»µ";
-	case -202: return "Api°æ±¾¹ı¾É»ò¹ıĞÂ";
-	case -997: return "Ó¦ÓÃÎ´ÆôÓÃ";
-	case -998: return "Ó¦ÓÃµ÷ÓÃÔÚAuthÉùÃ÷Ö®ÍâµÄ ¿áQ Api¡£";
-	default:   return "Î´Öª´íÎó,ÇëÏò ³õÒôPy2001 ±¨¸æÒÔÉı¼¶SDK";
+	case 0:    return "æ“ä½œæˆåŠŸ";
+	case -1:   return "è¯·æ±‚å‘é€å¤±è´¥";
+	case -2:   return "æœªæ”¶åˆ°æœåŠ¡å™¨å›å¤ï¼Œå¯èƒ½æœªå‘é€æˆåŠŸ";
+	case -3:   return "æ¶ˆæ¯è¿‡é•¿æˆ–ä¸ºç©º";
+	case -4:   return "æ¶ˆæ¯è§£æè¿‡ç¨‹å¼‚å¸¸";
+	case -5:   return "æ—¥å¿—åŠŸèƒ½æœªå¯ç”¨";
+	case -6:   return "æ—¥å¿—ä¼˜å…ˆçº§é”™è¯¯";
+	case -7:   return "æ•°æ®å…¥åº“å¤±è´¥";
+	case -8:   return "ä¸æ”¯æŒå¯¹ç³»ç»Ÿå¸å·æ“ä½œ";
+	case -9:   return "å¸å·ä¸åœ¨è¯¥ç¾¤å†…ï¼Œæ¶ˆæ¯æ— æ³•å‘é€";
+	case -10:  return "è¯¥ç”¨æˆ·ä¸å­˜åœ¨/ä¸åœ¨ç¾¤å†…";
+	case -11:  return "æ•°æ®é”™è¯¯ï¼Œæ— æ³•è¯·æ±‚å‘é€";
+	case -12:  return "ä¸æ”¯æŒå¯¹åŒ¿åæˆå‘˜è§£é™¤ç¦è¨€";
+	case -13:  return "æ— æ³•è§£æè¦ç¦è¨€çš„åŒ¿åæˆå‘˜æ•°æ®";
+	case -14:  return "ç”±äºæœªçŸ¥åŸå› ï¼Œæ“ä½œå¤±è´¥";
+	case -15:  return "ç¾¤æœªå¼€å¯åŒ¿åå‘è¨€åŠŸèƒ½ï¼Œæˆ–åŒ¿åå¸å·è¢«ç¦è¨€";
+	case -16:  return "å¸å·ä¸åœ¨ç¾¤å†…æˆ–ç½‘ç»œé”™è¯¯ï¼Œæ— æ³•é€€å‡º/è§£æ•£è¯¥ç¾¤";
+	case -17:  return "å¸å·ä¸ºç¾¤ä¸»ï¼Œæ— æ³•é€€å‡ºè¯¥ç¾¤";
+	case -18:  return "å¸å·éç¾¤ä¸»ï¼Œæ— æ³•è§£æ•£è¯¥ç¾¤";
+	case -19:  return "ä¸´æ—¶æ¶ˆæ¯å·²å¤±æ•ˆæˆ–æœªå»ºç«‹";
+	case -20:  return "å‚æ•°é”™è¯¯";
+	case -21:  return "ä¸´æ—¶æ¶ˆæ¯å·²å¤±æ•ˆæˆ–æœªå»ºç«‹";
+	case -22:  return "è·å–QQä¿¡æ¯å¤±è´¥";
+	case -23:  return "æ‰¾ä¸åˆ°ä¸ç›®æ ‡QQçš„å…³ç³»ï¼Œæ¶ˆæ¯æ— æ³•å‘é€";
+	case -99:  return "æ‚¨è°ƒç”¨çš„åŠŸèƒ½æ— æ³•åœ¨æ­¤ç‰ˆæœ¬ä¸Šå®ç°";
+	case -101: return "åº”ç”¨è¿‡å¤§";
+	case -102: return "ä¸æ˜¯åˆæ³•çš„åº”ç”¨";
+	case -103: return "ä¸æ˜¯åˆæ³•çš„åº”ç”¨";
+	case -104: return "åº”ç”¨ä¸å­˜åœ¨å…¬å¼€çš„Informationå‡½æ•°";
+	case -105: return "æ— æ³•è½½å…¥åº”ç”¨ä¿¡æ¯";
+	case -106: return "æ–‡ä»¶åä¸åº”ç”¨IDä¸åŒ";
+	case -107: return "è¿”å›ä¿¡æ¯è§£æé”™è¯¯";
+	case -108: return "AppInfoè¿”å›çš„Apiç‰ˆæœ¬ä¸æ”¯æŒç›´æ¥åŠ è½½ï¼Œä»…æ”¯æŒApiç‰ˆæœ¬ä¸º9(åŠä»¥ä¸Š)çš„åº”ç”¨ç›´æ¥åŠ è½½";
+	case -109: return "AppInfoè¿”å›çš„AppIDé”™è¯¯";
+	case -110: return "ç¼ºå¤±AppInfoè¿”å›çš„AppIDå¯¹åº”çš„[Appid].jsonæ–‡ä»¶";
+	case -111: return "[Appid].jsonæ–‡ä»¶å†…çš„AppIDä¸å…¶æ–‡ä»¶åä¸åŒ";
+	case -120: return "æ— Apiæˆæƒæ¥æ”¶å‡½æ•°(Initialize)";
+	case -121: return "Apiæˆæƒæ¥æ”¶å‡½æ•°(Initialize)è¿”å›å€¼é0";
+	case -122: return "å°è¯•æ¶æ„ä¿®æ”¹é…·Qé…ç½®æ–‡ä»¶ï¼Œå°†å–æ¶ˆåŠ è½½å¹¶å…³é—­é…·Q";
+	case -150: return "æ— æ³•è½½å…¥åº”ç”¨ä¿¡æ¯";
+	case -151: return "åº”ç”¨ä¿¡æ¯Jsonä¸²è§£æå¤±è´¥ï¼Œè¯·æ£€æŸ¥Jsonä¸²æ˜¯å¦æ­£ç¡®";
+	case -152: return "Apiç‰ˆæœ¬è¿‡æ—§æˆ–è¿‡æ–°";
+	case -153: return "åº”ç”¨ä¿¡æ¯é”™è¯¯æˆ–å­˜åœ¨ç¼ºå¤±";
+	case -154: return "Appidä¸åˆæ³•";
+	case -160: return "äº‹ä»¶ç±»å‹(Type)é”™è¯¯æˆ–ç¼ºå¤±";
+	case -161: return "äº‹ä»¶å‡½æ•°(Function)é”™è¯¯æˆ–ç¼ºå¤±";
+	case -162: return "åº”ç”¨ä¼˜å…ˆçº§ä¸ä¸º10000ã€20000ã€30000ã€40000ä¸­çš„ä¸€ä¸ª";
+	case -163: return "äº‹ä»¶ç±»å‹(Api)ä¸æ”¯æŒåº”ç”¨Apiç‰ˆæœ¬";
+	case -164: return "åº”ç”¨Apiç‰ˆæœ¬å¤§äº8ï¼Œä½†ä½¿ç”¨äº†æ–°ç‰ˆæœ¬å·²åœç”¨çš„äº‹ä»¶ç±»å‹(Type)ï¼š1(å¥½å‹æ¶ˆæ¯)ã€3(ä¸´æ—¶æ¶ˆæ¯)";
+	case -165: return "äº‹ä»¶ç±»å‹ä¸º2(ç¾¤æ¶ˆæ¯)ã€4(è®¨è®ºç»„æ¶ˆæ¯)ã€21(ç§èŠæ¶ˆæ¯)ï¼Œä½†ç¼ºå°‘æ­£åˆ™è¡¨è¾¾å¼(regex)çš„è¡¨è¾¾å¼éƒ¨åˆ†(expression)";
+	case -166: return "å­˜åœ¨ä¸ºç©ºçš„æ­£åˆ™è¡¨è¾¾å¼(regex)çš„key";
+	case -167: return "å­˜åœ¨ä¸ºç©ºçš„æ­£åˆ™è¡¨è¾¾å¼(regex)çš„è¡¨è¾¾å¼éƒ¨åˆ†(expression)";
+	case -168: return "åº”ç”¨äº‹ä»¶(event)idå‚æ•°ä¸å­˜åœ¨æˆ–ä¸º0";
+	case -169: return "åº”ç”¨äº‹ä»¶(event)idå‚æ•°æœ‰é‡å¤";
+	case -180: return "åº”ç”¨çŠ¶æ€(status)idå‚æ•°ä¸å­˜åœ¨æˆ–ä¸º0";
+	case -181: return "åº”ç”¨çŠ¶æ€(status)periodå‚æ•°ä¸å­˜åœ¨æˆ–è®¾ç½®é”™è¯¯";
+	case -182: return "åº”ç”¨çŠ¶æ€(status)idå‚æ•°æœ‰é‡å¤";
+	case -201: return "æ— æ³•è½½å…¥åº”ç”¨ï¼Œå¯èƒ½æ˜¯åº”ç”¨æ–‡ä»¶å·²æŸå";
+	case -202: return "Apiç‰ˆæœ¬è¿‡æ—§æˆ–è¿‡æ–°";
+	case -997: return "åº”ç”¨æœªå¯ç”¨";
+	case -998: return "åº”ç”¨è°ƒç”¨åœ¨Authå£°æ˜ä¹‹å¤–çš„ é…·Q Apiã€‚";
+	default:   return "æœªçŸ¥é”™è¯¯,è¯·å‘ åˆéŸ³Py2001 æŠ¥å‘Šä»¥å‡çº§SDK";
 	}
 }
