@@ -1,6 +1,7 @@
 #pragma once
 #include "Base.h"
 #include <vector>
+#include <string>
 
 //base64±àÂë
 std::string base64_encode(std::string const& s);
