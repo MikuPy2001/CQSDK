@@ -1,4 +1,6 @@
-//讲述如何监听回复消息
+//您应当先看appmain
+
+//此文件讲述如何监听回复消息
 
 #include <CQSDK.h>
 #include <string>
@@ -9,11 +11,13 @@ static Logger logger("Msg_EX");
 
 
 //所有EX版事件默认拥有一个e参数,事件相关参数被包装到e参数中,通过ide快速补全
-
 void Msg(MsgEvent*e);
 
-//群聊
-EVE_GroupMsg_EX(GroupMsg_EX) {
+
+EVE_GroupMsg_EX(GroupMsg_EX)
+//name:群聊消息
+//priority:30000
+{
 	auto debug = logger.Debug();
 	debug << DEBUGINFO << e.message;
 	if (e.isAnonymous()) {//判断是否为匿名信息
@@ -46,13 +50,17 @@ EVE_GroupMsg_EX(GroupMsg_EX) {
 
 	Msg(&e);
 }
-//私聊消息
-EVE_PrivateMsg_EX(PrivateMsg_EX) {
+EVE_PrivateMsg_EX(PrivateMsg_EX)
+//name:私聊消息
+//priority:30000
+{
 	logger.Debug() << DEBUGINFO << e.message;
 	Msg(&e);
 }
-//讨论组
-EVE_DiscussMsg_EX(DiscussMsg_EX) {
+EVE_DiscussMsg_EX(DiscussMsg_EX)
+//name:讨论组
+//priority:30000
+{
 	logger.Debug() << DEBUGINFO << e.message;
 	Msg(&e);
 }

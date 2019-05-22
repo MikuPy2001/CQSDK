@@ -1,3 +1,8 @@
+//您应当先看appmain
+
+//还未完成的内容
+
+
 #include <CQSDK.h>
 
 EVE_Request_AddFriend_EX(Request_AddFriend_EX) {
@@ -23,4 +28,10 @@ EVE_System_GroupMemberDecrease(System_GroupMemberDecrease) {
 }
 EVE_System_GroupMemberIncrease(System_GroupMemberIncrease) {
 	return 0;
+}
+
+EVE_Status_EX(Status){
+	e.data = "标题";
+	e.dataf = "数据";
+	e.color_red();
 }
