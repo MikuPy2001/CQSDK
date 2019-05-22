@@ -74,7 +74,7 @@
 #define APP_auth_180 "撤回消息"
 
 //酷Q目录,直接生成到酷Q目录
-#define CQ_DIR "D:\CQP\"
+#define CQ_DIR "D:\\CQP\\"
 
 
 #define CQAPPINFO CQAPIVERTEXT "," APP_ID
