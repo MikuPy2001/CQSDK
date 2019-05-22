@@ -79,7 +79,7 @@
     <ProjectGuid>{EAA2AE87-0B29-4F96-A93E-E629D233C620}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CQ_SDK</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
