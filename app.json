@@ -24,12 +24,12 @@
       "type": 1003,
       "priority": 30000,
       "id": 3
-    },    
-	{
+    },
+    {
       "name": "应用停用",
-      "function": "Disable", 
+      "function": "Disable",
       "type": 1004,
-      "priority": 30000, 
+      "priority": 30000,
       "id": 4
     },
     {
@@ -45,6 +45,17 @@
       "type": 2,
       "priority": 30000,
       "id": 6
+    },
+    {
+      "id": 7,
+      "type": 21,
+      "name": "正则",
+      "function": "_eventPrivateMsg",
+      "priority": 30000,
+      "regex": {
+        "key": [ "qq", "action" ],
+        "expression": [ "^(?<action>\\S{1,4}?)\\s*(?<qq>\\d{5,10})\\s*?$" ]
+      }
     }
   ],
   "menu": [
@@ -56,7 +67,13 @@
   ],
   "status": [
     // 悬浮窗状态（见易语言SDK com.example.status 样例）
-
+    {
+      "id": 2,
+      "name": "CPU使用率",
+      "title": "CPU",
+      "function": "_statusCPU",
+      "period": "1000"
+    }
   ],
   "auth": [ // 应用权限（发布前请删除无用权限）
     //20,  //[敏感]取Cookies	getCookies / getCsrfToken
