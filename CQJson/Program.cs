@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -42,7 +41,10 @@ namespace CQJson
 
             Console.WriteLine(srcDir);
             var cpps = 遍历目录(srcDir, "*.cpp");
-            
+            foreach (var file in cpps)
+            {
+
+            }
         }
 
         private static List<FileInfo> 遍历目录(DirectoryInfo srcDir, string v)
@@ -64,8 +66,32 @@ namespace CQJson
 
     }
 
+    class Test
+    {
+        static void Main(string[] args)
+        {
+            CQJson j = new CQJson(1,"nnnn","1.0.0","tatamis","yijuhua");
+            j.auth.Add(1);
+            j.auth.Add(2);
+            j.auth.Add(3);
+            j.auth.Add(4);
+            j.auth.Add(5);
+
+            j._event.Add(new CQevent(1001, "mmm", "fun1", 30000));
+            j._event.Add(new CQevent(1002, "mmm", "fun2", 30000));
+
+            j.menu.Add(new CQmenu("menu1","fun5"));
+            j.menu.Add(new CQmenu("menu2", "fun6"));
+            
+            string output = JsonConvert.SerializeObject(j);
+
+
+            Console.WriteLine(output);
+        }
+    }
     public class CQJson
     {
+        
         public int ret = 1;
         public int apiver = 9;
         public int version_id;
@@ -74,19 +100,50 @@ namespace CQJson
         public string author;
         public string description;
         [JsonProperty(PropertyName = "event")]
-        public List<CQevent> _event;
-        public List<CQmenu> menu;
-        public List<CQstatus> status;
-        public List<int> auth;
+        public List<CQevent> _event = new List<CQevent>();
+        public List<CQmenu> menu=new List<CQmenu>();
+        public List<CQstatus> status=new List<CQstatus>();
+        public List<int> auth=new List<int>();
+
+        public CQJson()
+        {
+        }
+
+        public CQJson(int version_id, string name, string version, string author, string description)
+        {
+            this.version_id = version_id;
+            this.name = name;
+            this.version = version;
+            this.author = author;
+            this.description = description;
+        }
+
+        public void setid()
+        {
+            for(int i = 1; i <= _event.Count; i++)
+            {
+                _event[i].id = i;
+            }
+            for (int i = 1; i <= status.Count; i++)
+            {
+                status[i].id = i;
+            }
+        }
     }
     public class CQmenu
     {
-        public int  id;
-        public int type;
         public string name;
         public string function;
-        public int priority;
 
+        public CQmenu()
+        {
+        }
+
+        public CQmenu(string name, string function)
+        {
+            this.name = name;
+            this.function = function;
+        }
     }
     public class CQevent
     {
@@ -95,8 +152,20 @@ namespace CQJson
         public string name;
         public string function;
         public int priority;
-
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public CQregex regex;
+
+        public CQevent()
+        {
+        }
+
+        public CQevent(int type, string name, string function, int priority)
+        {
+            this.type = type;
+            this.name = name;
+            this.function = function;
+            this.priority = priority;
+        }
     }
     public class CQregex
     {
