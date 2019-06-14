@@ -33,7 +33,7 @@ string CQ::code::face(int faceid)
 
 string CQ::code::face(CQ::face face)
 {
-	return code::face((int)face);
+	return code::face(static_cast<int>(face));
 }
 
 string CQ::code::at(long long QQ)

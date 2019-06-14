@@ -15,6 +15,6 @@ namespace CQ {
 
 		int _EVEret = ÏûÏ¢_ºöÂÔ;
 
-		virtual ~BasicEvent() {}
+		virtual ~BasicEvent() = default;
 	};
 }
