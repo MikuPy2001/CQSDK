@@ -115,7 +115,7 @@ std::vector<GroupMemberInfo> CQ::getGroupMemberList(长整数型 群号) {
 
 	Unpack u(base64_decode(data));
 	auto i = u.getInt();
-	while (--i && u.len() > 0)
+	while (i-- && u.len() > 0)
 	{
 		//infovector.push_back(GroupMemberInfo(u.getchars()));
 		infovector.emplace_back(u.getUnpack());
