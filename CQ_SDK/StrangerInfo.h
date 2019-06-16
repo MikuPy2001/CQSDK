@@ -13,7 +13,7 @@ namespace CQ {
 		整数型 sex;//0/男性 1/女性 255/未知
 		整数型 age;//年龄
 
-		StrangerInfo(const char* msg);
+		StrangerInfo(std::string msg);
 		StrangerInfo() = default;
 
 		std::string tostring() const;

@@ -5,14 +5,13 @@
 
 using namespace std;
 
-CQ::StrangerInfo::StrangerInfo(const char* msg)
+CQ::StrangerInfo::StrangerInfo(string msg)
 {
-	if (msg == nullptr || msg[0] == '\0')
+	if (msg.empty())
 	{
 		QQID = 0; sex = 255; age = -1; nick = "";
 	}
-	else
-	{
+	else {
 		Unpack p(base64_decode(msg));
 		QQID = p.getLong();
 		nick = p.getstring();

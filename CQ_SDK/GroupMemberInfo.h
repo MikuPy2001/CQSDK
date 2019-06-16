@@ -32,7 +32,7 @@ namespace CQ {
 
 		GroupMemberInfo(Unpack& msg);
 		//从API解码
-		GroupMemberInfo(const char* msg);
+		GroupMemberInfo(std::string msg);
 		//从Unpack解码
 		GroupMemberInfo(std::vector<unsigned char> msg);
 		GroupMemberInfo() = default;

@@ -1,5 +1,6 @@
 #pragma once
 
+//第一层头文件,不依赖任何非项目头文件
 #include "AuthCode.h"
 #include "Base.h"
 #include "BaseStream.h"
@@ -9,7 +10,9 @@
 #include "StatusEvent.h"
 #include "SystemGroupAdminEvent.h"
 #include "Unpack.h"
+#include "toolWin.h"
 
+//第二层头文件,部分依赖第一层头文件
 #include "AnonymousInfo.h"
 #include "BaseAPI.h"
 #include "BasicEvent.h"
@@ -21,11 +24,13 @@
 #include "StrangerInfo.h"
 #include "tool.h"
 
+//第三层,同上
 #include "API.h"
 #include "FriendAddEvent.h"
 #include "MsgEvent.h"
 #include "RequestBasicEvent.h"
 
+//第四层,同上
 #include "DiscussMsgEvent.h"
 #include "GroupMsgEvent.h"
 #include "Logger.h"

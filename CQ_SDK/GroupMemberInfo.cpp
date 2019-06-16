@@ -6,13 +6,13 @@ using namespace std;
 
 
 
-CQ::GroupMemberInfo::GroupMemberInfo(Unpack & msg) { 
-	setdata(msg); 
+CQ::GroupMemberInfo::GroupMemberInfo(Unpack & msg) {
+	setdata(msg);
 }
 
-CQ::GroupMemberInfo::GroupMemberInfo(const char* msg)
+CQ::GroupMemberInfo::GroupMemberInfo(string msg)
 {
-	if (msg == nullptr || msg[0] == '\0')
+	if (msg.empty())
 	{
 		Void();
 	}

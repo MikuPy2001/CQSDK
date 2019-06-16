@@ -92,6 +92,9 @@
     <ClInclude Include="CQMsgCode.h">
       <Filter>工具</Filter>
     </ClInclude>
+    <ClInclude Include="toolWin.h">
+      <Filter>工具</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnonymousInfo.cpp">
@@ -170,6 +173,9 @@
       <Filter>工具</Filter>
     </ClCompile>
     <ClCompile Include="CQMsgCode.cpp">
+      <Filter>工具</Filter>
+    </ClCompile>
+    <ClCompile Include="toolWin.cpp">
       <Filter>工具</Filter>
     </ClCompile>
   </ItemGroup>

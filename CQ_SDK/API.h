@@ -42,9 +42,11 @@ namespace CQ {
 	整数型 sendLike(长整数型 QQID, 整数型 times);
 
 	//取Cookies,Auth=20 慎用,此接口需要严格授权
-	文本型 getCookies();
+	std::string getCookies();
 
 	//接收语音
+	//不推荐使用
+	//使用完毕后请用CQFree()销毁返回值
 	文本型 getRecord(
 		文本型 file, // 收到消息中的语音文件名 (file)
 		文本型 outformat // 应用所需的格式 mp3,amr,wma,m4a,spx,ogg,wav,flac
@@ -60,13 +62,13 @@ namespace CQ {
 	整数型 getCsrfToken();
 
 	//取应用目录,返回的路径末尾带"\"
-	文本型 getAppDirectory();
+	std::string getAppDirectory();
 
 	//取登录QQ
 	长整数型 getLoginQQ();
 
 	//取登录昵称
-	文本型 getLoginNick();
+	std::string getLoginNick();
 
 	//置群员移除 Auth=120
 	整数型 setGroupKick(

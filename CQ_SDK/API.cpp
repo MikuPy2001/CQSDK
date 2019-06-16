@@ -1,15 +1,20 @@
 #include "API.h"
+#include "toolWin.h"
 
 #include "BaseAPI.h"
 #include "AuthCode.h"
 #include "tool.h"
 
+#include <string>
+
 using namespace std;
 
 int lasterr;
+string CQtoString(文本型 data, string API描述);
 
 //增加运行日志
-整数型 CQ::addLog(整数型 优先级, 文本型 类型, 文本型 内容) { return lasterr = CQ_addLog(getAuthCode(), 优先级, 类型, 内容); }
+//优先级为LOG_开头的常量
+整数型 CQ::addLog(整数型 LOG_, 文本型 类型, 文本型 内容) { return lasterr = CQ_addLog(getAuthCode(), LOG_, 类型, 内容); }
 
 //发送好友消息
 整数型 CQ::sendPrivateMsg(长整数型 QQ, 文本型 msg) { return  CQ_sendPrivateMsg(getAuthCode(), QQ, msg); }
@@ -35,25 +40,25 @@ int lasterr;
 整数型 CQ::sendLike(长整数型 QQID, 整数型 times) { return lasterr = CQ_sendLikeV2(getAuthCode(), QQID, times); }
 
 //取Cookies (慎用，此接口需要严格授权)
-文本型 CQ::getCookies() { return  CQ_getCookies(getAuthCode()); }
+string CQ::getCookies() { return CQtoString(CQ_getCookies(getAuthCode()), "取Cookies"); }
 
 //接收语音
 文本型 CQ::getRecord(文本型 file, 文本型 outformat) { return CQ_getRecord(getAuthCode(), file, outformat); }
 
 //接收语音
-std::string CQ::getRecord(std::string & file, std::string outformat) { return getRecord(file.c_str(), outformat.c_str()); }
+std::string CQ::getRecord(std::string & file, std::string outformat) { return CQtoString(getRecord(file.c_str(), outformat.c_str()), "接收语音"); }
 
 //取CsrfToken (慎用，此接口需要严格授权)
 整数型 CQ::getCsrfToken() { return  CQ_getCsrfToken(getAuthCode()); }
 
 //取应用目录
-文本型 CQ::getAppDirectory() { return  CQ_getAppDirectory(getAuthCode()); }
+string CQ::getAppDirectory() { return CQtoString(CQ_getAppDirectory(getAuthCode()), "取应用目录"); }
 
 //取登录QQ
 长整数型 CQ::getLoginQQ() { return  CQ_getLoginQQ(getAuthCode()); }
 
 //取登录昵称
-文本型 CQ::getLoginNick() { return  CQ_getLoginNick(getAuthCode()); }
+string CQ::getLoginNick() { return CQtoString(CQ_getLoginNick(getAuthCode()), "取登录昵称"); }
 
 //置群员移除
 整数型 CQ::setGroupKick(长整数型 群号, 长整数型 QQID, 逻辑型 拒绝再加群) { return lasterr = CQ_setGroupKick(getAuthCode(), 群号, QQID, 拒绝再加群); }
@@ -101,24 +106,34 @@ std::string CQ::getRecord(std::string & file, std::string outformat) { return ge
 整数型 CQ::setFatal(文本型 错误信息) { return lasterr = CQ_setFatal(getAuthCode(), 错误信息); }
 
 //取群成员信息 (支持缓存)
-GroupMemberInfo CQ::getGroupMemberInfo(长整数型 群号, 长整数型 QQID, 逻辑型 不使用缓存) { return GroupMemberInfo(CQ_getGroupMemberInfoV2(getAuthCode(), 群号, QQID, 不使用缓存)); }
+GroupMemberInfo CQ::getGroupMemberInfo(长整数型 群号, 长整数型 QQID, 逻辑型 不使用缓存) { return GroupMemberInfo(CQtoString(CQ_getGroupMemberInfoV2(getAuthCode(), 群号, QQID, 不使用缓存), "取群成员信息")); }
 
 //取陌生人信息 (支持缓存)
-StrangerInfo CQ::getStrangerInfo(长整数型 QQID, 逻辑型 不使用缓存) { return StrangerInfo(CQ_getStrangerInfo(getAuthCode(), QQID, 不使用缓存)); }
+StrangerInfo CQ::getStrangerInfo(长整数型 QQID, 逻辑型 不使用缓存) { return StrangerInfo(CQtoString(CQ_getStrangerInfo(getAuthCode(), QQID, 不使用缓存), "取陌生人信息")); }
 
 //取群成员列表
 std::vector<GroupMemberInfo> CQ::getGroupMemberList(长整数型 群号) {
-	文本型 data = CQ_getGroupMemberList(getAuthCode(), 群号);
+	auto data = CQtoString(CQ_getGroupMemberList(getAuthCode(), 群号), "取群成员列表");
+	if (data.empty()) {
+		string log = string("API返回空数据,群号:") + to_string(群号);
+		addLog(Log_Debug, "CQSDK(CPP)", log.c_str());
+		return vector<GroupMemberInfo>();
+	}
+
 	vector<GroupMemberInfo> infovector;
-	if (data==nullptr)  return infovector;
-	if (data[0] == '\0')return infovector;
 
 	Unpack u(base64_decode(data));
-	auto i = u.getInt();
-	while (i-- && u.len() > 0)
+	auto len = u.getInt();
+	int len1 = 0;
+	while (u.len() > 0)
 	{
 		//infovector.push_back(GroupMemberInfo(u.getchars()));
 		infovector.emplace_back(u.getUnpack());
+		len1++;
+	}
+	if (len1 != len) {
+		string log = "取群成员列表数量异常, 群号:" + to_string(群号) + " 期望:" + to_string(len) + ",实际:" + to_string(len1);
+		addLog(Log_Debug, "CQSDK(CPP)", log.c_str());
 	}
 
 	return infovector;
@@ -126,18 +141,28 @@ std::vector<GroupMemberInfo> CQ::getGroupMemberList(长整数型 群号) {
 
 //取群列表
 std::map<long long, std::string> CQ::getGroupList() {
-	string source(CQ_getGroupList(getAuthCode()));// 获取原始数据
+	auto source = CQtoString(CQ_getGroupList(getAuthCode()), "取群列表"); // 获取原始数据
+	if (source.empty())return map<long long, std::string>();
+
 	string data(base64_decode(source)); // 解码
 	Unpack pack(data);// 转换为Unpack
 
 	int len = pack.getInt();//获取总群数
+	int len1 = 0;
 	std::map<long long, std::string> ret;
 	while (pack.len() > 0) {//如果还有剩余数据,就继续读取
 		auto tep = pack.getUnpack();//读取下一个群
 		long long ID = tep.getLong();//读取群号
 		string name = tep.getstring();//读取群名称
 		ret[ID] = name;//写入map
+		len1++;
 	}
+
+	if (len1 != len) {
+		string log = "取群列表数量异常, 期望:" + to_string(len) + ",实际:" + to_string(len1);
+		addLog(Log_Debug, "CQSDK(CPP)", log.c_str());
+	}
+
 	return ret;
 }
 
@@ -145,6 +170,16 @@ std::map<long long, std::string> CQ::getGroupList() {
 {
 	return lasterr = CQ_deleteMsg(getAuthCode(), MsgId);
 }
+
+string CQtoString(文本型 data, string API描述) {
+	if (CQStringCanRead(data)) {
+		return data;
+	}
+	string log = API描述 + "时发生异常,API返回指针为负数: " + to_string((int)data);
+	addLog(Log_Debug, "CQSDK(CPP)", log.c_str());
+	return "";
+}
+
 
 const char * CQ::getlasterrmsg()
 {
