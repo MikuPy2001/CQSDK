@@ -18,7 +18,7 @@ package 事件;
 
 /**
  * 好友事件-好友已添加
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class FriendAddEvent implements BasicEvent{
 

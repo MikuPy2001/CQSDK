@@ -21,7 +21,7 @@ import c.string;
 
 /**
  *
- * @author qq794
+ * @author MikuPy2001
  */
 public abstract class BaseStream {
 

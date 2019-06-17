@@ -7,7 +7,7 @@ package 枚举;
 
 /**
  * 仅用于日志相关的函数
- * @author admin
+ * @author MikuPy2001
  */
 public enum Log_ {
     /**

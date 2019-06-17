@@ -18,7 +18,7 @@ package c;
 
 /**
  * size_t
- * @author qq794
+ * @author MikuPy2001
  */
 public interface size_t {
     

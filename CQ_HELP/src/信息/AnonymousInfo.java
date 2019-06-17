@@ -21,7 +21,7 @@ import c.string;
 /**
  * 群匿名信息
  *
- * @author qq794
+ * @author MikuPy2001
  */
 public class AnonymousInfo {
 

@@ -18,7 +18,7 @@ package c;
 
 /**
  * unsigned char
- * @author qq794
+ * @author MikuPy2001
  */
 public interface unsigned_char {
     

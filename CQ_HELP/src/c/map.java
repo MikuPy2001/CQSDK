@@ -19,7 +19,7 @@ package c;
 /**
  * std::map
  *
- * @author admin
+ * @author MikuPy2001
  * @param <T> void
  * @param <E> void
  */

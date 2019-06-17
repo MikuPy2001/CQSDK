@@ -21,7 +21,7 @@ import c.string;
 /**
  * 陌生人信息
  *
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class StrangerInfo {
 

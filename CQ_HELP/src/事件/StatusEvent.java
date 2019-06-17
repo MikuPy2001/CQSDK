@@ -20,7 +20,7 @@ import c.string;
 
 /**
  * 悬浮窗事件.
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class StatusEvent {
 

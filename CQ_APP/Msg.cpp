@@ -122,4 +122,7 @@ void Msg(MsgEvent*e)
 	if (!message.compare("CQ:effect"))
 		// 发送一个魔法字体,此CQ码必须单独一条消息
 		e->sendMsg(code::effect("art", 2003, "魔法消息"));
+	if (!message.compare("CQ:at"))
+		// 发送at消息,在私聊时是无效的
+		msg << code::at(e->fromQQ) << send;
 }

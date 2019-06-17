@@ -18,7 +18,7 @@ package 事件;
 
 /**
  * 群事件-管理员变动
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class SystemGroupAdminEvent implements BasicEvent {
 

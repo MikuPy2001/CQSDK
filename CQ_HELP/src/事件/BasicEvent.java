@@ -18,7 +18,7 @@ package 事件;
 
 /**
  * 事件基类,主要实现事件拦截返回的功能
- * @author qq794
+ * @author MikuPy2001
  */
 public interface BasicEvent {
 

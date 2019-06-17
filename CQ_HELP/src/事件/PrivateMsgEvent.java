@@ -18,7 +18,7 @@ package 事件;
 
 /**
  * 私聊事件. 好友/临时/陌生人 都算私聊
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class PrivateMsgEvent extends MsgEvent {
 

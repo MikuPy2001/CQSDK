@@ -18,7 +18,7 @@ package 枚举;
 
 /**
  * 用于普通事件返回,EX版事件请查阅
- * @author admin
+ * @author MikuPy2001
  */
 public enum 是否拦截 {
     /**

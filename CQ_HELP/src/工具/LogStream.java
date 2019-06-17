@@ -18,7 +18,7 @@ package 工具;
 
 /**
  *
- * @author qq794
+ * @author MikuPy2001
  */
 public abstract class LogStream extends BaseStream{
     

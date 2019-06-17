@@ -23,7 +23,7 @@ import 信息.GroupMemberInfo;
 
 /**
  * 群聊事件
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class GroupMsgEvent extends MsgEvent {
 

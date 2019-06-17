@@ -21,7 +21,7 @@ import 工具.MsgSend;
 
 /**
  * 聊天事件基类. 实现一些聊天通用功能
- * @author qq794
+ * @author MikuPy2001
  */
 public abstract class MsgEvent implements BasicEvent {
 

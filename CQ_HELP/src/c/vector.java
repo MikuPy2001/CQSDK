@@ -18,7 +18,7 @@ package c;
 
 /**
  * std::vector
- * @author admin
+ * @author MikuPy2001
  * @param <T>  void
  */
 public interface vector<T> {

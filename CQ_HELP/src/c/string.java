@@ -19,7 +19,7 @@ package c;
 /**
  * 可能是 char* 也可能是 std::string 请根据实际情况判断
  *
- * @author admin
+ * @author MikuPy2001
  */
 public interface string {
 

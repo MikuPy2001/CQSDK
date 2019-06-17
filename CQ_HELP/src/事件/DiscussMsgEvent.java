@@ -18,7 +18,7 @@ package 事件;
 
 /**
  * 讨论组事件
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class DiscussMsgEvent extends MsgEvent {
 

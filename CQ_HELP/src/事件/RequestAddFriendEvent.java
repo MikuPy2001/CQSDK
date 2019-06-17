@@ -18,7 +18,7 @@ package 事件;
 
 /**
  * 请求-好友添加
- * @author admin
+ * @author MikuPy2001
  */
 public abstract class RequestAddFriendEvent extends RequestBasicEvent {
 

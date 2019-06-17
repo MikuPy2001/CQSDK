@@ -30,7 +30,7 @@ import c.string;
  */
 /**
  *
- * @author admin
+ * @author MikuPy2001
  */
 public interface API {
     /**

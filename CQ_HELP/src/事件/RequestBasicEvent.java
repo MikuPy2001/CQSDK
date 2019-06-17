@@ -20,7 +20,7 @@ import c.string;
 
 /**
  * 请求事件基类. 
- * @author qq794
+ * @author MikuPy2001
  */
 public abstract class RequestBasicEvent implements BasicEvent {
 

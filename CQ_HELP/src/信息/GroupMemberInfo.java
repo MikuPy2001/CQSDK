@@ -24,7 +24,7 @@ import 工具.Unpack;
 /**
  * 群成员信息
  *
- * @author admin
+ * @author MikuPy2001
  */
 public class GroupMemberInfo {
 
