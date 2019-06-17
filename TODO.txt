@@ -1,6 +1,0 @@
-﻿目标:
-CQMsgCode
-winSpeak
-EVE_GroupUpload_EX
-
-写个程序处理源码生成app.json
