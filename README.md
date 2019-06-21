@@ -16,3 +16,5 @@
     ```
 
 4. 写个程序处理源码生成 app.json
+
+5. 把 regexMsg 移至 Tool 并链接到 MSG 事件
