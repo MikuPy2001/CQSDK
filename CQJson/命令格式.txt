@@ -1,0 +1,46 @@
+EVE_Startup(Name)
+EVE_Exit(Name)
+EVE_Enable(Name)
+EVE_Disable(Name)
+EVE_PrivateMsg(Name)
+EVE_GroupMsg(Name)
+EVE_DiscussMsg(Name)
+EVE_System_GroupAdmin(Name)
+EVE_Friend_Add(Name)
+EVE_Request_AddFriend(Name)
+EVE_Request_AddGroup(Name)
+EVE_Menu(Name)
+EVE_Status(Name)
+EVE_GroupUpload(Name)
+EVE_System_GroupMemberDecrease(Name)
+EVE_System_GroupMemberIncrease(Name)
+
+#define APP_name "酷Q样例应用"
+#define APP_auth_101 "发送群消息"
+#define APP_auth_103 "发送讨论组消息"
+#define APP_auth_106 "发送私聊消息"
+#define APP_auth_110 "发送赞"[敏感]
+#define APP_auth_120 "置群员移除"
+#define APP_auth_121 "置群员禁言"
+#define APP_auth_122 "置群管理员"
+#define APP_auth_123 "置全群禁言"
+#define APP_auth_124 "置匿名群员禁言"
+#define APP_auth_125 "置群匿名设置"
+#define APP_auth_126 "置群成员名片"
+#define APP_auth_127 "置群退出"[敏感]
+#define APP_auth_128 "置群成员专属头衔"
+#define APP_auth_130 "取群成员信息"
+#define APP_auth_131 "取陌生人信息"
+#define APP_auth_140 "置讨论组退出"
+#define APP_auth_150 "置好友添加请求"
+#define APP_auth_151 "置群添加请求"
+#define APP_auth_160 "取群成员列表"
+#define APP_auth_161 "取群列表"
+#define APP_auth_180 "撤回消息"
+#define APP_auth_20 "取Cookies"[敏感]
+#define APP_auth_30 "接收语音"
+#define APP_author "Example"
+#define APP_description "酷Q样例应用(V9应用机制)"
+#define APP_version "1.0.0(alpha)"
+#define APP_version_id 0
+#define CQ_DIR "D:\\CQP\\"
