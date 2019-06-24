@@ -164,6 +164,15 @@ namespace CQ {
 	//撤回消息 Auth=180
 	整数型 deleteMsg(长整数型 MsgId);
 
+	//是否支持发送图片，返回大于 0 为支持，等于 0 为不支持
+	整数型 canSendImage();
+
+	//是否支持发送语音，返回大于 0 为支持，等于 0 为不支持
+	整数型 canSendRecord();
+
+	//接收图片，并返回图片文件绝对路径
+	std::string getImage(std::string file);
+
 	//如果API调用返回错误代码
 	//则可以使用本函数获取相关中文信息
 	const char * getlasterrmsg();

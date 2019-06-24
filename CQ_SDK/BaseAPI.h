@@ -77,11 +77,11 @@ namespace CQ {
 		整数型 AuthCode//
 		);
 	//接收语音
-	CQAPI(CQ_getRecord, 文本型)(
-		整数型 AuthCode,//
-		文本型 file,// 收到消息中的语音文件名 (file)
-		文本型 outformat// 应用所需的格式  mp3,amr,wma,m4a,spx,ogg,wav,flac
-		);
+	//CQAPI(CQ_getRecord, 文本型)(
+	//	整数型 AuthCode,//
+	//	文本型 file,// 收到消息中的语音文件名 (file)
+	//	文本型 outformat// 应用所需的格式  mp3,amr,wma,m4a,spx,ogg,wav,flac
+	//	);
 	//取CsrfToken (慎用，此接口需要严格授权)
 	//Auth=20 即QQ网页用到的bkn/g_tk等 慎用,此接口需要严格授权
 	CQAPI(CQ_getCsrfToken, 整数型)(
@@ -228,4 +228,26 @@ namespace CQ {
 		整数型 AuthCode,
 		长整数型 MsgId
 		);
+	//9.20添加
+
+	//"CQ_canSendImage", , 是否支持发送图片，返回大于 0 为支持，等于 0 为不支持
+	CQAPI(CQ_canSendImage, 整数型)(
+		整数型 AuthCode
+		);
+	//"CQ_canSendRecord", , 是否支持发送语音，返回大于 0 为支持，等于 0 为不支持
+	CQAPI(CQ_canSendRecord, 整数型)(
+		整数型 AuthCode
+		);
+	//"CQ_getImage", , 接收图片，并返回图片文件绝对路径
+	CQAPI(CQ_getImage, 文本型)(
+		整数型 AuthCode,
+		文本型 file//收到消息中的图片文件名(file)
+		);
+	//撤回消息 Auth=180
+	CQAPI(CQ_getRecordV2, 文本型)(
+		整数型 AuthCode,
+		文本型 file,//收到消息中的语音文件名(file)
+		文本型 outformat//应用所需的格式
+		);
+
 }

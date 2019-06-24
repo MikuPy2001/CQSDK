@@ -43,7 +43,7 @@ string CQtoString(文本型 data, string API描述);
 string CQ::getCookies() { return CQtoString(CQ_getCookies(getAuthCode()), "取Cookies"); }
 
 //接收语音
-文本型 CQ::getRecord(文本型 file, 文本型 outformat) { return CQ_getRecord(getAuthCode(), file, outformat); }
+文本型 CQ::getRecord(文本型 file, 文本型 outformat) { return CQ_getRecordV2(getAuthCode(), file, outformat); }
 
 //接收语音
 std::string CQ::getRecord(std::string & file, std::string outformat) { return CQtoString(getRecord(file.c_str(), outformat.c_str()), "接收语音"); }
@@ -180,6 +180,25 @@ string CQtoString(文本型 data, string API描述) {
 	return "";
 }
 
+//以下三个函数需要测试
+整数型 CQ::canSendImage()
+{
+	return lasterr = CQ_canSendImage(getAuthCode());
+}
+
+整数型 CQ::canSendRecord()
+{
+	return lasterr = CQ_canSendRecord(getAuthCode());
+}
+
+string CQ::getImage(string file)
+{
+	return CQtoString(CQ_getImage(getAuthCode(), file.c_str()), "取应用目录");
+}
+
+
+//取应用目录
+//string CQ::getAppDirectory() { return CQtoString(CQ_getAppDirectory(getAuthCode()), "取应用目录"); }
 
 const char * CQ::getlasterrmsg()
 {
