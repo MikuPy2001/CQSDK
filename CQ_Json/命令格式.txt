@@ -1,3 +1,10 @@
+#define APP_name "酷Q样例应用"
+#define APP_author "Example"
+#define APP_description "酷Q样例应用(V9应用机制)"
+#define APP_version "1.0.0(alpha)"
+#define APP_version_id 0
+#define CQ_DIR "D:\\CQP\\"
+
 EVE_Startup(Name)
 EVE_Exit(Name)
 EVE_Enable(Name)
@@ -9,13 +16,13 @@ EVE_System_GroupAdmin(Name)
 EVE_Friend_Add(Name)
 EVE_Request_AddFriend(Name)
 EVE_Request_AddGroup(Name)
-EVE_Menu(Name)
-EVE_Status(Name)
 EVE_GroupUpload(Name)
 EVE_System_GroupMemberDecrease(Name)
 EVE_System_GroupMemberIncrease(Name)
 
-#define APP_name "酷Q样例应用"
+EVE_Menu(Name)
+EVE_Status(Name)
+
 #define APP_auth_101 "发送群消息"
 #define APP_auth_103 "发送讨论组消息"
 #define APP_auth_106 "发送私聊消息"
@@ -39,8 +46,3 @@ EVE_System_GroupMemberIncrease(Name)
 #define APP_auth_180 "撤回消息"
 #define APP_auth_20 "取Cookies"[敏感]
 #define APP_auth_30 "接收语音"
-#define APP_author "Example"
-#define APP_description "酷Q样例应用(V9应用机制)"
-#define APP_version "1.0.0(alpha)"
-#define APP_version_id 0
-#define CQ_DIR "D:\\CQP\\"
