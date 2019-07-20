@@ -7,6 +7,7 @@ namespace CQ_Json
 {
     class Program
     {
+        static DirectoryInfo CQ_DIR;
         static CQJson app = new CQJson();
         static void Main(string[] args)
         {
@@ -86,12 +87,15 @@ namespace CQ_Json
             {
                 line = lines[linePos];
                 //基础信息
-                if (line.StartsWith("#define APP_name ")) { }
-                else if (line.StartsWith("#define APP_author ")) { }
-                else if (line.StartsWith("#define APP_description ")) { }
-                else if (line.StartsWith("#define APP_version ")) { }
+                if (line.StartsWith("#define APP_name ")) { app.name = 取引号文本(line); }
+                else if (line.StartsWith("#define APP_author ")) { app.author = 取引号文本(line); }
+                else if (line.StartsWith("#define APP_description ")) { app.description = 取引号文本(line); }
+                else if (line.StartsWith("#define APP_version ")) { app.version = 取引号文本(line); }
                 else if (line.StartsWith("#define APP_version_id ")) { }
-                else if (line.StartsWith("#define CQ_DIR ")) { }
+                else if (line.StartsWith("#define CQ_DIR ")) {
+
+                    CQ_DIR = new DirectoryInfo(取引号文本(line));
+                }
 
                 //事件
                 else if (line.StartsWith("EVE_Startup")) { }
@@ -131,7 +135,25 @@ namespace CQ_Json
             if (endint == -1) return "";
             return text.Substring(stint, endint - stint);
         }
-
+        private static string 取引号文本(string text)
+        {
+            var sin = 取宏定义(text, '"');
+            if (sin < 0) return "";
+            var send = 取宏定义(text, '"', sin);
+            if (send < 0) return "";
+            var newstr = text.Substring(sin, send - sin);
+            return newstr;
+        }
+        private static string 取宏定义(string text)
+        {
+         var cs=   text.ToCharArray();
+            int start = text.IndexOf('"'), end;
+            for(int pos = text.IndexOf('"'); pos < cs.Length; pos++)
+            {
+                char This = cs[pos];
+                if(This)
+            }
+        }
         public class CQJson
         {
 
