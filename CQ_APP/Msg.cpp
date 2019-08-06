@@ -22,14 +22,21 @@ EVE_GroupMsg_EX(GroupMsg_EX)
 	debug << DEBUGINFO << e.message;
 	if (e.isAnonymous()) {//判断是否为匿名信息
 		auto info = e.getFromAnonymousInfo();//获取匿名信息
-		debug << ", 匿名者代号为:" << info.代号 << e.message;//输出到日志
+		debug << ", 匿名者代号为:" << info.代号 << e.message << endl;//输出到日志
 	}
-	debug << send;//发送日志
+
+	//获取群成员列表
+	//auto list = e.getGroupMemberList();
 
 	//遍历群成员
-	//auto list = e.getGroupMemberList();
-	//for each (auto var in list)
-	//	logger.Debug() << var.tostring() << e.message;
+	//for each (auto var in list){
+	//	logger.Debug() << var.tostring() << e.message<<endl;
+
+	//获取群成员信息
+	//auto QQInfo = list[e.fromQQ];
+	//logger.Debug() << QQInfo.tostring() << endl;
+
+
 
 	//取发言者的群信息
 	//auto player=e.getGroupMemberInfo();
@@ -48,6 +55,7 @@ EVE_GroupMsg_EX(GroupMsg_EX)
 	//e.setGroupCard("群名片");
 	//e.setGroupKick();//干掉这个人
 
+	debug << send;//发送日志
 	Msg(&e);
 }
 EVE_PrivateMsg_EX(PrivateMsg_EX)
