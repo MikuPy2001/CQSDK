@@ -180,9 +180,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\CQ_LIB\CQP.lib" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="事件">
       <UniqueIdentifier>{df575653-9d1d-4c41-993a-152b5bae8825}</UniqueIdentifier>
     </Filter>
@@ -198,5 +195,8 @@
     <Filter Include="依赖">
       <UniqueIdentifier>{dc7dbce0-96cd-4f71-9134-63fb0d282af6}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\CQ_LIB\CQP.lib" />
   </ItemGroup>
 </Project>

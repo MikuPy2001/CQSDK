@@ -57,13 +57,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\CQ_SDK\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(OutDir);$(LibraryPath)</LibraryPath>
     <TargetName>APP</TargetName>
+    <LibraryPath>$(SolutionDir)CQ_LIB\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)\CQ_SDK\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(OutDir);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)CQ_LIB\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

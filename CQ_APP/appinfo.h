@@ -1,4 +1,8 @@
+#ifdef _DEBUG
+#pragma comment(lib,"CQ_SDK_DEBUG.lib")
+#else
 #pragma comment(lib,"CQ_SDK.lib")
+#endif // _DEBUG
 #include <CQSDK.h>
 //--------开始之前--------
 
