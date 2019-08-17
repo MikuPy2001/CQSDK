@@ -40,7 +40,10 @@ string CQ::code::at(long long QQ)
 {
 	return string("[CQ:at,qq=") + to_string(QQ) + "]";
 }
-
+std::string CQ::code::at(std::string QQ)
+{
+	return string("[CQ:at,qq=") + QQ + "]";
+}
 string CQ::code::effect(string type, int id, string content)
 {
 	return string("[CQ:effect,type=") + type + ",id=" + to_string(id) + ",content=" + msg_encode(content, true) + "]";

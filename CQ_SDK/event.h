@@ -556,7 +556,7 @@ void Name##_EX();\
 EVE_Menu(Name){\
 	Name##_EX();\
 }\
-Name##_EX()
+void Name##_EX()
 /*
 Ðü¸¡´°
 

@@ -7,9 +7,9 @@ namespace CQ {
 	{
 		std::string
 			//数据
-			data,
+			data="***",
 			//数据单位
-			dataf;
+			dataf="错误";
 		int
 			// 1 : 绿
 			// 2 : 橙
@@ -17,7 +17,7 @@ namespace CQ {
 			// 4 : 深红
 			// 5 : 黑
 			// 6 : 灰
-			color;
+			color=3;
 		// 1 : 绿
 		void color_green();
 		// 2 : 橙

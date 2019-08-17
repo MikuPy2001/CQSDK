@@ -15,7 +15,6 @@
     <ClCompile Include="appmain.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Msg.cpp" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="源.cpp" />
   </ItemGroup>
   <ItemGroup>

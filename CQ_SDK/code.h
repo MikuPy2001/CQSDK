@@ -28,6 +28,7 @@ namespace CQ {
 		
 		//[CQ:at,qq={1}] - @某人
 		static std::string at(long long QQ);
+		static std::string at(std::string QQ);
 
 		//[CQ:effect,type=art,id=2003,content=小吉] - 魔法字体
 		static std::string effect(std::string type, int id, std::string content);

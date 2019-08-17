@@ -79,10 +79,11 @@ namespace CQ_Json
         }
 
         static int linePos = 0;
+        static string[] lines = null;
         static string line = null;
         private static void 解析文件(string cpp)
         {
-            var lines = cpp.Split('\n');
+            lines = cpp.Split('\n');
             for (linePos = 0; linePos < lines.Length; linePos++)
             {
                 line = lines[linePos];
@@ -91,29 +92,33 @@ namespace CQ_Json
                 else if (line.StartsWith("#define APP_author ")) { app.author = 取引号文本_贪婪(line); }
                 else if (line.StartsWith("#define APP_description ")) { app.description = 取引号文本_贪婪(line); }
                 else if (line.StartsWith("#define APP_version ")) { app.version = 取引号文本_贪婪(line); }
-                else if (line.StartsWith("#define APP_version_id ")) { }
+                else if (line.StartsWith("#define APP_version_id ")) {
+                    line = line.Substring("#define APP_version_id ".Length).Trim();
+                    try {
+                        app.version_id = int.Parse(line);
+                        lines[linePos] = "#define APP_version_id " + app.version_id + 1;
+                    } catch (Exception) { }
+                }
                 else if (line.StartsWith("#define CQ_DIR ")) {CQ_DIR = new DirectoryInfo(取引号文本_贪婪(line));}
 
                 //事件
-                else if (line.StartsWith("EVE_Startup")) { }
-                else if (line.StartsWith("EVE_Exit")) { }
-                else if (line.StartsWith("EVE_Enable")) { }
-                else if (line.StartsWith("EVE_Disable")) { }
-                else if (line.StartsWith("EVE_PrivateMsg")) { }
-                else if (line.StartsWith("EVE_GroupMsg")) { }
-                else if (line.StartsWith("EVE_DiscussMsg")) { }
-                else if (line.StartsWith("EVE_System_GroupAdmin")) { }
-                else if (line.StartsWith("EVE_Friend_Add")) { }
-                else if (line.StartsWith("EVE_Request_AddFriend")) { }
-                else if (line.StartsWith("EVE_Request_AddGroup")) { }
-                else if (line.StartsWith("EVE_GroupUpload")) { }
-                else if (line.StartsWith("EVE_System_GroupMemberDecrease")) { }
-                else if (line.StartsWith("EVE_System_GroupMemberIncrease")) { }
-
+                else if (line.StartsWith("EVE_Startup")) { addEVE(1001); }
+                else if (line.StartsWith("EVE_Exit")) { addEVE(1002); }
+                else if (line.StartsWith("EVE_Enable")) { addEVE(1003); }
+                else if (line.StartsWith("EVE_Disable")) { addEVE(1004); }
+                else if (line.StartsWith("EVE_PrivateMsg")) { addEVE(21); }
+                else if (line.StartsWith("EVE_GroupMsg")) { addEVE(2); }
+                else if (line.StartsWith("EVE_DiscussMsg")) { addEVE(4); }
+                else if (line.StartsWith("EVE_System_GroupAdmin")) { addEVE(101); }
+                else if (line.StartsWith("EVE_Friend_Add")) { addEVE(201); }
+                else if (line.StartsWith("EVE_Request_AddFriend")) { addEVE(301); }
+                else if (line.StartsWith("EVE_Request_AddGroup")) { addEVE(302); }
+                else if (line.StartsWith("EVE_GroupUpload")) { addEVE(11); }
+                else if (line.StartsWith("EVE_System_GroupMemberDecrease")) { addEVE(102); }
+                else if (line.StartsWith("EVE_System_GroupMemberIncrease")) { addEVE(103); }
                 //菜单和悬浮窗
-                else if (line.StartsWith("EVE_Menu")) { }
-                else if (line.StartsWith("EVE_Status")) { }
-
+                else if (line.StartsWith("EVE_Menu")) { addMenu(); }
+                else if (line.StartsWith("EVE_Status")) { addStatus(); }
                 //权限
                 else if (line.StartsWith("#define APP_auth_"))
                 {
@@ -122,6 +127,82 @@ namespace CQ_Json
                     app.auth.Add(authint);
                 }
             }
+        }
+
+        private static void addEVE(int Type)
+        {
+            var function = 取文本中间(line, "(", ")");
+            var name = function;
+            var priority = 30000;
+            var max = 20;
+            var reg = new CQregex();
+            while ((line = lines[++linePos]).IndexOf("{") < 0 && --max > 0)
+            {
+                if (line.StartsWith("//name:"))
+                {
+                    name = line.Substring("//name:".Length);
+                }
+                else if (line.StartsWith("//priority:"))
+                {
+                    try { priority = int.Parse(line.Substring("//priority:".Length)); } catch (Exception) { }
+                }
+                else if (line.StartsWith("//regex-key:"))
+                {
+                    var key = line.Substring("//regex-key:".Length);
+                    reg.key.Add(key);
+                }
+                else if (line.StartsWith("//regex-expression:"))
+                {
+                    var expression = line.Substring("//regex-expression:".Length);
+                    reg.expression.Add(expression);
+                }
+            }
+            CQevent eve= new CQevent(type: Type, name: name, function: function, priority: priority);
+            if (reg.expression.Count > 0)
+                eve.regex = reg;
+            
+            app._event.Add(eve);
+        }
+        private static void addMenu()
+        {
+            var function = 取文本中间(line, "(", ")");
+            var name = function;
+            var max = 10;
+            while ((line = lines[++linePos]).IndexOf("{") < 0 && --max > 0)
+            {
+                if (line.StartsWith("//name:"))
+                {
+                    name = line.Substring("//name:".Length);
+                }
+              
+            }
+            app.menu.Add(new CQmenu(name: name, function: function));
+            ;
+        }
+        private static void addStatus()
+        {
+            var function = 取文本中间(line, "(", ")");
+            var name = function;
+            var title = "自制悬浮窗";
+            var period = 1000;
+
+            var max = 10;
+            while ((line = lines[++linePos]).IndexOf("{") < 0 && --max > 0)
+            {
+                if (line.StartsWith("//name:"))
+                {
+                    name = line.Substring("//name:".Length);
+                }
+                else if (line.StartsWith("//title:"))
+                {
+                    title = line.Substring("//title:".Length);
+                }
+                else if (line.StartsWith("//period:"))
+                {
+                    try { period = int.Parse(line.Substring("//period:".Length)); } catch (Exception) { }
+                }
+            }
+            app.status.Add(new CQstatus(name: name, function: function, period: period, title: title));
         }
         private static string 取文本中间(string text, string st, string end)
         {
@@ -142,11 +223,11 @@ namespace CQ_Json
         public class CQJson
         {
 
-            public string name;
-            public string version;
-            public int version_id;
-            public string author;
-            public string description;
+            public string name = "酷Q样例应用";
+            public string version = "1.0.0";
+            public int version_id = 1;
+            public string author = "Example";
+            public string description = "酷Q样例应用(V9应用机制)";
             [JsonProperty(PropertyName = "event")]
             public List<CQevent> _event = new List<CQevent>();
             public List<CQmenu> menu = new List<CQmenu>();
@@ -220,8 +301,8 @@ namespace CQ_Json
         }
         public class CQregex
         {
-            public List<string> key;
-            public List<string> expression;
+            public List<string> key = new List<string>();
+            public List<string> expression = new List<string>();
         }
         public class CQstatus
         {
@@ -231,6 +312,13 @@ namespace CQ_Json
             public string function;
             public int period;
 
+            public CQstatus(string name, string title, string function, int period)
+            {
+                this.name = name;
+                this.title = title;
+                this.function = function;
+                this.period = period;
+            }
         }
 
         //测试用的类
@@ -248,6 +336,13 @@ namespace CQ_Json
                 j._event.Add(new CQevent(1001, "mmm", "fun1", 30000));
                 j._event.Add(new CQevent(1002, "mmm", "fun2", 30000));
 
+                CQregex r = new CQregex();
+                r.key.Add("QQ");
+                r.key.Add("action");
+                r.expression.Add("^(?<action>\\S{1,4}?)\\s*(?<qq>\\d{5,10})\\s*?$");
+
+                j._event[1].regex = r;
+
                 j.menu.Add(new CQmenu("menu1", "fun5"));
                 j.menu.Add(new CQmenu("menu2", "fun6"));
 
@@ -255,6 +350,8 @@ namespace CQ_Json
 
 
                 Console.WriteLine(output);
+                Console.ReadLine();
+
             }
         }
     }

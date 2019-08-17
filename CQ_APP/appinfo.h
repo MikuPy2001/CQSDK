@@ -50,6 +50,7 @@
 #define APP_version "1.0.0(alpha)"
 
 // 应用顺序版本（每次发布时小工具自动将其+1）
+// 必须为纯数字,否则将会解析失败
 #define APP_version_id 0
 
 // 应用作者

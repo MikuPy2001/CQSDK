@@ -6,7 +6,6 @@
     <ClCompile Include="Msg.cpp" />
     <ClCompile Include="源.cpp" />
     <ClCompile Include="appinfo.h" />
-    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
