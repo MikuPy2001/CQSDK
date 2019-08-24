@@ -38,10 +38,10 @@ EVE_GroupMsg_EX(GroupMsg_EX)
 //regex-key:action
 //regex-expression:^(?<action>\S{1,4}?)\s*(?<qq>\d{5,10})\s*?$
 {
-	 regexMsg reg(e.message);
-	 auto QQ = reg["QQ"];
-	 auto action = reg["action"];
-	 e.sendMsg() << code::at(e.fromQQ) << " " << action << "了" << code::at(QQ) << "一下" << send;
+	auto reg = e.regexMsg();
+	auto QQ = reg["QQ"];
+	auto action = reg["action"];
+	e.sendMsg() << code::at(e.fromQQ) << " " << action << "了" << code::at(QQ) << "一下" << send;
 }
 
 EVE_Status_EX(Status)

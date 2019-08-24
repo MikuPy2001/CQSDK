@@ -1,4 +1,5 @@
 #include "MsgEvent.h"
+#include "Tool.h"
 
 
 CQ::MsgEvent::MsgEvent(int subType, int msgId, long long fromQQ, const char* message, int font)
@@ -20,4 +21,9 @@ bool CQ::MsgEvent::isUser() const
 bool CQ::MsgEvent::isSystem() const
 {
 	return fromQQ == 1000000;
+}
+
+std::map<std::string, std::string> CQ::MsgEvent::regexMsg()
+{
+	return regexMsg2Map(this->message);
 }

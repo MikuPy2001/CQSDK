@@ -29,10 +29,12 @@ namespace CQ {
 		virtual int sendMsg(std::string) const = 0;
 		virtual MsgSend sendMsg() const = 0;
 
+		//正则消息获取,未做缓存,请勿多次获取
+		virtual std::map<std::string, std::string> regexMsg();
 	protected:
 		//子类型
 		int subType;
-		//字体
+		//字体(已经弃用)现为保留变量
 		//Font font;
 		int font;
 	};

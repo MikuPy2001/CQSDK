@@ -8,6 +8,6 @@
     <ClCompile Include="appinfo.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
+    <ClInclude Include="appVer.h" />
   </ItemGroup>
 </Project>

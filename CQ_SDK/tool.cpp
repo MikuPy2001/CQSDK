@@ -1,7 +1,10 @@
 #include "tool.h"
 
+#include "Unpack.h"
+
 #include <ctype.h>   // for isalnum
 #include <string>
+
 
 using namespace std;
 
@@ -142,5 +145,22 @@ std::string & msg_decode(std::string  & s, bool isCQ)
 	msg_tihuan(s, "&#44;", "\t");
 	msg_tihuan(s, "&amp;", "&");
 	return s;
+}
+
+std::map<std::string, std::string> regexMsg2Map(std::string msg)
+{
+	std::map<std::string, std::string> regexMap;
+	Unpack msgs(base64_decode(msg));
+	auto len = msgs.getInt();//获取参数数量
+	while (len-- > 0) {
+		auto tep = msgs.getUnpack();
+		auto key = tep.getstring();
+		auto value = tep.getstring();
+		if (key == "") {
+			return;
+		}
+		regexMap[key] = value;
+	}
+	return regexMap;
 }
 

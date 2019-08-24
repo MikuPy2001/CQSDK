@@ -2,16 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace CQ_Json
 {
     class Program
     {
-        static DirectoryInfo CQ_DIR;
+        static string CQ_DIR;
         static CQJson app = new CQJson();
         static void Main(string[] args)
         {
-            DirectoryInfo srcDir, diDir;
+            string srcDir = null, appJsonFile = null;
+            //帮助
             {
                 var str = System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName;
                 var help = "从源文件中提取插件信息,在指定目录生成JSON.\n\n" +
@@ -20,49 +22,96 @@ namespace CQ_Json
                    "并提取包含信息内容的宏,用于生成JSON,\n" +
                    "随后将app.dll以及app.json复制至<酷Q/dev/APP_ID/>目录,\n" +
                    "请查看CQ_APP项目相关源文件了解更多相关内容";
-                if (args.Length == 0)
-                {
-                    Console.Write(help); return;
-                }
-                else if (args[0] == "/?")
-                {
-                    Console.Write(help); return;
-                }
-
-                srcDir = new DirectoryInfo(args[0]);
-                if (!srcDir.Exists)
-                {
-                    Console.Write("源文件目录不存在."); return;
-                }
-                diDir = new DirectoryInfo(args[2]);
-                if (!diDir.Exists)
-                {
-                    Console.Write("生成目录不存在."); return;
-                }
+                if (args.Length == 0
+                    || args[0] == "/?"
+                    || args[0] == "?"
+                    || args[0] == "help"
+                    )
+                { Console.WriteLine(help); return; }
             }
-
-            Console.WriteLine(srcDir);
-            var cpps = 遍历目录(srcDir, "*.cpp");
-            foreach (var file in cpps)
+            //参数检查
             {
-                try
+                if (args.Length > 0)
                 {
-                    FileStream fs = new FileStream(file.FullName, FileMode.Open);
-                    StreamReader sr = new StreamReader(fs);
-                    string s = sr.ReadToEnd();
-                    sr.Close();
-                    fs.Close();
-                    解析文件(s);
+                    if (Directory.Exists(args[0])) { srcDir = args[0]; }
+                    else { Console.WriteLine("源文件目录不存在."); return; }
                 }
-                catch
+                else { Console.WriteLine("未指定源文件目录."); return; }
+
+                if (args.Length > 1)
                 {
-                    Console.WriteLine("文件打开失败:" + file.FullName);
+                    if (Directory.Exists(args[1])) { appJsonFile = args[1] + @"\app.json"; }
+                    else
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory(args[1]);
+                            appJsonFile = args[1] + @"\app.json";
+                        }
+                        catch { Console.WriteLine("生成目录不存在且无法生成."); return; }
+                    }
                 }
+                else { Console.WriteLine("未指定生成文件目录."); return; }
+
+                if (args.Length > 2) { CQ_DIR = args[2]; }
             }
+            //解析文件
+            try
+            {
+                //删除
+                File.Delete(appJsonFile);
+
+                StreamWriter outw = new StreamWriter(
+                new FileStream(appJsonFile, FileMode.Create)
+                , Encoding.UTF8);
+
+
+                //开始遍历
+                Console.WriteLine("源文件目录" + srcDir);
+                var cpps = 遍历目录(new DirectoryInfo(srcDir), "*.cpp");
+                foreach (var file in cpps)
+                {
+                    try
+                    {
+                        StreamReader sr = new StreamReader(
+                            new FileStream(file.FullName, FileMode.Open)
+                            , Encoding.Default);
+                        string s = sr.ReadToEnd();
+                        sr.Close();
+                        解析文件(s);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("源文件读入失败:" + file.FullName); return;
+                    }
+                }
+                outw.Write(JsonConvert.SerializeObject(app));
+                outw.Close();
+                Console.WriteLine("酷QJSON构建成功.");
+            }
+            catch { Console.WriteLine("app.json无法写出,文件是否被占用:" + appJsonFile); return; }
+
+            //保存到文件
+            if (CQ_DIR != null)
+            {
+                if (Directory.Exists(CQ_DIR))
+                {
+                    string s = CQ_DIR + @"\app.json";
+                    File.Delete(s);
+                    File.Copy(appJsonFile, s);
+                }
+                else { Console.WriteLine("酷Q目录无法识别,将不会复制"); }
+            }
+            else { Console.WriteLine("未指定酷Q目录,将不会复制"); }
+            Console.WriteLine("CQTool:Done.");
         }
 
         private static List<FileInfo> 遍历目录(DirectoryInfo srcDir, string v)
         {
+            if ((srcDir.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden //隐藏属性
+                || (srcDir.Attributes & FileAttributes.System) == FileAttributes.System)//系统文件夹
+                return new List<FileInfo>();
+
             var al = new List<FileInfo>();
             var files = srcDir.GetFiles(v);
             al.AddRange(files);
@@ -81,8 +130,10 @@ namespace CQ_Json
         static int linePos = 0;
         static string[] lines = null;
         static string line = null;
+        static string APP_ID = null;
         private static void 解析文件(string cpp)
         {
+            cpp = cpp.Replace("\r\n", "\n").Replace("\r", "\n");
             lines = cpp.Split('\n');
             for (linePos = 0; linePos < lines.Length; linePos++)
             {
@@ -90,16 +141,20 @@ namespace CQ_Json
                 //基础信息
                 if (line.StartsWith("#define APP_name ")) { app.name = 取引号文本_贪婪(line); }
                 else if (line.StartsWith("#define APP_author ")) { app.author = 取引号文本_贪婪(line); }
+                else if (line.StartsWith("#define APP_ID ")) { APP_ID = 取引号文本_贪婪(line); }
                 else if (line.StartsWith("#define APP_description ")) { app.description = 取引号文本_贪婪(line); }
                 else if (line.StartsWith("#define APP_version ")) { app.version = 取引号文本_贪婪(line); }
-                else if (line.StartsWith("#define APP_version_id ")) {
-                    line = line.Substring("#define APP_version_id ".Length).Trim();
-                    try {
-                        app.version_id = int.Parse(line);
+                else if (line.StartsWith("#define APP_version_id "))
+                {
+                    var APP_version_id = line.Substring("#define APP_version_id ".Length).Trim();
+                    try
+                    {
+                        app.version_id = int.Parse(APP_version_id);
                         lines[linePos] = "#define APP_version_id " + app.version_id + 1;
-                    } catch (Exception) { }
+                    }
+                    catch (Exception) { }
                 }
-                else if (line.StartsWith("#define CQ_DIR ")) {CQ_DIR = new DirectoryInfo(取引号文本_贪婪(line));}
+                else if (line.StartsWith("#define CQ_DIR ")) { CQ_DIR = 取引号文本_贪婪(line); }
 
                 //事件
                 else if (line.StartsWith("EVE_Startup")) { addEVE(1001); }
@@ -129,39 +184,65 @@ namespace CQ_Json
             }
         }
 
+        static int EveId = 1;
         private static void addEVE(int Type)
         {
             var function = 取文本中间(line, "(", ")");
             var name = function;
             var priority = 30000;
-            var max = 20;
             var reg = new CQregex();
-            while ((line = lines[++linePos]).IndexOf("{") < 0 && --max > 0)
+            var msg = false;
+
+            switch (Type)
             {
+                case 2:
+                case 4:
+                case 21:
+                    msg = true; break;
+            }
+            var max = 20;
+            for (var end = linePos + max; linePos < end; linePos++)
+            //while ( --max > 0)
+            {
+                line = lines[linePos];
+                var s1 = line.IndexOf("//");
+                var s2 = line.IndexOf("{");
+
+                //if (s1 == 0) ;//开头就是注释,直接跳过
+                if (s1 > 0) { if (0 <= s2 && s2 < s1) break; }//如果存在//,则判断{是否在//前面
+                else if (s2 >= 0) break;//如果不存在//,直接判断是否存在{
+
                 if (line.StartsWith("//name:"))
                 {
                     name = line.Substring("//name:".Length);
+                    //Console.WriteLine(function + ":" + name);
                 }
                 else if (line.StartsWith("//priority:"))
                 {
                     try { priority = int.Parse(line.Substring("//priority:".Length)); } catch (Exception) { }
                 }
-                else if (line.StartsWith("//regex-key:"))
+                else if (msg)
                 {
-                    var key = line.Substring("//regex-key:".Length);
-                    reg.key.Add(key);
-                }
-                else if (line.StartsWith("//regex-expression:"))
-                {
-                    var expression = line.Substring("//regex-expression:".Length);
-                    reg.expression.Add(expression);
+                    if (line.StartsWith("//regex-key:"))
+                    {
+                        var key = line.Substring("//regex-key:".Length);
+                        reg.key.Add(key);
+                    }
+                    else if (line.StartsWith("//regex-expression:"))
+                    {
+                        var expression = line.Substring("//regex-expression:".Length);
+                        reg.expression.Add(expression);
+                    }
                 }
             }
-            CQevent eve= new CQevent(type: Type, name: name, function: function, priority: priority);
-            if (reg.expression.Count > 0)
-                eve.regex = reg;
-            
-            app._event.Add(eve);
+            if (reg.expression.Count == 0)
+            {
+                app._event.Add(new CQevent(id: EveId++, type: Type, name: name, function: function, priority: priority));
+            }
+            else
+            {
+                app._event.Add(new CQevent(id: EveId++, type: Type, name: name, function: function, priority: priority, regex: reg));
+            }
         }
         private static void addMenu()
         {
@@ -174,11 +255,13 @@ namespace CQ_Json
                 {
                     name = line.Substring("//name:".Length);
                 }
-              
+
             }
             app.menu.Add(new CQmenu(name: name, function: function));
             ;
         }
+
+        static int StatusId = 1;
         private static void addStatus()
         {
             var function = 取文本中间(line, "(", ")");
@@ -202,7 +285,7 @@ namespace CQ_Json
                     try { period = int.Parse(line.Substring("//period:".Length)); } catch (Exception) { }
                 }
             }
-            app.status.Add(new CQstatus(name: name, function: function, period: period, title: title));
+            app.status.Add(new CQstatus(name: name, function: function, period: period, title: title, id: StatusId++));
         }
         private static string 取文本中间(string text, string st, string end)
         {
@@ -291,13 +374,25 @@ namespace CQ_Json
             {
             }
 
-            public CQevent(int type, string name, string function, int priority)
+            public CQevent(int id, int type, string name, string function, int priority, CQregex regex)
             {
+                this.id = id;
+                this.type = type;
+                this.name = name;
+                this.function = function;
+                this.priority = priority;
+                this.regex = regex;
+            }
+
+            public CQevent(int id, int type, string name, string function, int priority)
+            {
+                this.id = id;
                 this.type = type;
                 this.name = name;
                 this.function = function;
                 this.priority = priority;
             }
+
         }
         public class CQregex
         {
@@ -312,17 +407,19 @@ namespace CQ_Json
             public string function;
             public int period;
 
-            public CQstatus(string name, string title, string function, int period)
+            public CQstatus(int id, string name, string title, string function, int period)
             {
+                this.id = id;
                 this.name = name;
                 this.title = title;
                 this.function = function;
                 this.period = period;
             }
+
         }
 
         //测试用的类
-        class Test
+        class TestJson
         {
             static void Main(string[] args)
             {
@@ -333,8 +430,8 @@ namespace CQ_Json
                 j.auth.Add(4);
                 j.auth.Add(5);
 
-                j._event.Add(new CQevent(1001, "mmm", "fun1", 30000));
-                j._event.Add(new CQevent(1002, "mmm", "fun2", 30000));
+                j._event.Add(new CQevent(1, 1001, "mmm", "fun1", 30000));
+                j._event.Add(new CQevent(2, 1002, "mmm", "fun2", 30000));
 
                 CQregex r = new CQregex();
                 r.key.Add("QQ");
@@ -347,6 +444,27 @@ namespace CQ_Json
                 j.menu.Add(new CQmenu("menu2", "fun6"));
 
                 string output = JsonConvert.SerializeObject(j);
+
+
+                Console.WriteLine("预览:");
+                Console.WriteLine(output);
+                Console.ReadLine();
+
+            }
+        }
+        class TestMain
+        {
+            static void Main(string[] args)
+            {
+                string[] args1 = new string[]
+                {
+                    @"Z:\CQSDK\CQ_APP\测试",
+                    @"Z:\CQSDK\CQ_APP\测试"
+                };
+
+                Program.Main(args1);
+
+                string output = JsonConvert.SerializeObject(Program.app);
 
 
                 Console.WriteLine(output);
