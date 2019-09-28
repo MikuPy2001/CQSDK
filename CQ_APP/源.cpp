@@ -1,7 +1,7 @@
 //您应当先看appmain
 
 //还未完成的内容
-
+ 
 
 #include <CQSDK.h>
 
@@ -31,13 +31,13 @@ EVE_System_GroupMemberIncrease(System_GroupMemberIncrease) {
 }
 
 //使用酷Q原生自带的正则消息捕获
-EVE_GroupMsg_EX(GroupMsg_EX)
-//name:群聊消息
+EVE_GroupMsg_EX(GroupMsg_regex)
+//name:正则消息
 //priority:30000
 //regex-key:QQ
 //regex-key:action
 //regex-expression:^(?<action>\S{1,4}?)\s*(?<qq>\d{5,10})\s*?$
-{
+{ 
 	auto reg = e.regexMsg();
 	auto QQ = reg["QQ"];
 	auto action = reg["action"];

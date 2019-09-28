@@ -44,7 +44,7 @@
 */
 
 // 应用名称
-#define APP_anem "酷Q样例应用"
+#define APP_name "酷Q样例应用"
 
 // 应用版本
 #include "appVer.h"
@@ -86,7 +86,7 @@
 #define APP_auth_180 "撤回消息"
 
 //酷Q目录,直接生成到酷Q目录
-#define CQ_DIR "D:\\CQP\\"
+#define CQ_DIR "C:\\"
 
 
 //接下来请转到 appmain.cpp 以继续

@@ -157,7 +157,7 @@ std::map<std::string, std::string> regexMsg2Map(std::string msg)
 		auto key = tep.getstring();
 		auto value = tep.getstring();
 		if (key == "") {
-			return;
+			break;//已经意外到结尾了
 		}
 		regexMap[key] = value;
 	}

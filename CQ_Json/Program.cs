@@ -31,6 +31,14 @@ namespace CQ_Json
             }
             //参数检查
             {
+                Console.Write("收到参数如下:");
+                foreach(var s in args)
+                {
+                    Console.Write(s);
+                    Console.Write("; ");
+                }
+                Console.WriteLine();
+
                 if (args.Length > 0)
                 {
                     if (Directory.Exists(args[0])) { srcDir = args[0]; }
@@ -67,8 +75,9 @@ namespace CQ_Json
 
 
                 //开始遍历
-                Console.WriteLine("源文件目录" + srcDir);
+                //Console.WriteLine("源文件目录" + srcDir);
                 var cpps = 遍历目录(new DirectoryInfo(srcDir), "*.cpp");
+                cpps.AddRange(遍历目录(new DirectoryInfo(srcDir), "*.h"));
                 foreach (var file in cpps)
                 {
                     try
@@ -79,6 +88,7 @@ namespace CQ_Json
                         string s = sr.ReadToEnd();
                         sr.Close();
                         解析文件(s);
+                        //todo; 保存修改的文件
                     }
                     catch
                     {
@@ -96,9 +106,12 @@ namespace CQ_Json
             {
                 if (Directory.Exists(CQ_DIR))
                 {
-                    string s = CQ_DIR + @"\app.json";
+                    string CQ_APPDIR = CQ_DIR + @"\dev\"+ APP_ID;
+
+                    //todo: 这里没写完
+
                     File.Delete(s);
-                    File.Copy(appJsonFile, s);
+                    File.Copy( appJsonFile, s);
                 }
                 else { Console.WriteLine("酷Q目录无法识别,将不会复制"); }
             }
@@ -139,11 +152,16 @@ namespace CQ_Json
             {
                 line = lines[linePos];
                 //基础信息
-                if (line.StartsWith("#define APP_name ")) { app.name = 取引号文本_贪婪(line); }
-                else if (line.StartsWith("#define APP_author ")) { app.author = 取引号文本_贪婪(line); }
-                else if (line.StartsWith("#define APP_ID ")) { APP_ID = 取引号文本_贪婪(line); }
-                else if (line.StartsWith("#define APP_description ")) { app.description = 取引号文本_贪婪(line); }
-                else if (line.StartsWith("#define APP_version ")) { app.version = 取引号文本_贪婪(line); }
+                if (line.StartsWith("#define APP_name ")) {
+                    app.name = 取引号文本_贪婪(line); }
+                else if (line.StartsWith("#define APP_author ")) {
+                    app.author = 取引号文本_贪婪(line); }
+                else if (line.StartsWith("#define APP_ID ")) {
+                    APP_ID = 取引号文本_贪婪(line); }
+                else if (line.StartsWith("#define APP_description ")) {
+                    app.description = 取引号文本_贪婪(line); }
+                else if (line.StartsWith("#define APP_version ")) {
+                    app.version = 取引号文本_贪婪(line); }
                 else if (line.StartsWith("#define APP_version_id "))
                 {
                     var APP_version_id = line.Substring("#define APP_version_id ".Length).Trim();
@@ -300,7 +318,7 @@ namespace CQ_Json
         {
             var start = text.IndexOf('"');
             var end = text.LastIndexOf('"');
-            var newstr = text.Substring(start, end - start);
+            var newstr = text.Substring(start + 1, end - start - 1);
             return newstr;
         }
         public class CQJson
@@ -458,8 +476,8 @@ namespace CQ_Json
             {
                 string[] args1 = new string[]
                 {
-                    @"Z:\CQSDK\CQ_APP\测试",
-                    @"Z:\CQSDK\CQ_APP\测试"
+                    @"Z:\CQSDK\CQ_TEST\",
+                    @"C:\1\"
                 };
 
                 Program.Main(args1);

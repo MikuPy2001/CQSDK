@@ -33,7 +33,6 @@
     <ClInclude Include="MsgEvent.h" />
     <ClInclude Include="MsgSend.h" />
     <ClInclude Include="PrivateMsgEvent.h" />
-    <ClInclude Include="regexMsg.h" />
     <ClInclude Include="RequestAddFriendEvent.h" />
     <ClInclude Include="RequestAddGroupEvent.h" />
     <ClInclude Include="RequestBasicEvent.h" />
@@ -62,7 +61,6 @@
     <ClCompile Include="MsgEvent.cpp" />
     <ClCompile Include="MsgSend.cpp" />
     <ClCompile Include="PrivateMsgEvent.cpp" />
-    <ClCompile Include="regexMsg.cpp" />
     <ClCompile Include="RequestAddFriendEvent.cpp" />
     <ClCompile Include="RequestAddGroupEvent.cpp" />
     <ClCompile Include="RequestBasicEvent.cpp" />

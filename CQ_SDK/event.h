@@ -555,6 +555,7 @@ responseFlag 反馈标识(处理请求用)
 void Name##_EX();\
 EVE_Menu(Name){\
 	Name##_EX();\
+	return 0;\
 }\
 void Name##_EX()
 /*

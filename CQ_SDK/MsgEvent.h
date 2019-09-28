@@ -4,6 +4,7 @@
 #include "MsgSend.h"
 
 #include <string>
+#include <map>
 
 inline
 namespace CQ {

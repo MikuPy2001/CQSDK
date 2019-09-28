@@ -77,9 +77,6 @@
     <ClInclude Include="code.h">
       <Filter>工具</Filter>
     </ClInclude>
-    <ClInclude Include="regexMsg.h">
-      <Filter>工具</Filter>
-    </ClInclude>
     <ClInclude Include="tool.h">
       <Filter>工具</Filter>
     </ClInclude>
@@ -161,9 +158,6 @@
       <Filter>工具</Filter>
     </ClCompile>
     <ClCompile Include="code.cpp">
-      <Filter>工具</Filter>
-    </ClCompile>
-    <ClCompile Include="regexMsg.cpp">
       <Filter>工具</Filter>
     </ClCompile>
     <ClCompile Include="tool.cpp">

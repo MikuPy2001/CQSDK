@@ -6,7 +6,7 @@
 #include "BaseStream.h"
 #include "event.h"
 #include "face.h"
-#include "regexMsg.h"
+//#include "regexMsg.h"
 #include "StatusEvent.h"
 #include "SystemGroupAdminEvent.h"
 #include "Unpack.h"
