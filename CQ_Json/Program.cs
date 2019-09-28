@@ -8,11 +8,15 @@ namespace CQ_Json
 {
     class Program
     {
+        //酷Q应用的根目录
         static string CQ_DIR;
+        //Json对象
         static CQJson app = new CQJson();
         static void Main(string[] args)
         {
-            string srcDir = null, appJsonFile = null;
+            string srcDir, //源文件目录
+                outPutDir, //生成目录
+                appJsonFile;//json生成路径
             //帮助
             {
                 var str = System.Diagnostics.Process.GetCurrentProcess().MainModule.ModuleName;
@@ -31,8 +35,8 @@ namespace CQ_Json
             }
             //参数检查
             {
-                Console.Write("收到参数如下:");
-                foreach(var s in args)
+                Console.Write("(1)收到参数如下:");
+                foreach (var s in args)
                 {
                     Console.Write(s);
                     Console.Write("; ");
@@ -41,27 +45,24 @@ namespace CQ_Json
 
                 if (args.Length > 0)
                 {
-                    if (Directory.Exists(args[0])) { srcDir = args[0]; }
+                    if (Directory.Exists(args[0])) { srcDir = Path.GetDirectoryName(args[0]); }
                     else { Console.WriteLine("源文件目录不存在."); return; }
                 }
                 else { Console.WriteLine("未指定源文件目录."); return; }
 
                 if (args.Length > 1)
                 {
-                    if (Directory.Exists(args[1])) { appJsonFile = args[1] + @"\app.json"; }
-                    else
+                    if (!Directory.Exists(args[1]))
                     {
-                        try
-                        {
-                            Directory.CreateDirectory(args[1]);
-                            appJsonFile = args[1] + @"\app.json";
-                        }
+                        try { Directory.CreateDirectory(args[1]); }
                         catch { Console.WriteLine("生成目录不存在且无法生成."); return; }
                     }
+                    outPutDir = Path.GetDirectoryName(args[1]);
+                    appJsonFile = Path.Combine(outPutDir, @"app.json");
                 }
                 else { Console.WriteLine("未指定生成文件目录."); return; }
 
-                if (args.Length > 2) { CQ_DIR = args[2]; }
+                if (args.Length > 2) { CQ_DIR = Path.GetDirectoryName(args[2]); }
             }
             //解析文件
             try
@@ -101,19 +102,41 @@ namespace CQ_Json
             }
             catch { Console.WriteLine("app.json无法写出,文件是否被占用:" + appJsonFile); return; }
 
-            //保存到文件
+            //把文件复制到酷Q目录
             if (CQ_DIR != null)
             {
-                if (Directory.Exists(CQ_DIR))
+                if (APP_ID != "")
                 {
-                    string CQ_APPDIR = CQ_DIR + @"\dev\"+ APP_ID;
+                    Console.WriteLine("应用ID为:" + APP_ID);
+                    if (Directory.Exists(CQ_DIR))
+                    {
+                        string CQ_DEBDIR = Path.Combine(new string[] { CQ_DIR, @"dev", APP_ID });
+                        string CQ_DLL = Path.Combine(new string[] { CQ_DEBDIR, @"app.dll" });
+                        string CQ_JSON = Path.Combine(new string[] { CQ_DEBDIR, @"app.json" });
 
-                    //todo: 这里没写完
+                        //检查目录是否存在
+                        if (!Directory.Exists(CQ_DEBDIR))
+                        {
+                            try { Console.WriteLine("酷Q应用目录创建:" + Directory.CreateDirectory(CQ_DLL)); }
+                            catch { Console.WriteLine("酷Q应用目录不存在且无法生成."); return; }
+                        }
+                        string dlloutfile = Path.Combine(outPutDir, @"app.dll");
 
-                    File.Delete(s);
-                    File.Copy( appJsonFile, s);
+                        try { File.Delete(CQ_DLL); } catch { Console.WriteLine("删除DLL失败:" + CQ_DLL); }
+                        try { File.Delete(CQ_JSON); } catch { Console.WriteLine("删除JSON失败:" + CQ_JSON); }
+
+                        Console.WriteLine("复制DLL:" + dlloutfile + "->" + CQ_DLL);
+                        try
+                        { File.Copy(dlloutfile, CQ_DLL); }
+                        catch { Console.WriteLine("dll未能复制到酷Q应用目录."); }
+
+                        Console.WriteLine("复制JSON:" + appJsonFile + "->" + CQ_JSON);
+                        try { File.Copy(appJsonFile, CQ_JSON); }
+                        catch { Console.WriteLine("json未能复制到酷Q应用目录."); }
+                    }
+                    else { Console.WriteLine("酷Q目录无法识别,将不会复制"); }
                 }
-                else { Console.WriteLine("酷Q目录无法识别,将不会复制"); }
+                else { Console.WriteLine("未扫描到应用ID,将不会复制"); }
             }
             else { Console.WriteLine("未指定酷Q目录,将不会复制"); }
             Console.WriteLine("CQTool:Done.");
@@ -172,7 +195,7 @@ namespace CQ_Json
                     }
                     catch (Exception) { }
                 }
-                else if (line.StartsWith("#define CQ_DIR ")) { CQ_DIR = 取引号文本_贪婪(line); }
+                else if (line.StartsWith("#define CQ_DIR ")) { CQ_DIR = Path.GetDirectoryName( 取引号文本_贪婪(line)); }
 
                 //事件
                 else if (line.StartsWith("EVE_Startup")) { addEVE(1001); }
@@ -477,7 +500,7 @@ namespace CQ_Json
                 string[] args1 = new string[]
                 {
                     @"Z:\CQSDK\CQ_TEST\",
-                    @"C:\1\"
+                    @"C:\1\testout\"
                 };
 
                 Program.Main(args1);
