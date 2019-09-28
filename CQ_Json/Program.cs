@@ -117,7 +117,7 @@ namespace CQ_Json
                         //检查目录是否存在
                         if (!Directory.Exists(CQ_DEBDIR))
                         {
-                            try { Console.WriteLine("酷Q应用目录创建:" + Directory.CreateDirectory(CQ_DLL)); }
+                            try { Console.WriteLine("酷Q应用目录创建:" + Directory.CreateDirectory(CQ_DEBDIR)); }
                             catch { Console.WriteLine("酷Q应用目录不存在且无法生成."); return; }
                         }
                         string dlloutfile = Path.Combine(outPutDir, @"app.dll");
