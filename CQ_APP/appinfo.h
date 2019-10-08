@@ -31,7 +31,7 @@
 //----我应该按照什么原则命名----
 //请查阅 http://d.cqp.me/Pro/开发/基础信息
 
- 
+
 
 
 //以下内容需要CQJSON小工具支持
@@ -40,8 +40,9 @@
 
 //如果使用CQJSON小工具
 //需要在<生成后事件>的<命令行>写入以下命令
+//默认已经添加
 /*
-$(SolutionDir)CQ_Json\bin\Debug\CQ_Json.exe $(ProjectDir) $(TargetDir)
+$(SolutionDir)CQ_Json.exe $(ProjectDir) $(TargetDir)
 */
 
 // 应用名称

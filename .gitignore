@@ -35,8 +35,7 @@
 /.vs
 /Debug
 /Release
-/CQJson/obj
-/CQJson/bin
 .vshistory
-/CQ_Json/obj
-/CQ_Json/bin
+/CQ_TEST
+/CQ_LIB/CQ_SDK_DEBUG.lib
+/CQ_LIB/CQ_SDK.lib

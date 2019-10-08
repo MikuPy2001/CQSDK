@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <TargetName>APP</TargetName>
+    <IncludePath>$(SolutionDir)CQ_SDK\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)CQ_LIB\;$(LibraryPath)</LibraryPath>
+    <_PropertySheetDisplayName>APPConfig</_PropertySheetDisplayName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <PostBuildEvent>
+      <Command>$(SolutionDir)CQ_Json.exe $(ProjectDir) $(TargetDir)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <PostBuildEvent>
+      <Message>根据源码生成Json.</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
