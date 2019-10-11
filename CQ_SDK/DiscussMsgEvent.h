@@ -8,7 +8,7 @@ namespace CQ {
 	{
 		long long fromDiscuss;//讨论组号
 
-		DiscussMsgEvent(int subType, int msgId, long long fromDiscuss, long long fromQQ, const char* msg, int font);
+		DiscussMsgEvent(int subType, int msgId, long long fromDiscuss, long long fromAccount, const char* msg, int font);
 
 		//退出讨论组
 		bool leave() const;

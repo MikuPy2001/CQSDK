@@ -16,7 +16,7 @@ namespace CQ {
 		long long fromGroup;
 		//Ω˚—‘”√µƒ¡Ó≈∆
 		const char* fromAnonymousToken;
-		GroupMsgEvent(int subType, int msgId, long long fromGroup, long long fromQQ, const char* fromAnonymous, const char* msg, int Font);
+		GroupMsgEvent(int subType, int msgId, long long fromGroup, long long fromAccount, const char* fromAnonymous, const char* msg, int Font);
 
 		virtual ~GroupMsgEvent();
 

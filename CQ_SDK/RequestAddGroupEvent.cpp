@@ -2,8 +2,8 @@
 
 #include "API.h"
 
-CQ::RequestAddGroupEvent::RequestAddGroupEvent(int subType, int sendTime, long long fromGroup, long long fromQQ, const char * msg, const char * responseFlag)
-	: RequestBasicEvent(sendTime, fromQQ, msg, responseFlag), subType(subType), fromGroup(fromGroup)
+CQ::RequestAddGroupEvent::RequestAddGroupEvent(int subType, int sendTime, long long fromGroup, long long fromAccount, const char * msg, const char * responseFlag)
+	: RequestBasicEvent(sendTime, fromAccount, msg, responseFlag), subType(subType), fromGroup(fromGroup)
 {}
 
 void CQ::RequestAddGroupEvent::pass(std::string msg)

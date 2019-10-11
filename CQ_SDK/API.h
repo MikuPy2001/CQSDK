@@ -19,10 +19,10 @@ namespace CQ {
 
 	//发送好友消息
 	//Auth=106 失败返回负值,成功返回消息ID
-	整数型 sendPrivateMsg(长整数型 QQ, 文本型 msg);
+	整数型 sendPrivateMsg(长整数型 Account, 文本型 msg);
 	//发送好友消息
 	//Auth=106 失败返回负值,成功返回消息ID
-	整数型 sendPrivateMsg(长整数型 QQ, std::string&msg);
+	整数型 sendPrivateMsg(长整数型 Account, std::string&msg);
 
 	//发送群消息
 	//Auth=101 失败返回负值,成功返回消息ID
@@ -39,7 +39,7 @@ namespace CQ {
 	整数型 sendDiscussMsg(长整数型 讨论组号, std::string&msg);
 
 	//发送赞 Auth=110
-	整数型 sendLike(长整数型 QQID, 整数型 times);
+	整数型 sendLike(长整数型 AccountID, 整数型 times);
 
 	//取Cookies,Auth=20 慎用,此接口需要严格授权
 	std::string getCookies();
@@ -58,45 +58,45 @@ namespace CQ {
 	);
 
 	//取CsrfToken (慎用，此接口需要严格授权)
-	//Auth=20 即QQ网页用到的bkn/g_tk等 慎用,此接口需要严格授权
+	//Auth=20 即Account网页用到的bkn/g_tk等 慎用,此接口需要严格授权
 	整数型 getCsrfToken();
 
 	//取应用目录,返回的路径末尾带"\"
 	std::string getAppDirectory();
 
-	//取登录QQ
-	长整数型 getLoginQQ();
+	//取登录Account
+	长整数型 getLoginAccount();
 
 	//取登录昵称
 	std::string getLoginNick();
 
 	//置群员移除 Auth=120
 	整数型 setGroupKick(
-		长整数型 群号, 长整数型 QQID,
+		长整数型 群号, 长整数型 AccountID,
 		逻辑型 拒绝再加群 = false // 如果为真，则“不再接收此人加群申请”，请慎用
 	);
 
 	//置群员禁言 Auth=121
 	整数型 setGroupBan(
-		长整数型 群号, 长整数型 QQID,
+		长整数型 群号, 长整数型 AccountID,
 		长整数型 禁言时间 = 60 // 禁言的时间，单位为秒。如果要解禁，这里填写0
 	);
 
 	//置群管理员 Auth=122
 	整数型 setGroupAdmin(
-		长整数型 群号, 长整数型 QQID,
+		长整数型 群号, 长整数型 AccountID,
 		逻辑型 成为管理员 = true // 真/设置管理员 假/取消管理员
 	);
 
 	//置群成员专属头衔 Auth=128 需群主权限
 	整数型 setGroupSpecialTitle(
-		长整数型 群号, 长整数型 QQID,
+		长整数型 群号, 长整数型 AccountID,
 		文本型 头衔, // 如果要删除，这里填空
 		长整数型 = -1 // 专属头衔有效期，单位为秒。如果永久有效，这里填写-1
 	);
 	//置群成员专属头衔 Auth=128 需群主权限
 	整数型 setGroupSpecialTitle(
-		长整数型 群号, 长整数型 QQID,
+		长整数型 群号, 长整数型 AccountID,
 		std::string&头衔, // 如果要删除，这里填空
 		长整数型 过期时间 = -1 // 专属头衔有效期，单位为秒。如果永久有效，这里填写-1
 	);
@@ -118,10 +118,10 @@ namespace CQ {
 	整数型 setGroupAnonymous(长整数型 群号, 逻辑型 开启匿名 = true);
 
 	//置群成员名片 Auth=126
-	整数型 setGroupCard(长整数型 群号, 长整数型 QQID, 文本型 新名片_昵称);
+	整数型 setGroupCard(长整数型 群号, 长整数型 AccountID, 文本型 新名片_昵称);
 
 	//置群成员名片 Auth=126
-	整数型 setGroupCard(长整数型 群号, 长整数型 QQID, std::string 新名片_昵称);
+	整数型 setGroupCard(长整数型 群号, 长整数型 AccountID, std::string 新名片_昵称);
 
 	//置群退出 Auth=127 慎用,此接口需要严格授权
 	整数型 setGroupLeave(
@@ -150,10 +150,10 @@ namespace CQ {
 	);
 
 	//取群成员信息 (支持缓存) Auth=130
-	GroupMemberInfo getGroupMemberInfo(长整数型 群号, 长整数型 QQID, 逻辑型 不使用缓存 = false);
+	GroupMemberInfo getGroupMemberInfo(长整数型 群号, 长整数型 AccountID, 逻辑型 不使用缓存 = false);
 
 	//取陌生人信息 (支持缓存) Auth=131
-	StrangerInfo getStrangerInfo(长整数型 QQID, 逻辑型 不使用缓存 = false);
+	StrangerInfo getStrangerInfo(长整数型 AccountID, 逻辑型 不使用缓存 = false);
 
 	//取群成员列表 Auth=160
 	std::vector<GroupMemberInfo> getGroupMemberList(长整数型 群号);

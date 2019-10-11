@@ -15,7 +15,7 @@ namespace CQ {
 		void setdata(Unpack&pack);
 	public:
 		长整数型 Group;
-		长整数型 QQID;
+		长整数型 AccountID;
 		std::string 昵称;
 		std::string 名片;
 		整数型 性别; // 0/男性 1/女性

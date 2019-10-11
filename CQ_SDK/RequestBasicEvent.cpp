@@ -1,5 +1,5 @@
 #include "RequestBasicEvent.h"
 
-CQ::RequestBasicEvent::RequestBasicEvent(int sendTime, long long fromQQ, const char * msg, const char * responseFlag)
-	: sendTime(sendTime), fromQQ(fromQQ), msg(msg), responseFlag(responseFlag)
+CQ::RequestBasicEvent::RequestBasicEvent(int sendTime, long long fromAccount, const char * msg, const char * responseFlag)
+	: sendTime(sendTime), fromAccount(fromAccount), msg(msg), responseFlag(responseFlag)
 {}

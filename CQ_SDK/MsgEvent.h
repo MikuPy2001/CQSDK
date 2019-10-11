@@ -13,13 +13,13 @@ namespace CQ {
 	{
 		//消息ID
 		int msgId;
-		//来源QQ
-		long long fromQQ;
+		//来源Account
+		long long fromAccount;
 		//消息
 		std::string message;
 		char* messageRAW;
 
-		MsgEvent(int subType, int msgId, long long fromQQ, const char* message, int font);
+		MsgEvent(int subType, int msgId, long long fromAccount, const char* message, int font);
 
 		//真实用户
 		bool isUser() const;

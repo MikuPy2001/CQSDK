@@ -7,7 +7,7 @@ inline
 namespace CQ {
 	struct PrivateMsgEvent :public MsgEvent
 	{
-		PrivateMsgEvent(int subType, int msgId, long long fromQQ, const char* msg, int Font);
+		PrivateMsgEvent(int subType, int msgId, long long fromAccount, const char* msg, int Font);
 
 		//À´×ÔºÃÓÑ
 		bool fromPrivate() const;
