@@ -6,7 +6,7 @@ inline
 namespace CQ {
 	struct RequestAddFriendEvent :public RequestBasicEvent
 	{
-		RequestAddFriendEvent(int subType, int sendTime, long long fromQQ, const char* msg, const char* responseFlag);
+		RequestAddFriendEvent(int subType, int sendTime, long long fromAccount, const char* msg, const char* responseFlag);
 		//通过此请求,并拦截消息
 		void pass(std::string msg = "")override;
 		//拒绝此请求,并拦截消息

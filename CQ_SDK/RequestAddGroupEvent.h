@@ -11,7 +11,7 @@ namespace CQ {
 		//2:自己(即登录号)受邀入群
 		int subType;
 		long long fromGroup; // 来源群号
-		RequestAddGroupEvent(int subType, int sendTime, long long fromGroup, long long fromQQ, const char* msg, const char* responseFlag);
+		RequestAddGroupEvent(int subType, int sendTime, long long fromGroup, long long fromAccount, const char* msg, const char* responseFlag);
 		//通过此请求,并拦截消息
 		void pass(std::string msg = "")override;
 		//拒绝此请求,并拦截消息

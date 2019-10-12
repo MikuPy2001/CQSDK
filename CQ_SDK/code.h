@@ -20,20 +20,20 @@ namespace CQ {
 		//此函数将会调用系统语音合成将wantSpeak合成到指定文件
 		//static std::string record(std::string fileurl, std::string wantSpeak, bool magic = false);
 
-		//[CQ:face,id={1}] - QQ表情
+		//[CQ:face,id={1}] - Account表情
 		static std::string face(int faceid);
 
-		//[CQ:face,id={1}] - QQ表情
+		//[CQ:face,id={1}] - Account表情
 		static std::string face(CQ::face face);
 		
-		//[CQ:at,qq={1}] - @某人
-		static std::string at(long long QQ);
-		static std::string at(std::string QQ);
+		//[CQ:at,Account={1}] - @某人
+		static std::string at(long long Account);
+		static std::string at(std::string Account);
 
 		//[CQ:effect,type=art,id=2003,content=小吉] - 魔法字体
 		static std::string effect(std::string type, int id, std::string content);
 
-		//[CQ:sign,title=晒幸福,image=http://pub.idqqimg.com/pc/misc/files/20170825/cc9103d0db0b4dcbb7a17554d227f4d7.jpg] - 签到
+		//[CQ:sign,title=晒幸福,image=http://pub.idAccountimg.com/pc/misc/files/20170825/cc9103d0db0b4dcbb7a17554d227f4d7.jpg] - 签到
 		static std::string sign(std::string title, std::string imageUrl);
 
 		//[CQ:hb, title = 恭喜发财] - 红包(只限收,不能发)
@@ -62,7 +62,7 @@ namespace CQ {
 		static std::string anonymous(bool ignore);
 
 		//[CQ:music,type={1},id={2}] - 发送音乐
-		//type为音乐平台,支持qq、163、xiami
+		//type为音乐平台,支持Account、163、xiami
 		//id即为音乐id
 
 		//[CQ:music,type=custom,url={1},audio={2},title={3},content={4},image={5}] - 发送音乐自定义分享

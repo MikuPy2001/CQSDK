@@ -17,13 +17,13 @@ string CQtoString(ÎÄ±¾ĞÍ data, string APIÃèÊö);
 ÕûÊıĞÍ CQ::addLog(ÕûÊıĞÍ LOG_, ÎÄ±¾ĞÍ ÀàĞÍ, ÎÄ±¾ĞÍ ÄÚÈİ) { return lasterr = CQ_addLog(getAuthCode(), LOG_, ÀàĞÍ, ÄÚÈİ); }
 
 //·¢ËÍºÃÓÑÏûÏ¢
-ÕûÊıĞÍ CQ::sendPrivateMsg(³¤ÕûÊıĞÍ QQ, ÎÄ±¾ĞÍ msg) { return  CQ_sendPrivateMsg(getAuthCode(), QQ, msg); }
+ÕûÊıĞÍ CQ::sendPrivateMsg(³¤ÕûÊıĞÍ Account, ÎÄ±¾ĞÍ msg) { return  CQ_sendPrivateMsg(getAuthCode(), Account, msg); }
 
 //·¢ËÍºÃÓÑÏûÏ¢
-ÕûÊıĞÍ CQ::sendPrivateMsg(³¤ÕûÊıĞÍ QQ, std::string & msg) { return sendPrivateMsg(QQ, msg.c_str()); }
+ÕûÊıĞÍ CQ::sendPrivateMsg(³¤ÕûÊıĞÍ Account, std::string & msg) { return sendPrivateMsg(Account, msg.c_str()); }
 
 //·¢ËÍºÃÓÑÏûÏ¢
-//ÕûÊıĞÍ CQ::sendPrivateMsg(EVEPrivateMsg eve, std::string msg) { return sendPrivateMsg(eve.fromQQ, msg.c_str()); }
+//ÕûÊıĞÍ CQ::sendPrivateMsg(EVEPrivateMsg eve, std::string msg) { return sendPrivateMsg(eve.fromAccount, msg.c_str()); }
 
 //·¢ËÍÈºÏûÏ¢
 ÕûÊıĞÍ CQ::sendGroupMsg(³¤ÕûÊıĞÍ ÈººÅ, ÎÄ±¾ĞÍ msg) { return  CQ_sendGroupMsg(getAuthCode(), ÈººÅ, msg); }
@@ -37,7 +37,7 @@ string CQtoString(ÎÄ±¾ĞÍ data, string APIÃèÊö);
 ÕûÊıĞÍ CQ::sendDiscussMsg(³¤ÕûÊıĞÍ ÌÖÂÛ×éºÅ, std::string & msg) { return sendDiscussMsg(ÌÖÂÛ×éºÅ, msg.c_str()); }
 
 //·¢ËÍÔŞ
-ÕûÊıĞÍ CQ::sendLike(³¤ÕûÊıĞÍ QQID, ÕûÊıĞÍ times) { return lasterr = CQ_sendLikeV2(getAuthCode(), QQID, times); }
+ÕûÊıĞÍ CQ::sendLike(³¤ÕûÊıĞÍ AccountID, ÕûÊıĞÍ times) { return lasterr = CQ_sendLikeV2(getAuthCode(), AccountID, times); }
 
 //È¡Cookies (É÷ÓÃ£¬´Ë½Ó¿ÚĞèÒªÑÏ¸ñÊÚÈ¨)
 string CQ::getCookies() { return CQtoString(CQ_getCookies(getAuthCode()), "È¡Cookies"); }
@@ -54,26 +54,26 @@ std::string CQ::getRecord(std::string & file, std::string outformat) { return CQ
 //È¡Ó¦ÓÃÄ¿Â¼
 string CQ::getAppDirectory() { return CQtoString(CQ_getAppDirectory(getAuthCode()), "È¡Ó¦ÓÃÄ¿Â¼"); }
 
-//È¡µÇÂ¼QQ
-³¤ÕûÊıĞÍ CQ::getLoginQQ() { return  CQ_getLoginQQ(getAuthCode()); }
+//È¡µÇÂ¼Account
+³¤ÕûÊıĞÍ CQ::getLoginAccount() { return  CQ_getLoginAccount(getAuthCode()); }
 
 //È¡µÇÂ¼êÇ³Æ
 string CQ::getLoginNick() { return CQtoString(CQ_getLoginNick(getAuthCode()), "È¡µÇÂ¼êÇ³Æ"); }
 
 //ÖÃÈºÔ±ÒÆ³ı
-ÕûÊıĞÍ CQ::setGroupKick(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ¾Ü¾øÔÙ¼ÓÈº) { return lasterr = CQ_setGroupKick(getAuthCode(), ÈººÅ, QQID, ¾Ü¾øÔÙ¼ÓÈº); }
+ÕûÊıĞÍ CQ::setGroupKick(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, Âß¼­ĞÍ ¾Ü¾øÔÙ¼ÓÈº) { return lasterr = CQ_setGroupKick(getAuthCode(), ÈººÅ, AccountID, ¾Ü¾øÔÙ¼ÓÈº); }
 
 //ÖÃÈºÔ±½ûÑÔ
-ÕûÊıĞÍ CQ::setGroupBan(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, ³¤ÕûÊıĞÍ ½ûÑÔÊ±¼ä) { return lasterr = CQ_setGroupBan(getAuthCode(), ÈººÅ, QQID, ½ûÑÔÊ±¼ä); }
+ÕûÊıĞÍ CQ::setGroupBan(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, ³¤ÕûÊıĞÍ ½ûÑÔÊ±¼ä) { return lasterr = CQ_setGroupBan(getAuthCode(), ÈººÅ, AccountID, ½ûÑÔÊ±¼ä); }
 
 //ÖÃÈº¹ÜÀíÔ±
-ÕûÊıĞÍ CQ::setGroupAdmin(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ³ÉÎª¹ÜÀíÔ±) { return lasterr = CQ_setGroupAdmin(getAuthCode(), ÈººÅ, QQID, ³ÉÎª¹ÜÀíÔ±); }
+ÕûÊıĞÍ CQ::setGroupAdmin(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, Âß¼­ĞÍ ³ÉÎª¹ÜÀíÔ±) { return lasterr = CQ_setGroupAdmin(getAuthCode(), ÈººÅ, AccountID, ³ÉÎª¹ÜÀíÔ±); }
 
 //ÖÃÈº³ÉÔ±×¨ÊôÍ·ÏÎ
-ÕûÊıĞÍ CQ::setGroupSpecialTitle(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, ÎÄ±¾ĞÍ Í·ÏÎ, ³¤ÕûÊıĞÍ ¹ıÆÚÊ±¼ä) { return lasterr = CQ_setGroupSpecialTitle(getAuthCode(), ÈººÅ, QQID, Í·ÏÎ, ¹ıÆÚÊ±¼ä); }
+ÕûÊıĞÍ CQ::setGroupSpecialTitle(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, ÎÄ±¾ĞÍ Í·ÏÎ, ³¤ÕûÊıĞÍ ¹ıÆÚÊ±¼ä) { return lasterr = CQ_setGroupSpecialTitle(getAuthCode(), ÈººÅ, AccountID, Í·ÏÎ, ¹ıÆÚÊ±¼ä); }
 
 //ÖÃÈº³ÉÔ±×¨ÊôÍ·ÏÎ
-ÕûÊıĞÍ CQ::setGroupSpecialTitle(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, std::string & Í·ÏÎ, ³¤ÕûÊıĞÍ ¹ıÆÚÊ±¼ä) { return setGroupSpecialTitle(ÈººÅ, QQID, Í·ÏÎ.c_str(), ¹ıÆÚÊ±¼ä); }
+ÕûÊıĞÍ CQ::setGroupSpecialTitle(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, std::string & Í·ÏÎ, ³¤ÕûÊıĞÍ ¹ıÆÚÊ±¼ä) { return setGroupSpecialTitle(ÈººÅ, AccountID, Í·ÏÎ.c_str(), ¹ıÆÚÊ±¼ä); }
 
 //ÖÃÈ«Èº½ûÑÔ
 ÕûÊıĞÍ CQ::setGroupWholeBan(³¤ÕûÊıĞÍ ÈººÅ, Âß¼­ĞÍ ¿ªÆô½ûÑÔ) { return lasterr = CQ_setGroupWholeBan(getAuthCode(), ÈººÅ, ¿ªÆô½ûÑÔ); }
@@ -85,10 +85,10 @@ string CQ::getLoginNick() { return CQtoString(CQ_getLoginNick(getAuthCode()), "È
 ÕûÊıĞÍ CQ::setGroupAnonymous(³¤ÕûÊıĞÍ ÈººÅ, Âß¼­ĞÍ ¿ªÆôÄäÃû) { return lasterr = CQ_setGroupAnonymous(getAuthCode(), ÈººÅ, ¿ªÆôÄäÃû); }
 
 //ÖÃÈº³ÉÔ±ÃûÆ¬
-ÕûÊıĞÍ CQ::setGroupCard(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, ÎÄ±¾ĞÍ ĞÂÃûÆ¬_êÇ³Æ) { return lasterr = CQ_setGroupCard(getAuthCode(), ÈººÅ, QQID, ĞÂÃûÆ¬_êÇ³Æ); }
+ÕûÊıĞÍ CQ::setGroupCard(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, ÎÄ±¾ĞÍ ĞÂÃûÆ¬_êÇ³Æ) { return lasterr = CQ_setGroupCard(getAuthCode(), ÈººÅ, AccountID, ĞÂÃûÆ¬_êÇ³Æ); }
 
 //ÖÃÈº³ÉÔ±ÃûÆ¬
-ÕûÊıĞÍ CQ::setGroupCard(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, std::string ĞÂÃûÆ¬_êÇ³Æ) { return setGroupCard(ÈººÅ, QQID, ĞÂÃûÆ¬_êÇ³Æ.c_str()); }
+ÕûÊıĞÍ CQ::setGroupCard(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, std::string ĞÂÃûÆ¬_êÇ³Æ) { return setGroupCard(ÈººÅ, AccountID, ĞÂÃûÆ¬_êÇ³Æ.c_str()); }
 
 //ÖÃÈºÍË³ö
 ÕûÊıĞÍ CQ::setGroupLeave(³¤ÕûÊıĞÍ ÈººÅ, Âß¼­ĞÍ ÊÇ·ñ½âÉ¢) { return lasterr = CQ_setGroupLeave(getAuthCode(), ÈººÅ, ÊÇ·ñ½âÉ¢); }
@@ -106,10 +106,10 @@ string CQ::getLoginNick() { return CQtoString(CQ_getLoginNick(getAuthCode()), "È
 ÕûÊıĞÍ CQ::setFatal(ÎÄ±¾ĞÍ ´íÎóĞÅÏ¢) { return lasterr = CQ_setFatal(getAuthCode(), ´íÎóĞÅÏ¢); }
 
 //È¡Èº³ÉÔ±ĞÅÏ¢ (Ö§³Ö»º´æ)
-GroupMemberInfo CQ::getGroupMemberInfo(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ²»Ê¹ÓÃ»º´æ) { return GroupMemberInfo(CQtoString(CQ_getGroupMemberInfoV2(getAuthCode(), ÈººÅ, QQID, ²»Ê¹ÓÃ»º´æ), "È¡Èº³ÉÔ±ĞÅÏ¢")); }
+GroupMemberInfo CQ::getGroupMemberInfo(³¤ÕûÊıĞÍ ÈººÅ, ³¤ÕûÊıĞÍ AccountID, Âß¼­ĞÍ ²»Ê¹ÓÃ»º´æ) { return GroupMemberInfo(CQtoString(CQ_getGroupMemberInfoV2(getAuthCode(), ÈººÅ, AccountID, ²»Ê¹ÓÃ»º´æ), "È¡Èº³ÉÔ±ĞÅÏ¢")); }
 
 //È¡Ä°ÉúÈËĞÅÏ¢ (Ö§³Ö»º´æ)
-StrangerInfo CQ::getStrangerInfo(³¤ÕûÊıĞÍ QQID, Âß¼­ĞÍ ²»Ê¹ÓÃ»º´æ) { return StrangerInfo(CQtoString(CQ_getStrangerInfo(getAuthCode(), QQID, ²»Ê¹ÓÃ»º´æ), "È¡Ä°ÉúÈËĞÅÏ¢")); }
+StrangerInfo CQ::getStrangerInfo(³¤ÕûÊıĞÍ AccountID, Âß¼­ĞÍ ²»Ê¹ÓÃ»º´æ) { return StrangerInfo(CQtoString(CQ_getStrangerInfo(getAuthCode(), AccountID, ²»Ê¹ÓÃ»º´æ), "È¡Ä°ÉúÈËĞÅÏ¢")); }
 
 //È¡Èº³ÉÔ±ÁĞ±í
 std::vector<GroupMemberInfo> CQ::getGroupMemberList(³¤ÕûÊıĞÍ ÈººÅ) {
@@ -226,8 +226,8 @@ const char * CQ::getlasterrmsg()
 	case -19:  return "ÁÙÊ±ÏûÏ¢ÒÑÊ§Ğ§»òÎ´½¨Á¢";
 	case -20:  return "²ÎÊı´íÎó";
 	case -21:  return "ÁÙÊ±ÏûÏ¢ÒÑÊ§Ğ§»òÎ´½¨Á¢";
-	case -22:  return "»ñÈ¡QQĞÅÏ¢Ê§°Ü";
-	case -23:  return "ÕÒ²»µ½ÓëÄ¿±êQQµÄ¹ØÏµ£¬ÏûÏ¢ÎŞ·¨·¢ËÍ";
+	case -22:  return "»ñÈ¡AccountĞÅÏ¢Ê§°Ü";
+	case -23:  return "ÕÒ²»µ½ÓëÄ¿±êAccountµÄ¹ØÏµ£¬ÏûÏ¢ÎŞ·¨·¢ËÍ";
 	case -99:  return "Äúµ÷ÓÃµÄ¹¦ÄÜÎŞ·¨ÔÚ´Ë°æ±¾ÉÏÊµÏÖ";
 	case -101: return "Ó¦ÓÃ¹ı´ó";
 	case -102: return "²»ÊÇºÏ·¨µÄÓ¦ÓÃ";

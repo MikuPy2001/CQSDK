@@ -2,8 +2,8 @@
 
 #include "API.h"
 
-CQ::RequestAddFriendEvent::RequestAddFriendEvent(int subType, int sendTime, long long fromQQ, const char * msg, const char * responseFlag)
-	: RequestBasicEvent(sendTime, fromQQ, msg, responseFlag), subType(subType)
+CQ::RequestAddFriendEvent::RequestAddFriendEvent(int subType, int sendTime, long long fromAccount, const char * msg, const char * responseFlag)
+	: RequestBasicEvent(sendTime, fromAccount, msg, responseFlag), subType(subType)
 {}
 
 void CQ::RequestAddFriendEvent::pass(std::string msg)

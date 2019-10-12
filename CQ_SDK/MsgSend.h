@@ -20,14 +20,14 @@ namespace CQ
 		1=msgtype::群
 		2=msgtype::讨论组
 		*/
-		MsgSend(long long GroupID_Or_QQID, msgtype Type);
+		MsgSend(long long GroupID_Or_AccountID, msgtype Type);
 		/*
 		Type:
 		0=好友
 		1=群
 		2=讨论组
 		*/
-		MsgSend(long long GroupID_Or_QQID, int Type);
+		MsgSend(long long GroupID_Or_AccountID, int Type);
 
 		virtual void SEND() override;
 	};
