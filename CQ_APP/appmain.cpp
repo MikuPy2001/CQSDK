@@ -19,7 +19,7 @@
 
 
 
-MUST_AppInfo_RETURN(CQAPIVERTEXT "," APP_ID)
+MUST_AppInfo_RETURN(APP_ID)
 
 
 

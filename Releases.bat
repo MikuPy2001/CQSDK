@@ -1,3 +1,4 @@
+@echo off
 mkdir %~dp0\CQAPP\
 copy %~dp0\CQAPP.sln %~dp0\CQAPP\
 copy %~dp0\SdkConfig.props %~dp0\CQAPP\
@@ -23,3 +24,4 @@ mkdir %~dp0\CQAPP\CQ_SDK\
 copy %~dp0\CQ_SDK\*.h %~dp0\CQAPP\CQ_SDK\
 
 bandizip c CQAPP.zip CQAPP
+PAUSE
