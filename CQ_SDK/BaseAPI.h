@@ -73,9 +73,9 @@ namespace CQ {
 		);
 	//取Cookies (慎用，此接口需要严格授权)
 	//Auth=20 慎用,此接口需要严格授权
-	CQAPI(CQ_getCookies, 文本型)(
-		整数型 AuthCode//
-		);
+	//CQAPI(CQ_getCookies, 文本型)(
+	//	整数型 AuthCode//
+	//	);
 	//接收语音
 	//CQAPI(CQ_getRecord, 文本型)(
 	//	整数型 AuthCode,//
@@ -252,13 +252,13 @@ namespace CQ {
 
 	//9.25添加
 
-	//取好友列表 Auth=
+	//取好友列表 Auth=162
 	CQAPI(CQ_getFriendList, 文本型)(
 		整数型 AuthCode,
 		逻辑型 reserved
 		);
 
-	//取群信息(支持缓存) Auth=
+	//取群信息(支持缓存) Auth=132
 	CQAPI(CQ_getGroupInfo, 文本型)(
 		整数型 AuthCode,
 		长整数型 群号,//目标群
@@ -267,7 +267,7 @@ namespace CQ {
 
 	//取Cookies Auth=20 
 	//慎用,此接口需要严格授权
-	CQAPI(CQ_getCookies, 文本型)(
+	CQAPI(CQ_getCookiesV2, 文本型)(
 		整数型 AuthCode,
 		文本型 domain//目标域名，如 api.example.com
 		);

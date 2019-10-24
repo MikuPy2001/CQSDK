@@ -42,7 +42,7 @@ namespace CQ {
 	整数型 sendLike(长整数型 AccountID, 整数型 times);
 
 	//取Cookies,Auth=20 慎用,此接口需要严格授权
-	std::string getCookies();
+	std::string getCookies(std::string domain);
 
 	//接收语音
 	//不推荐使用
@@ -172,6 +172,12 @@ namespace CQ {
 
 	//接收图片，并返回图片文件绝对路径
 	std::string getImage(std::string file);
+
+	//取好友列表 Auth=162
+	void getFriendList();
+
+	//取群信息(支持缓存) Auth=132
+	void getGroupInfo(长整数型 群号, 逻辑型 不使用缓存 = false);
 
 	//如果API调用返回错误代码
 	//则可以使用本函数获取相关中文信息

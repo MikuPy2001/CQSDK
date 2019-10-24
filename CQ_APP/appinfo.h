@@ -7,8 +7,8 @@
 //--------开始之前--------
 
 //请右键<CQ_APP>项目,选择<属性>,并修改以下内容:
-//	Windows SDK
-//	平台工具集
+//	Windows SDK 10.0
+//	平台工具集 v142
 //您需要设置为您安装的版本
 //<CQ_SDK>项目同理
 //如果选择v142,则需要用户安装 VC++ runtime 2015 x86
@@ -29,7 +29,7 @@
 //----这是什么----
 //这是您的插件名称,一个独一无二的名称
 //----我应该按照什么原则命名----
-//请查阅 http://d.cqp.me/Pro/开发/基础信息
+//请查阅 https://docs.cqp.im/dev/v9/appid/
 
 
 
@@ -39,8 +39,8 @@
 //如果您不使用,请直接转到 appmain.cpp 以继续
 
 //如果使用CQJSON小工具
-//需要在<生成后事件>的<命令行>写入以下命令
-//默认已经添加
+//需要在<项目属性>的<生成后事件>的<命令行>写入以下命令
+//默认已经写入
 /*
 $(SolutionDir)CQ_Json.exe $(ProjectDir) $(TargetDir)
 */
@@ -79,16 +79,20 @@ $(SolutionDir)CQ_Json.exe $(ProjectDir) $(TargetDir)
 //#define APP_auth_127 "置群退出"//[敏感]
 #define APP_auth_128 "置群成员专属头衔"
 #define APP_auth_130 "取群成员信息"
+#define APP_auth_132 "取群信息"
 #define APP_auth_131 "取陌生人信息"
 #define APP_auth_140 "置讨论组退出"
 #define APP_auth_150 "置好友添加请求"
 #define APP_auth_151 "置群添加请求"
 #define APP_auth_160 "取群成员列表"
 #define APP_auth_161 "取群列表"
+#define APP_auth_162 "取好友列表"
 #define APP_auth_180 "撤回消息"
 
 //酷Q目录,直接生成到酷Q目录
-#define CQ_DIR "C:\\1\\"
+#define CQ_DIR "C:\\CQDIR\\"
+
+
 
 
 //接下来请转到 appmain.cpp 以继续

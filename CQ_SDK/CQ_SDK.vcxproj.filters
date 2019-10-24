@@ -92,6 +92,12 @@
     <ClInclude Include="toolWin.h">
       <Filter>工具</Filter>
     </ClInclude>
+    <ClInclude Include="FriendInfo.h">
+      <Filter>信息</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupInfo.h">
+      <Filter>信息</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnonymousInfo.cpp">

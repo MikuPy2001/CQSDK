@@ -11,6 +11,13 @@
 
 
 
+//现在，您已经可以尝试开始编译本SDK
+//编译完成后，你将得到DLL以及JSON文件
+//请遵循官方文档启用插件
+//https://docs.cqp.im/dev/v9/getting-started/
+
+
+
 
 #include <CQSDK.h>
 #include "appinfo.h"

@@ -40,7 +40,7 @@ string CQtoString(文本型 data, string API描述);
 整数型 CQ::sendLike(长整数型 AccountID, 整数型 times) { return lasterr = CQ_sendLikeV2(getAuthCode(), AccountID, times); }
 
 //取Cookies (慎用，此接口需要严格授权)
-string CQ::getCookies() { return CQtoString(CQ_getCookies(getAuthCode()), "取Cookies"); }
+string CQ::getCookies(string domain) { return CQtoString(CQ_getCookiesV2(getAuthCode(), domain.c_str	()), "取Cookies"); }
 
 //接收语音
 文本型 CQ::getRecord(文本型 file, 文本型 outformat) { return CQ_getRecordV2(getAuthCode(), file, outformat); }
