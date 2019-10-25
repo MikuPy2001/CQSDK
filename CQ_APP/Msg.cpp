@@ -103,7 +103,7 @@ void Msg(MsgEvent*e)
 	if (!message.compare("CQ:msg3"))
 		// 发送内容由多个内容组成
 		msg
-		<< "发送人为:" << e->fromQQ
+		<< "发送人为:" << e->fromAccount
 		<< ",消息为:" << e->message
 		<< send;
 
@@ -121,7 +121,7 @@ void Msg(MsgEvent*e)
 		msg
 		// RAW 表示后面的消息将被原样发送
 		// 而不是解析成CQ码,并调用特有功能,例如发送图片
-		<< RAW << code::at(e->fromQQ)
+		<< RAW << code::at(e->fromAccount)
 		// CODE 表示后面的消息将被解析为CQ码
 		// 默认解析
 		<< CODE << code::face(face::得意)
@@ -132,5 +132,5 @@ void Msg(MsgEvent*e)
 		e->sendMsg(code::effect("art", 2003, "魔法消息"));
 	if (!message.compare("CQ:at"))
 		// 发送at消息,在私聊时是无效的
-		msg << code::at(e->fromQQ) << send;
+		msg << code::at(e->fromAccount) << send;
 }
