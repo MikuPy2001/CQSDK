@@ -5,30 +5,16 @@
  
 #include <CQSDK.h>
 
-EVE_Request_AddFriend_EX(Request_AddFriend_EX) {
-	
-}
-EVE_Friend_Add_EX(Friend_Add_EX) {
-	
-}
-EVE_Request_AddGroup_EX(Request_AddGroup_EX) {
-	
-}
-EVE_System_GroupAdmin_EX(System_GroupAdmin_EX) {
+EVE_Request_AddFriend_EX(Request_AddFriend_EX) {}
+EVE_Friend_Add_EX(Friend_Add_EX) {}
+EVE_Request_AddGroup_EX(Request_AddGroup_EX) {}
+EVE_System_GroupAdmin_EX(System_GroupAdmin_EX) {}
 
-}
+EVE_GroupUpload_EX(GroupUpload_EX) {}
+EVE_System_GroupMemberDecrease_EX(System_GroupMemberDecrease_EX) {}
+EVE_System_GroupMemberIncrease_EX(System_GroupMemberIncrease_EX) {}
 
-
-
-EVE_GroupUpload(GroupUpload) {
-	return 0;
-}
-EVE_System_GroupMemberDecrease(System_GroupMemberDecrease) {
-	return 0;
-}
-EVE_System_GroupMemberIncrease(System_GroupMemberIncrease) {
-	return 0;
-}
+EVE_System_GroupBan_EX(System_GroupBan_EX) {}
 
 //使用酷Q原生自带的正则消息捕获
 EVE_GroupMsg_EX(GroupMsg_regex)

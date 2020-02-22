@@ -422,8 +422,8 @@ beingOperateAccount 被操作Account
 subtype		子类型，1/群员离开 2/群员被踢 3/自己(即登录号)被踢
 sendTime 发送时间(时间戳)
 fromGroup	来源群号
-fromAccount		操作者Account(仅子类型为2、3时存在)
-beingOperateAccount 被操作Account
+fromAccount		操作者账号(仅子类型为2、3时存在)
+beingOperateAccount 被操作账号
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
@@ -433,14 +433,14 @@ beingOperateAccount 被操作Account
 如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupMemberDecrease_EX(Name) \
-	void Name(CQ::System_GroupMemberDecreaseEvent & e);\
+	void Name(CQ::SystemGroupMemberDecreaseEvent & e);\
 	EVE_System_GroupMemberDecrease(Name)\
 	{\
-		CQ::System_GroupMemberDecreaseEvent tep( subType,  sendTime, fromGroup, fromAccount, beingOperateAccount);\
+		CQ::SystemGroupMemberDecreaseEvent tep( subType,  sendTime, fromGroup, fromAccount, beingOperateAccount);\
 		Name(tep);\
 		return tep._EVEret;\
 	}\
-	void Name(CQ::System_GroupMemberDecreaseEvent & e)
+	void Name(CQ::SystemGroupMemberDecreaseEvent & e)
 
 namespace _CQEVEinfo { extern  int 群事件_群成员增加; }
 /*
@@ -477,14 +477,14 @@ beingOperateAccount 被操作账号(即加群的账号)
 如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupMemberIncrease_EX(Name) \
-	void Name(CQ::System_GroupMemberIncreaseEvent & e);\
+	void Name(CQ::SystemGroupMemberIncreaseEvent & e);\
 	EVE_System_GroupMemberIncrease(Name)\
 	{\
-		CQ::System_GroupMemberIncreaseEvent tep( subType,  sendTime, fromGroup, fromAccount, beingOperateAccount);\
+		CQ::SystemGroupMemberIncreaseEvent tep( subType,  sendTime, fromGroup, fromAccount, beingOperateAccount);\
 		Name(tep);\
 		return tep._EVEret;\
 	}\
-	void Name(CQ::System_GroupMemberIncreaseEvent & e)
+	void Name(CQ::SystemGroupMemberIncreaseEvent & e)
 
 namespace _CQEVEinfo { extern  int 系统事件_好友已添加; }
 /*
@@ -714,7 +714,7 @@ beingOperateAccount 被操作帐号(若为全群禁言/解禁，则本参数为 0)
 duration 禁言时长(单位 秒，仅子类型为2时可用)
 
 */
-#define EVE_System_GroupBan(Name) CQEVENTCQEVENT(int, Name, 40)(int subType, int sendTime, long long fromGroup, long long fromAccount, long long beingOperateAccount, long long duration)
+#define EVE_System_GroupBan(Name) CQEVENT(int, Name, 40)(int subType, int sendTime, long long fromGroup, long long fromAccount, long long beingOperateAccount, long long duration)
 /**
 群事件-群禁言(Type=104)
 

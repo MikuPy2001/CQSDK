@@ -27,6 +27,7 @@
 //第三层,同上
 #include "API.h"
 #include "FriendAddEvent.h"
+#include "GroupUploadEvent.h"
 #include "MsgEvent.h"
 #include "RequestBasicEvent.h"
 #include "SystemGroupMemberDecreaseEvent.h"
