@@ -42,7 +42,7 @@ namespace CQ {
 	//Auth=106 失败返回负值,成功返回消息ID
 	CQAPI(CQ_sendPrivateMsg, 整数型)(
 		整数型 AuthCode,
-		长整数型 AccountID,// 目标Account
+		长整数型 AccountID,// 目标账号
 		文本型 msg// 消息内容
 		);
 	//发送群消息
@@ -62,11 +62,11 @@ namespace CQ {
 	//发送赞V2 Auth=110
 	CQAPI(CQ_sendLikeV2, 整数型)(
 		整数型 AuthCode,
-		长整数型 AccountID,// 目标Account
+		长整数型 AccountID,// 目标账号
 		整数型 times// 赞的次数，最多10次
 		);
 	//取CsrfToken (慎用，此接口需要严格授权)
-	//Auth=20 即Account网页用到的bkn/g_tk等 慎用,此接口需要严格授权
+	//Auth=20 即账号网页用到的bkn/g_tk等 慎用,此接口需要严格授权
 	CQAPI(CQ_getCsrfToken, 整数型)(
 		整数型 AuthCode
 		);
@@ -75,8 +75,8 @@ namespace CQ {
 	CQAPI(CQ_getAppDirectory, 文本型)(
 		整数型 AuthCode
 		);
-	//取登录Account
-	CQAPI(CQ_getLoginAccount, 长整数型)(
+	//取登录账号
+	CQAPI(CQ_getLoginQQ, 长整数型)(
 		整数型 AuthCode
 		);
 	//取登录昵称
@@ -87,28 +87,28 @@ namespace CQ {
 	CQAPI(CQ_setGroupKick, 整数型)(
 		整数型 AuthCode,
 		长整数型 群号,// 目标群
-		长整数型 AccountID,// 目标Account
+		长整数型 AccountID,// 目标账号
 		逻辑型 拒绝再加群// 如果为真，则“不再接收此人加群申请”，请慎用
 		);
 	//置群员禁言 Auth=121
 	CQAPI(CQ_setGroupBan, 整数型)(
 		整数型 AuthCode,
 		长整数型 群号,// 目标群
-		长整数型 AccountID,// 目标Account
+		长整数型 AccountID,// 目标账号
 		长整数型 禁言时间// 禁言的时间，单位为秒。如果要解禁，这里填写0
 		);
 	//置群管理员 Auth=122
 	CQAPI(CQ_setGroupAdmin, 整数型)(
 		整数型 AuthCode,
 		长整数型 群号,// 目标群
-		长整数型 AccountID,// 被设置的Account
+		长整数型 AccountID,// 被设置的账号
 		逻辑型 成为管理员// 真/设置管理员 假/取消管理员
 		);
 	//置群成员专属头衔 Auth=128 需群主权限
 	CQAPI(CQ_setGroupSpecialTitle, 整数型)(
 		整数型 AuthCode,
 		长整数型 群号,// 目标群
-		长整数型 AccountID,// 目标Account
+		长整数型 AccountID,// 目标账号
 		文本型 头衔,// 如果要删除，这里填空
 		长整数型 过期时间// 专属头衔有效期，单位为秒。如果永久有效，这里填写-1
 		);
@@ -135,7 +135,7 @@ namespace CQ {
 	CQAPI(CQ_setGroupCard, 整数型)(
 		整数型 AuthCode,
 		长整数型 群号,// 目标群
-		长整数型 AccountID,// 被设置的Account
+		长整数型 AccountID,// 被设置的账号
 		文本型 新名片_昵称//
 		);
 	//置群退出 Auth=127 慎用,此接口需要严格授权
@@ -172,20 +172,20 @@ namespace CQ {
 	//取群成员信息 (支持缓存) Auth=130
 	CQAPI(CQ_getGroupMemberInfoV2, 文本型)(
 		整数型 AuthCode,
-		长整数型 群号,// 目标Account所在群
-		长整数型 AccountID,// 目标Account
+		长整数型 群号,// 目标账号所在群
+		长整数型 AccountID,// 目标账号
 		逻辑型 不使用缓存
 		);
 	//取陌生人信息 (支持缓存) Auth=131
 	CQAPI(CQ_getStrangerInfo, 文本型)(
 		整数型 AuthCode,
-		长整数型 AccountID,// 目标Account
+		长整数型 AccountID,// 目标账号
 		逻辑型 不使用缓存
 		);
 	//取群成员列表 Auth=160
 	CQAPI(CQ_getGroupMemberList, 文本型)(
 		整数型 AuthCode,
-		长整数型 群号// 目标Account所在群
+		长整数型 群号// 目标账号所在群
 		);
 	//取群列表 Auth=161
 	CQAPI(CQ_getGroupList, 文本型)(
@@ -258,7 +258,7 @@ namespace CQ {
 	//发送赞 Auth=110
 	//CQAPI(CQ_sendLike, 整数型)(
 	//	整数型 AuthCode,
-	//	长整数型 AccountID// 目标Account
+	//	长整数型 AccountID// 目标账号
 	//	);
 	//
 	//置群添加请求 Auth=151
@@ -272,6 +272,6 @@ namespace CQ {
 	//取群成员信息 (旧版,请用CQ_getGroupMemberInfoV2) Auth=130
 	//CQAPI(CQ_getGroupMemberInfo, 文本型)(
 	//	整数型 AuthCode,
-	//	长整数型 群号,// 目标Account所在群
-	//	长整数型 AccountID// 目标Account
+	//	长整数型 群号,// 目标账号所在群
+	//	长整数型 AccountID// 目标账号
 	//	);

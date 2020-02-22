@@ -34,14 +34,14 @@ EVE_System_GroupMemberIncrease(System_GroupMemberIncrease) {
 EVE_GroupMsg_EX(GroupMsg_regex)
 //name:正则消息
 //priority:30000
-//regex-key:QQ
+//regex-key:Account
 //regex-key:action
-//regex-expression:^(?<action>\S{1,4}?)\s*(?<qq>\d{5,10})\s*?$
+//regex-expression:^(?<action>\S{1,4}?)\s*(?<Account>\d{5,10})\s*?$
 { 
 	auto reg = e.regexMsg();
-	auto QQ = reg["QQ"];
+	auto Account = reg["Account"];
 	auto action = reg["action"];
-	e.sendMsg() << code::at(e.fromQQ) << " " << action << "了" << code::at(QQ) << "一下" << send;
+	e.sendMsg() << code::at(e.fromAccount) << " " << action << "了" << code::at(Account) << "一下" << send;
 }
 
 EVE_Status_EX(Status)

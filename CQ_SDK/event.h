@@ -172,7 +172,7 @@ namespace _CQEVEinfo { void 消息事件_私聊(); }
 
 subType		子类型，11/来自好友 1/来自在线状态 2/来自群 3/来自讨论组
 msgId		消息ID
-fromAccount		来源Account
+fromAccount		来源账号
 msg			消息内容
 font		字体
 
@@ -189,7 +189,7 @@ font		字体
 
 subType		子类型，11/来自好友 1/来自在线状态 2/来自群 3/来自讨论组
 msgId	消息ID
-fromAccount		来源Account
+fromAccount		来源账号
 msg			私聊消息
 font		字体
 
@@ -218,7 +218,7 @@ namespace _CQEVEinfo { void 消息事件_群(); }
 subType		子类型，目前固定为1
 msgId		消息ID
 fromGroup	来源群号
-fromAccount		来源Account号
+fromAccount		来源账号号
 fromAnonymous 来源匿名者
 msg			消息内容
 font		字体
@@ -239,7 +239,7 @@ font		字体
 subType 子类型，目前固定为1
 msgId 消息ID
 fromGroup 来源群号
-fromAccount 来源Account号
+fromAccount 来源账号号
 fromAnonymous 来源匿名者
 msg 消息内容
 font 字体
@@ -271,7 +271,7 @@ namespace _CQEVEinfo { void 消息事件_讨论组(); }
 subtype		子类型，目前固定为1
 msgId		消息ID
 fromDiscuss	来源讨论组
-fromAccount		来源Account号
+fromAccount		来源账号号
 msg			消息内容
 font		字体
 
@@ -289,7 +289,7 @@ font		字体
 subtype		子类型，目前固定为1
 msgId		消息ID
 fromDiscuss	来源讨论组
-fromAccount		来源Account号
+fromAccount		来源账号号
 msg			消息内容
 font		字体
 
@@ -318,7 +318,7 @@ namespace _CQEVEinfo { void 群事件_文件上传(); }
 subType 子类型，目前固定为1
 sendTime 发送时间(时间戳)
 fromGroup 来源群号
-fromAccount 来源Account号
+fromAccount 来源账号
 file 上传文件信息,使用 <其他_转换_文本到群文件> 将本参数转换为有效数据,待编辑
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
@@ -401,8 +401,8 @@ namespace _CQEVEinfo { void 群事件_群成员增加(); }
 subtype 子类型，1/管理员已同意 2/管理员邀请
 sendTime 发送时间(时间戳)
 fromGroup 来源群号
-fromAccount 操作者Account(即管理员Account)
-beingOperateAccount 被操作Account(即加群的Account)
+fromAccount 操作者账号(即管理员账号)
+beingOperateAccount 被操作账号(即加群的账号)
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
@@ -420,7 +420,7 @@ namespace _CQEVEinfo { void 系统事件_好友已添加(); }
 
 subtype 子类型，目前固定为1
 sendTime 发送时间(时间戳)
-fromAccount 来源Account
+fromAccount 来源账号
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
@@ -435,7 +435,7 @@ fromAccount 来源Account
 
 subtype 子类型，目前固定为1
 msgId 消息ID
-fromAccount 来源Account
+fromAccount 来源账号
 
 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
 名字如果使用下划线开头需要改成双下划线
@@ -461,7 +461,7 @@ namespace _CQEVEinfo { void 系统事件_请求_好友添加(); }
 
 subtype 子类型，目前固定为1
 sendTime 发送时间(时间戳)
-fromAccount 来源Account
+fromAccount 来源账号
 msg 附言
 responseFlag 反馈标识(处理请求用)
 
@@ -480,7 +480,7 @@ responseFlag 反馈标识(处理请求用)
 
 subtype 子类型，目前固定为1
 sendTime 发送时间(时间戳)
-fromAccount 来源Account
+fromAccount 来源账号
 msg 附言
 responseFlag 反馈标识(处理请求用)
 
@@ -511,7 +511,7 @@ namespace _CQEVEinfo { void 系统事件_请求_群添加(); }
 subtype 子类型，1/他人申请入群 2/自己(即登录号)受邀入群
 sendTime 发送时间(时间戳)
 fromGroup 来源群号
-fromAccount 来源Account
+fromAccount 来源账号
 msg 附言
 responseFlag 反馈标识(处理请求用)
 
@@ -534,7 +534,7 @@ responseFlag 反馈标识(处理请求用)
 subtype 子类型，1/他人申请入群 2/自己(即登录号)受邀入群
 sendTime 发送时间(时间戳)
 fromGroup 来源群号
-fromAccount 来源Account
+fromAccount 来源账号
 msg 附言
 responseFlag 反馈标识(处理请求用)
 

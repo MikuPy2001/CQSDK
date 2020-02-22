@@ -56,14 +56,14 @@ namespace CQ {
 	);
 
 	//取CsrfToken (慎用，此接口需要严格授权)
-	//Auth=20 即Account网页用到的bkn/g_tk等 慎用,此接口需要严格授权
+	//Auth=20 即账号网页用到的bkn/g_tk等 慎用,此接口需要严格授权
 	整数型 getCsrfToken();
 
 	//取应用目录,返回的路径末尾带"\"
 	std::string getAppDirectory();
-
-	//取登录Account
-	长整数型 getLoginAccount();
+	
+	//取登录账号
+	长整数型 getLoginQQ();
 
 	//取登录昵称
 	std::string getLoginNick();
@@ -187,6 +187,9 @@ namespace CQ {
 
 	//取群信息(支持缓存) Auth=132
 	GroupInfo getGroupInfo(长整数型 群号, 逻辑型 不使用缓存 = false);
+
+	//取登录账号
+	长整数型 getLoginAccount();
 
 
 	// 其他不重要的

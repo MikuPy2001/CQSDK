@@ -33,8 +33,8 @@ EVE_GroupMsg_EX(GroupMsg_EX)
 	//	logger.Debug() << var.tostring() << e.message<<endl;
 
 	//获取群成员信息
-	//auto QQInfo = list[e.fromQQ];
-	//logger.Debug() << QQInfo.tostring() << endl;
+	//auto AccountInfo = list[e.Account];
+	//logger.Debug() << AccountInfo.tostring() << endl;
 
 
 
@@ -56,21 +56,21 @@ EVE_GroupMsg_EX(GroupMsg_EX)
 	//e.setGroupKick();//干掉这个人
 
 	debug << send;//发送日志
-	Msg(&e);
+	Msg(&e);//请跳转到Msg函数查看如何发送回复
 }
 EVE_PrivateMsg_EX(PrivateMsg_EX)
 //name:私聊消息
 //priority:30000
 {
 	logger.Debug() << DEBUGINFO << e.message;
-	Msg(&e);
+	Msg(&e);//请跳转到Msg函数查看如何发送回复
 }
 EVE_DiscussMsg_EX(DiscussMsg_EX)
 //name:讨论组
 //priority:30000
 {
 	logger.Debug() << DEBUGINFO << e.message;
-	Msg(&e);
+	Msg(&e);//请跳转到Msg函数查看如何发送回复
 }
 
 

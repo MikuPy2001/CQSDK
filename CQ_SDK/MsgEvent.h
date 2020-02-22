@@ -13,7 +13,7 @@ namespace CQ {
 	{
 		//消息ID
 		int msgId;
-		//来源Account
+		//来源账号
 		long long fromAccount;
 		//消息
 		std::string message;

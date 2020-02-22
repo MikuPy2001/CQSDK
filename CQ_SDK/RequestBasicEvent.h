@@ -8,7 +8,7 @@ namespace CQ {
 	struct RequestBasicEvent :public BasicEvent
 	{
 		int sendTime; // 发送时间(时间戳)
-		long long fromAccount; // 来源Account
+		long long fromAccount; // 来源账号
 		const char* msg; // 附言
 		const char* responseFlag;// 反馈标识(处理请求用)
 
