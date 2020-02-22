@@ -3,6 +3,9 @@
 #include "BaseAPI.h"
 #include "StrangerInfo.h"
 #include "GroupMemberInfo.h"
+#include "FriendInfo.h"
+#include "GroupInfo.h"
+
 
 #include <string>
 #include <map>
@@ -50,11 +53,6 @@ namespace CQ {
 	文本型 getRecord(
 		文本型 file, // 收到消息中的语音文件名 (file)
 		文本型 outformat // 应用所需的格式 mp3,amr,wma,m4a,spx,ogg,wav,flac
-	);
-	//接收语音
-	std::string getRecord(
-		std::string&file, // 收到消息中的语音文件名 (file)
-		std::string outformat // 应用所需的格式 mp3,amr,wma,m4a,spx,ogg,wav,flac
 	);
 
 	//取CsrfToken (慎用，此接口需要严格授权)
@@ -164,20 +162,34 @@ namespace CQ {
 	//撤回消息 Auth=180
 	整数型 deleteMsg(长整数型 MsgId);
 
+	//9.20添加
+
+
 	//是否支持发送图片，返回大于 0 为支持，等于 0 为不支持
-	整数型 canSendImage();
+	bool canSendImage();
 
 	//是否支持发送语音，返回大于 0 为支持，等于 0 为不支持
-	整数型 canSendRecord();
+	bool canSendRecord();
 
 	//接收图片，并返回图片文件绝对路径
 	std::string getImage(std::string file);
 
+	//接收语音
+	std::string getRecord(
+		std::string& file, // 收到消息中的语音文件名 (file)
+		std::string outformat // 应用所需的格式 mp3,amr,wma,m4a,spx,ogg,wav,flac
+	);
+
+	//9.25添加
+
 	//取好友列表 Auth=162
-	void getFriendList();
+	std::vector <FriendInfo> getFriendList();
 
 	//取群信息(支持缓存) Auth=132
-	void getGroupInfo(长整数型 群号, 逻辑型 不使用缓存 = false);
+	GroupInfo getGroupInfo(长整数型 群号, 逻辑型 不使用缓存 = false);
+
+
+	// 其他不重要的
 
 	//如果API调用返回错误代码
 	//则可以使用本函数获取相关中文信息

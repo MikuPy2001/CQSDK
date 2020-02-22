@@ -29,6 +29,8 @@
 #include "FriendAddEvent.h"
 #include "MsgEvent.h"
 #include "RequestBasicEvent.h"
+#include "SystemGroupBanEvent.h" //9.25新增
+
 
 //第四层,同上
 #include "DiscussMsgEvent.h"

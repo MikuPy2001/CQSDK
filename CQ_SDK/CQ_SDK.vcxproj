@@ -41,6 +41,7 @@
     <ClInclude Include="StatusEvent.h" />
     <ClInclude Include="StrangerInfo.h" />
     <ClInclude Include="SystemGroupAdminEvent.h" />
+    <ClInclude Include="SystemGroupBanEvent.h" />
     <ClInclude Include="tool.h" />
     <ClInclude Include="toolWin.h" />
     <ClInclude Include="Unpack.h" />
@@ -56,6 +57,7 @@
     <ClCompile Include="DEBUG.cpp" />
     <ClCompile Include="DiscussMsgEvent.cpp" />
     <ClCompile Include="FriendAddEvent.cpp" />
+    <ClCompile Include="FriendInfo.cpp" />
     <ClCompile Include="GroupMemberInfo.cpp" />
     <ClCompile Include="GroupMsgEvent.cpp" />
     <ClCompile Include="Logger.cpp" />
@@ -69,6 +71,7 @@
     <ClCompile Include="StatusEvent.cpp" />
     <ClCompile Include="StrangerInfo.cpp" />
     <ClCompile Include="SystemGroupAdminEvent.cpp" />
+    <ClCompile Include="SystemGroupBanEvent.cpp" />
     <ClCompile Include="tool.cpp" />
     <ClCompile Include="toolWin.cpp" />
     <ClCompile Include="Unpack.cpp" />
