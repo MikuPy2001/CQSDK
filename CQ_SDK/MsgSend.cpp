@@ -8,7 +8,7 @@ CQ::MsgSend::MsgSend(long long ID, msgtype Type)
 {}
 
 CQ::MsgSend::MsgSend(long long ID, int Type)
-	: ID(ID), subType(Type)
+	: ID(ID), subType(msgtype(Type))
 {}
 
 void CQ::MsgSend::SEND() {

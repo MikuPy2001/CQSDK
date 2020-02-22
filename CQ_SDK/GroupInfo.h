@@ -1,5 +1,6 @@
 #pragma once
 #include "Base.h"
+#include "Unpack.h"
 #include <string>
 
 inline
@@ -13,9 +14,9 @@ namespace CQ {
 		整数型 当前人数;
 		整数型 人数上限;
 
-		GroupInfo() = default;
+		GroupInfo();
+		GroupInfo(Unpack);
 
 		std::string tostring() const;
 	};
-
 }

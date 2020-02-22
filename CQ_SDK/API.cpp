@@ -240,23 +240,13 @@ std::vector<FriendInfo> CQ::getFriendList()
 
 GroupInfo CQ::getGroupInfo(长整数型 群号, 逻辑型 不使用缓存)
 {
-	//其他_转换_文本到群信息
 	auto data = CQtoString(CQ_getGroupInfo(getAuthCode(), 群号, 不使用缓存), "取群信息");
 	if (data.empty()) {
 		string log = string("API(取群信息)返回空数据");
 		addLog(Log_Debug, "CQSDK(CPP)", log.c_str());
 		return GroupInfo();
 	}
-	Unpack u(base64_decode(data));
-
-	GroupInfo 群信息;
-
-	群信息.群号 = u.getLong();
-	群信息.名称 = u.getstring();
-	群信息.当前人数 = u.getInt();
-	群信息.人数上限 = u.getInt();
-
-	return 群信息;
+	return GroupInfo(Unpack(base64_decode(data)));
 }
 
 长整数型 CQ::getLoginAccount() { return  CQ_getLoginQQ(getAuthCode()); }

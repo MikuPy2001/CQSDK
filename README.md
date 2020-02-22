@@ -83,15 +83,15 @@ VS2015/VS2017未做兼容测试,但是应该可以
 
 当前目标
 
-1. CQMsgCode 重写
+1. CQMsgCode 重写(现在这个版本它不香吗
 
-2. winSpeak 继续支持
+2. winSpeak 继续支持(鸽了
 
 3. 下列函数未有EX版本
     ```
-    #define	EVE_GroupUpload(Name)
-    #define	EVE_System_GroupMemberDecrease(Name)
-    #define	EVE_System_GroupMemberIncrease(Name)
+    #define	EVE_GroupUpload(Name) 完成
+    #define	EVE_System_GroupMemberDecrease(Name) 完成
+    #define	EVE_System_GroupMemberIncrease(Name) 完成
     ```
 
 4. 首页文档
@@ -102,4 +102,4 @@ VS2015/VS2017未做兼容测试,但是应该可以
 
 5.2 群事件-群禁言 完成
 
-6 视频教程
+6 视频教程(鸽了

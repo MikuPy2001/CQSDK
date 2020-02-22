@@ -2,10 +2,10 @@
 
 #include "DEBUG.h"
 
-#include "CQSDK.h"
 
 #include <list>
 #include <dbghelp.h>
+#include <string>
 #pragma comment( lib, "dbghelp.lib" )
 using namespace std;
 
@@ -73,6 +73,7 @@ list<stack> dump_callstack(CONTEXT *context)
 	}
 	return r;
 }
+#include "API.h"
 int dump(EXCEPTION_POINTERS* ep, const char*evename, const char*msg) {
 	if (SymInitialize(GetCurrentProcess(), NULL, TRUE)) {
 		auto stack = dump_callstack(ep->ContextRecord);

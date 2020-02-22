@@ -42,7 +42,7 @@
 //extern "C" __declspec(dllexport) void __stdcall Char(const char* a){}//@4
 //extern "C" __declspec(dllexport) void __stdcall Int64(long long a){}//@8
 
-namespace _CQEVEinfo { void CQ事件_酷Q启动(); }
+namespace _CQEVEinfo { extern  int CQ事件_酷Q启动; }
 /*
 酷Q启动(Type=1001)
 
@@ -73,7 +73,7 @@ EVE_Startup(Name){\
 void Name##_EX()
 
 
-namespace _CQEVEinfo { void CQ事件_酷Q退出(); }
+namespace _CQEVEinfo { extern  int CQ事件_酷Q退出; }
 /*
 酷Q退出(Type=1002)
 
@@ -102,7 +102,7 @@ EVE_Exit(Name){\
 }\
 void Name##_EX()
 
-namespace _CQEVEinfo { void CQ事件_应用已被启用(); }
+namespace _CQEVEinfo { extern  int CQ事件_应用已被启用; }
 /*
 应用已被启用(Type=1003)
 
@@ -134,7 +134,7 @@ EVE_Enable(Name){\
 void Name##_EX()
 
 
-namespace _CQEVEinfo { void CQ事件_应用将被停用(); }
+namespace _CQEVEinfo { extern  int CQ事件_应用将被停用; }
 /*
 应用将被停用(Type=1004)
 
@@ -165,7 +165,7 @@ EVE_Disable(Name){\
 }\
 void Name##_EX()
 
-namespace _CQEVEinfo { void 消息事件_私聊(); }
+namespace _CQEVEinfo { extern  int 消息事件_私聊; }
 /*
 私聊消息(Type=21)
 此事件拥有EX版本,建议使用EX版本
@@ -211,7 +211,7 @@ font		字体
 	void Name(CQ::PrivateMsgEvent & e)
 
 
-namespace _CQEVEinfo { void 消息事件_群(); }
+namespace _CQEVEinfo { extern  int 消息事件_群; }
 /*
 群消息(Type=2)
 
@@ -264,7 +264,7 @@ font 字体
 	void Name(CQ::GroupMsgEvent & e)
 
 
-namespace _CQEVEinfo { void 消息事件_讨论组(); }
+namespace _CQEVEinfo { extern  int 消息事件_讨论组; }
 /*
 讨论组消息(Type=4)
 
@@ -311,7 +311,7 @@ font		字体
 	void Name(CQ::DiscussMsgEvent & e)
 
 
-namespace _CQEVEinfo { void 群事件_文件上传(); }
+namespace _CQEVEinfo { extern  int 群事件_文件上传; }
 /*
 群文件上传事件(Type=11)
 
@@ -329,9 +329,33 @@ file 上传文件信息,使用 <其他_转换_文本到群文件> 将本参数转换为有效数据,待编辑
 如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_GroupUpload(Name) CQEVENT(int, Name, 28)(int subType, int sendTime, long long fromGroup,long long fromAccount, const char* file)
+/*
+群文件上传事件(Type=11)
 
+subType 子类型，目前固定为1
+sendTime 发送时间(时间戳)
+fromGroup 来源群号
+fromAccount 来源账号
+file 上传文件信息,使用 <其他_转换_文本到群文件> 将本参数转换为有效数据,待编辑
 
-namespace _CQEVEinfo { void 群事件_管理员变动(); }
+本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
+名字如果使用下划线开头需要改成双下划线
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
+*/
+#define EVE_GroupUpload_EX(Name) \
+	void Name(CQ::GroupUploadEvent & e);\
+	EVE_GroupUpload(Name)\
+	{\
+		CQ::GroupUploadEvent tep( subType,  sendTime, fromGroup,  fromAccount,  file);\
+		Name(tep);\
+		return tep._EVEret;\
+	}\
+	void Name(CQ::GroupUploadEvent & e)
+
+namespace _CQEVEinfo { extern  int 群事件_管理员变动; }
 /*
 群事件-管理员变动(Type=101)
 
@@ -347,7 +371,7 @@ beingOperateAccount	被操作Account
 如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
 如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
-#define EVE_System_GroupAdmin(Name) CQEVENT(int, Name, 24)(int subType, int sendTime, long long fromGroup, long long beingOperateAccount)/*
+#define EVE_System_GroupAdmin(Name) CQEVENT(int, Name, 24)(int subType, int sendTime, long long fromGroup, long long beingOperateAccount)
 /*
 群事件-管理员变动(Type=101)
 
@@ -374,7 +398,7 @@ beingOperateAccount	被操作Account
 	void Name(CQ::SystemGroupAdminEvent & e)
 
 
-namespace _CQEVEinfo { void 群事件_群成员减少(); }
+namespace _CQEVEinfo { extern  int 群事件_群成员减少; }
 /*
 群事件-群成员减少(Type=102)
 
@@ -392,9 +416,33 @@ beingOperateAccount 被操作Account
 如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupMemberDecrease(Name) CQEVENT(int, Name, 32)(int subType, int sendTime, long long fromGroup, long long fromAccount, long long beingOperateAccount)
+/*
+群事件-群成员减少(Type=102)
 
+subtype		子类型，1/群员离开 2/群员被踢 3/自己(即登录号)被踢
+sendTime 发送时间(时间戳)
+fromGroup	来源群号
+fromAccount		操作者Account(仅子类型为2、3时存在)
+beingOperateAccount 被操作Account
 
-namespace _CQEVEinfo { void 群事件_群成员增加(); }
+本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
+名字如果使用下划线开头需要改成双下划线
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
+*/
+#define EVE_System_GroupMemberDecrease_EX(Name) \
+	void Name(CQ::System_GroupMemberDecreaseEvent & e);\
+	EVE_System_GroupMemberDecrease(Name)\
+	{\
+		CQ::System_GroupMemberDecreaseEvent tep( subType,  sendTime, fromGroup, fromAccount, beingOperateAccount);\
+		Name(tep);\
+		return tep._EVEret;\
+	}\
+	void Name(CQ::System_GroupMemberDecreaseEvent & e)
+
+namespace _CQEVEinfo { extern  int 群事件_群成员增加; }
 /*
 群事件-群成员增加(Type=103)
 
@@ -412,9 +460,33 @@ beingOperateAccount 被操作账号(即加群的账号)
 如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
 */
 #define EVE_System_GroupMemberIncrease(Name) CQEVENT(int, Name, 32)(int subType, int sendTime, long long fromGroup, long long fromAccount, long long beingOperateAccount)
+/*
+群事件-群成员增加(Type=103)
 
+subtype 子类型，1/管理员已同意 2/管理员邀请
+sendTime 发送时间(时间戳)
+fromGroup 来源群号
+fromAccount 操作者账号(即管理员账号)
+beingOperateAccount 被操作账号(即加群的账号)
 
-namespace _CQEVEinfo { void 系统事件_好友已添加(); }
+本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)
+名字如果使用下划线开头需要改成双下划线
+
+返回值*不能*直接返回文本
+如果要回复消息，请调用api发送，并且 返回(#消息_拦截) - 截断本条消息，不再继续处理 //注意：应用优先级设置为"最高"(10000)时，不得使用本返回值
+如果不回复消息，交由之后的应用/过滤器处理 返回(#消息_忽略) - 忽略本条消息
+*/
+#define EVE_System_GroupMemberIncrease_EX(Name) \
+	void Name(CQ::System_GroupMemberIncreaseEvent & e);\
+	EVE_System_GroupMemberIncrease(Name)\
+	{\
+		CQ::System_GroupMemberIncreaseEvent tep( subType,  sendTime, fromGroup, fromAccount, beingOperateAccount);\
+		Name(tep);\
+		return tep._EVEret;\
+	}\
+	void Name(CQ::System_GroupMemberIncreaseEvent & e)
+
+namespace _CQEVEinfo { extern  int 系统事件_好友已添加; }
 /*
 好友事件-好友已添加(Type=201)
 
@@ -455,7 +527,7 @@ fromAccount 来源账号
 	void Name(CQ::FriendAddEvent & e)
 
 
-namespace _CQEVEinfo { void 系统事件_请求_好友添加(); }
+namespace _CQEVEinfo { extern  int 系统事件_请求_好友添加; }
 /*
 请求-好友添加(Type=301)
 
@@ -504,7 +576,7 @@ responseFlag 反馈标识(处理请求用)
 	void Name(CQ::RequestAddFriendEvent & e)
 
 
-namespace _CQEVEinfo { void 系统事件_请求_群添加(); }
+namespace _CQEVEinfo { extern  int 系统事件_请求_群添加; }
 /*
 请求-群添加(Type=302)
 
@@ -561,7 +633,7 @@ responseFlag 反馈标识(处理请求用)
 	void Name(CQ::RequestAddGroupEvent & e)
 
 
-namespace _CQEVEinfo { void CQ事件_菜单(); }
+namespace _CQEVEinfo { extern  int CQ事件_菜单; }
 /*
 菜单
 
@@ -593,7 +665,7 @@ EVE_Menu(Name){\
 }\
 void Name##_EX()
 
-namespace _CQEVEinfo { void CQ事件_悬浮窗(); }
+namespace _CQEVEinfo { extern  int CQ事件_悬浮窗; }
 /*
 悬浮窗
 
@@ -628,9 +700,9 @@ emmm,因为一些原因,悬浮窗暂时不可用...
 	}\
 	void Name(CQ::StatusEvent & e)
 
-// 9.25 新增事件
+ // 9.25 新增事件
 
-namespace _CQEVEinfo { void 群事件_群禁言(); }
+namespace _CQEVEinfo { extern  int 群事件_群禁言; }
 /**
 群事件-群禁言(Type=104)
 
@@ -656,7 +728,7 @@ duration 禁言时长(单位 秒，仅子类型为2时可用)
 */
 #define EVE_System_GroupBan_EX(Name) \
 	void Name(CQ::SystemGroupBanEvent & e);\
-	EVE_System_GroupAdmin(Name)\
+	EVE_System_GroupBan(Name)\
 	{\
 		CQ::SystemGroupBanEvent tep( subType,  sendTime, fromGroup,  fromAccount,  beingOperateAccount, duration);\
 		Name(tep);\

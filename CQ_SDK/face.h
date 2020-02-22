@@ -2,7 +2,7 @@
 
 inline
 namespace CQ {
-	enum face {
+	enum class face : int {
 #define 表情_惊讶 0
 		惊讶 = 0,
 #define 表情_撇嘴 1

@@ -29,6 +29,9 @@
 #include "FriendAddEvent.h"
 #include "MsgEvent.h"
 #include "RequestBasicEvent.h"
+#include "SystemGroupMemberDecreaseEvent.h"
+#include "SystemGroupMemberIncreaseEvent.h"
+#include "SystemGroupAdminEvent.h"
 #include "SystemGroupBanEvent.h" //9.25ÐÂÔö
 
 

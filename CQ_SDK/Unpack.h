@@ -21,6 +21,8 @@ namespace CQ {
 
 		Unpack&add(int i);//添加一个整数
 		int getInt();//弹出一个整数
+//		Unpack& get(const int& v);//弹出一个整数
+//		Unpack& operator >>(const int& v);//弹出一个整数
 
 		Unpack&add(long long i);//添加一个长整数
 		long long getLong();//弹出一个长整数

@@ -11,7 +11,7 @@
 
 
 
-//现在，您已经可以尝试开始编译本SDK
+//现在，您已经可以尝试开始编译你的第一个插件,虽然它只包含一些测试项目和示例
 //编译完成后，你将得到DLL以及JSON文件
 //请遵循官方文档启用插件
 //https://docs.cqp.im/dev/v9/getting-started/
@@ -66,7 +66,7 @@ priority为事件优先级(参见 cq.im/deveventpriority)
 
 
 EVE_Enable_EX(Enable)
-//name:禁用将无法加载数保
+//name:禁用将无法加载数据
 //priority:30000
 {
 	logger.Info("Enable");

@@ -7,11 +7,11 @@
 inline
 namespace CQ
 {
-	enum msgtype { 好友, 群, 讨论组 };
+	enum class msgtype:int { 好友, 群, 讨论组 };
 	class MsgSend : public BaseStream
 	{
 		long long ID;
-		int subType;
+		msgtype subType;
 
 	public:
 		/*
