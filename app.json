@@ -16,7 +16,7 @@
       "function": "Startup", // 事件对应函数,也就是你写在括号里的名字
       "type": 1001, // 事件类型,请查看事件宏注释的第一行(type =xxx)
       "priority": 30000, // 事件优先级(参见 cq.im/deveventpriority)
-      "id": 1 // 事件ID
+      "id": 1 // 事件ID,必须为不重复的正整数
     },
     {
       "name": "应用启用",

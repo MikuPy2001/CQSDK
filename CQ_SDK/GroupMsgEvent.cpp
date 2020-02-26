@@ -1,6 +1,9 @@
 #include "GroupMsgEvent.h"
 
 #include "API.h"
+#include "code.h"
+
+using namespace std;
 
 
 CQ::GroupMsgEvent::GroupMsgEvent(int subType, int msgId, long long fromGroup, long long fromAccount, const char * fromAnonymous, const char * msg, int font)
@@ -83,3 +86,7 @@ std::vector<GroupMemberInfo> CQ::GroupMsgEvent::getGroupMemberList()
 int CQ::GroupMsgEvent::sendMsg(const char * msg) const { return sendGroupMsg(fromGroup, msg); }
 int CQ::GroupMsgEvent::sendMsg(std::string msg) const { return sendGroupMsg(fromGroup, msg); }
 MsgSend CQ::GroupMsgEvent::sendMsg()const { return MsgSend(fromGroup, msgtype::Ⱥ); }
+
+int CQ::GroupMsgEvent::sendMsg(const char* msg, bool at_user) const { return sendMsg(string(msg), at_user); }
+int CQ::GroupMsgEvent::sendMsg(std::string msg, bool at_user) const { return at_user ? sendMsg(code::at(fromAccount) + msg) : sendMsg(msg); }
+MsgSend CQ::GroupMsgEvent::sendMsg(bool at_user) const { auto res = sendMsg(); if (at_user) res << code::at(fromAccount); return res; }

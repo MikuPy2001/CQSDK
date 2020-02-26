@@ -26,6 +26,9 @@ namespace CQ {
 		int sendMsg(const char *) const override;
 		int sendMsg(std::string) const override;
 		MsgSend sendMsg() const override;
+		int sendMsg(const char*,bool at_user) const;
+		int sendMsg(std::string, bool at_user) const;
+		MsgSend sendMsg(bool at_user) const;
 
 		//获取匿名者信息
 		AnonymousInfo&getFromAnonymousInfo() /*throw(std::exception_ptr)*/;
