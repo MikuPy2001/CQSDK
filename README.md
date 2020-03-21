@@ -91,19 +91,6 @@ VS2015/VS2017未做兼容测试,但是应该可以
 
 2. winSpeak 继续支持(鸽了
 
-3. 下列函数未有EX版本
-    ```
-    #define	EVE_GroupUpload(Name) 完成
-    #define	EVE_System_GroupMemberDecrease(Name) 完成
-    #define	EVE_System_GroupMemberIncrease(Name) 完成
-    ```
-
 4. 首页文档
 
-5. 跟进到9.25 基本完成
-
-5.1 API完善 完成
-
-5.2 群事件-群禁言 完成
-
-6 视频教程(鸽了
+6. 视频教程(鸽了
