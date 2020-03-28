@@ -136,7 +136,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BrowseInformation>true</BrowseInformation>
-      <ProgramDataBaseFileName>$(SolutionDir)CQ_LIB\$(ProjectName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>$(SolutionDir)CQ_LIB\$(ProjectName)_DEBUG.pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

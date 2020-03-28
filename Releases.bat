@@ -1,10 +1,8 @@
 @echo off
 
-echo --------------正在复制 初始化 解决方案--------------
+echo --------------正在 初始化 解决方案--------------
 rd /s /q %~dp0\CQAPP\
-IF %ERRORLEVEL% NEQ 0 PAUSE
 del /s /q %~dp0\CQAPP.zip
-IF %ERRORLEVEL% NEQ 0 PAUSE
 mkdir %~dp0\CQAPP\
 IF %ERRORLEVEL% NEQ 0 PAUSE
 
