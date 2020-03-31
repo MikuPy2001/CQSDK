@@ -38,11 +38,11 @@ string CQ::code::face(CQ::face face)
 
 string CQ::code::at(long long Account)
 {
-	return string("[CQ:at,Account=") + to_string(Account) + "]";
+	return string("[CQ:at,qq=") + to_string(Account) + "]";
 }
 std::string CQ::code::at(std::string Account)
 {
-	return string("[CQ:at,Account=") + Account + "]";
+	return string("[CQ:at,qq=") + Account + "]";
 }
 string CQ::code::effect(string type, int id, string content)
 {
