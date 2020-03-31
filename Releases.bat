@@ -45,9 +45,13 @@ IF %ERRORLEVEL% NEQ 0 PAUSE
 
 
 echo --------------正在复制 部署工具CQJSON--------------
-copy %~dp0\..\cqsdk-json\bin\Release\CQ_Json.exe %~dp0\CQAPP\
+copy %~dp0\CQ_Json.exe %~dp0\CQAPP\
 IF %ERRORLEVEL% NEQ 0 PAUSE
-copy %~dp0\..\cqsdk-json\bin\Release\Newtonsoft.Json.dll %~dp0\CQAPP\
+copy %~dp0\CQ_Json.exe.config %~dp0\CQAPP\
+IF %ERRORLEVEL% NEQ 0 PAUSE
+copy %~dp0\CQ_Json.pdb %~dp0\CQAPP\
+IF %ERRORLEVEL% NEQ 0 PAUSE
+copy %~dp0\Newtonsoft.Json.dll %~dp0\CQAPP\
 IF %ERRORLEVEL% NEQ 0 PAUSE
 
 echo --------------正在收尾--------------
