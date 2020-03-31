@@ -22,7 +22,7 @@ EVE_GroupMsg_EX(GroupMsg_EX)
 	debug << DEBUGINFO << e.message;
 	if (e.isAnonymous()) {//判断是否为匿名信息
 		auto info = e.getFromAnonymousInfo();//获取匿名信息
-		debug << ", 匿名者代号为:" << info.代号 << e.message << endl;//输出到日志
+		debug << ", 匿名者代号为:" << info.代号 << endl;//输出到日志
 	}
 
 	//获取群成员列表
@@ -73,6 +73,20 @@ EVE_DiscussMsg_EX(DiscussMsg_EX)
 	Msg(&e);//请跳转到Msg函数查看如何发送回复
 }
 
+//使用酷Q原生自带的正则消息捕获
+EVE_GroupMsg_EX(GroupMsg_regex)
+//name:正则消息
+//priority:30000
+//regex-key:Account
+//regex-key:action
+//regex-expression:^(?<action>\S{1,4}?)\s*(?<Account>\d{5,10})\s*?$
+//测试用消息:推[@一个人]
+{
+	auto reg = e.regexMsg();
+	auto Account = reg["Account"];
+	auto action = reg["action"];
+	e.sendMsg() << code::at(e.fromAccount) << " " << action << "了" << code::at(Account) << "一下" << send;
+}
 
 
 void Msg(MsgEvent*e) 

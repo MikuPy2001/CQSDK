@@ -6,6 +6,7 @@
     <ClCompile Include="Msg.cpp" />
     <ClCompile Include="源.cpp" />
     <ClCompile Include="appinfo.h" />
+    <ClCompile Include="DEBUG.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="appVer.h" />

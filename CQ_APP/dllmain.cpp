@@ -3,8 +3,8 @@
 #include <Windows.h>
 
 BOOL APIENTRY DllMain( HMODULE hModule,
-                       DWORD  ul_reason_for_call,
-                       LPVOID lpReserved
+					   DWORD  ul_reason_for_call,
+					   LPVOID lpReserved
 					 )
 {
 	switch (ul_reason_for_call)
@@ -18,3 +18,6 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	return TRUE;
 }
 
+void xxx(char*a,char*b) {
+	MessageBoxA(0, a, b, 0);
+}

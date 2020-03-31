@@ -43,3 +43,8 @@
 #include "PrivateMsgEvent.h"
 #include "RequestAddFriendEvent.h"
 #include "RequestAddGroupEvent.h"
+
+
+#ifdef CQDEBUG
+#include "debug.h"
+#endif // DEBUG
