@@ -11,4 +11,7 @@
   <ItemGroup>
     <ClInclude Include="appVer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
 </Project>

@@ -55,7 +55,7 @@ $(SolutionDir)CQ_Json.exe $(ProjectDir) $(TargetDir)
 #define APP_author "Example"
 
 //一句话描述插件用途
-#define APP_description "酷Q样例应用(V9应用机制)" //注释不影响解析效果
+#define APP_description "酷Q样例应用\n(V9应用机制)" //注释不影响解析效果
 #define 填写示例 "示例""""\n第二行,"
 //              ↑    ↑           ↑
 //              ↑始终第一个引号开始,无论是否是真实引号

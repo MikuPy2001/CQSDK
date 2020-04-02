@@ -700,7 +700,7 @@ emmm,因为一些原因,悬浮窗暂时不可用...
 	}\
 	void Name(CQ::StatusEvent & e)
 
- // 9.25 新增事件
+// 9.25 新增事件
 
 namespace _CQEVEinfo { extern  int 群事件_群禁言; }
 /**
