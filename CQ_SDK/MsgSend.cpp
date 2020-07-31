@@ -3,6 +3,8 @@
 #include "API.h"
 #include "Logger.h"
 
+CQ::MsgSend::~MsgSend() { SEND(); }
+
 CQ::MsgSend::MsgSend(long long ID, msgtype Type)
 	: ID(ID), subType(Type)
 {}

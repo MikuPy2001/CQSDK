@@ -4,6 +4,8 @@
 #include <string>
 
 
+CQ::LogStream::~LogStream() { SEND(); }
+
 CQ::LogStream::LogStream(std::string title, int Log_flag)
 	: flag(Log_flag), title(title)
 {}

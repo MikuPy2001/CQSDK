@@ -12,7 +12,6 @@ namespace CQ
 	{
 		long long ID;
 		msgtype subType;
-
 	public:
 		/*
 		Type:
@@ -28,6 +27,7 @@ namespace CQ
 		2=ÌÖÂÛ×é
 		*/
 		MsgSend(long long GroupID_Or_AccountID, int Type);
+		~MsgSend();
 
 		virtual void SEND() override;
 	};

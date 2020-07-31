@@ -147,4 +147,9 @@ void Msg(MsgEvent*e)
 	if (!message.compare("CQ:at"))
 		// 发送at消息,在私聊时是无效的
 		msg << code::at(e->fromAccount) << send;
+	if (!message.compare("CQ:noSend")) {
+		// 测试Log和聊天是否能在析构时触发发送
+		e->sendMsg() << "本句话没有加send";
+		logger.Debug() << "这次日子没有加send";
+	}
 }

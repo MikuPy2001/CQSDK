@@ -10,6 +10,7 @@ namespace CQ
 		std::string title;
 	public:
 		LogStream(std::string title, int Log_flag);
+		virtual ~LogStream();
 
 		virtual void SEND() override;
 	};

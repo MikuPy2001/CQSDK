@@ -45,6 +45,6 @@ BaseStream & CQ::BaseStream::operator<<(void(*control)(BaseStream &)) { control(
 
 void CQ::BaseStream::FLUSH() { SEND(); }
 
- CQ::BaseStream::~BaseStream() {}
+CQ::BaseStream::~BaseStream() { }
 
 
